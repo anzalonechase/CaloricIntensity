@@ -1,0 +1,9 @@
+Used fonts: 
+
+The Late Font family, created by Łukasz Dziedzic. This font was used on the About page, as it was more professional and legible, which is what I was going for. 
+
+The SF Pixelate Font, created by Shy Fonts. This font was used widely across my game, with practically all of the text being shown in this font. 
+
+
+
+  
