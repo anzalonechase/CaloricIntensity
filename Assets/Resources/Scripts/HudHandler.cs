@@ -45,22 +45,39 @@ public class HudHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        totalTime -= Time.deltaTime;
-        CalculateRemainingTime();
-        UpdateCustomer();
-        
+        if (totalTime >= 0)
+        {
+            totalTime -= Time.deltaTime;
+            CalculateRemainingTime();
+        }
+        if (totalCustomers >= 0)
+        {
+            UpdateCustomer();
+        }
+
     }
 
     private void CalculateRemainingTime()
     {
         minute = (int)totalTime / 60;
         seconds = (int)totalTime % 60;
-        RemainingTime.text = "Remaining Time: " + minute + ":" + seconds;
+        if (seconds < 10)
+        {
+            RemainingTime.text = "Remaining Time: " + minute + ":0" + seconds;
+        }
+        else
+        {
+            RemainingTime.text = "Remaining Time: " + minute + ":" + seconds;
+        }
+        
     }
     private void UpdateCustomer()
     {
-        totalCustomers = (int)(totalTime / 6) * 10;
-        RemainingCustomers.text = "Remaining Customers: "+(totalCustomers).ToString();
+        
+            totalCustomers = (int)(totalTime / 6) * 10;
+            RemainingCustomers.text = "Remaining Customers: " + (totalCustomers).ToString();
+        
+        
     }
 
     private void initialiseImageArray()
@@ -99,7 +116,6 @@ public class HudHandler : MonoBehaviour
     {
         while (true)
         {
-
             yield return new WaitForSeconds(1f);
             initialiseImageArray();
         }
