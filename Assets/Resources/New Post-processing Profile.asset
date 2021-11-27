@@ -79,7 +79,7 @@ MonoBehaviour:
     value: 2
   sensitivityNormals:
     overrideState: 1
-    value: 3
+    value: 1
   lumThreshold:
     overrideState: 0
     value: 0.2
@@ -88,7 +88,7 @@ MonoBehaviour:
     value: 10
   sampleDist:
     overrideState: 1
-    value: 3
+    value: 1.5
   edgesOnly:
     overrideState: 0
     value: 0
