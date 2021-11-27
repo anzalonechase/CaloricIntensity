@@ -509,7 +509,7 @@ MonoBehaviour:
   burgerSpawn: {fileID: 1083987050}
   burger: {fileID: 3495649203204629189, guid: ab515d3d54d1843a99bf6e0de48d5c4b, type: 3}
   hotdogSpawn: {fileID: 1519021367}
-  hotDog: {fileID: 6826284655996672758, guid: 1365d24207cf54a17958b74b5b3baf7f, type: 3}
+  hotDog: {fileID: 1694962138951615793, guid: a95b0db50274c974e938879258fe5308, type: 3}
   force: 0
 --- !u!1 &616656354
 GameObject:
@@ -1528,7 +1528,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1430765760856972450, guid: 8d3499dea3cb14f0e9a4084be8b69419, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1430765760856972450, guid: 8d3499dea3cb14f0e9a4084be8b69419, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1536,7 +1536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1430765760856972450, guid: 8d3499dea3cb14f0e9a4084be8b69419, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.038
+      value: -0.007
       objectReference: {fileID: 0}
     - target: {fileID: 1430765760856972450, guid: 8d3499dea3cb14f0e9a4084be8b69419, type: 3}
       propertyPath: m_LocalRotation.w
