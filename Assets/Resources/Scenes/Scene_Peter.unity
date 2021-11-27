@@ -778,14 +778,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083987049}
-  m_LocalRotation: {x: -0, y: 0.003550044, z: -0, w: 0.99999374}
+  m_LocalRotation: {x: -0, y: -0.024953336, z: -0, w: 0.9996886}
   m_LocalPosition: {x: 0.549, y: 0, z: 0.002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 777353880}
   m_Father: {fileID: 289892834}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0.407, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -2.86, z: 0}
 --- !u!114 &1083987051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -799,7 +799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireSpawn: {fileID: 1083987050}
-  bullet: {fileID: 0}
+  bullet: {fileID: 7460108413473946598, guid: 1c7173d10711888498a821378098ebb6, type: 3}
   force: 0
 --- !u!1 &1088118417
 GameObject:
