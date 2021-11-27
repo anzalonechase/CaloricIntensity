@@ -10,14 +10,12 @@ public class Aim_Controller : MonoBehaviour
 
     public float force;       //WIll need to give it force
 
-    // Start is called before the first frame update
     void Start()
     {
         force = 1000f;               
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         
