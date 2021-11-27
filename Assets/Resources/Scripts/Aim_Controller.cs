@@ -5,11 +5,6 @@ using UnityEngine;
 public class Aim_Controller : MonoBehaviour
 {
 
-    public Transform fireSpawn;       // Set both in inspector        (This is where bullet comes from)
-    public Rigidbody bullet;           //                              (This moves the bullet)
-
-
-
     public Transform burgerSpawn;       // Set both in inspector        (This is where burger comes from)
     public Rigidbody burger;           //                              (This moves the burger)
 
@@ -30,18 +25,18 @@ public class Aim_Controller : MonoBehaviour
     {
         
 
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0))       //CLick left for sausage
         {
-            var bulletInstance = Instantiate(bullet, fireSpawn.position, fireSpawn.rotation);        //creates an instance of bullet in fireSpawn positon
+            var bulletInstance = Instantiate(hotDog, hotdogSpawn.position, hotdogSpawn.rotation);        //creates an instance of bullet in fireSpawn positon
 
-            bulletInstance.AddForce(fireSpawn.forward * force);         // Shoots out the bullet
+            bulletInstance.AddForce(hotdogSpawn.forward * force);         // Shoots out the bullet
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))   // CLick right for burger
         {
-            var bulletInstance = Instantiate(bullet, fireSpawn.position, fireSpawn.rotation);        //creates an instance of bullet in fireSpawn positon
+            var bulletInstance = Instantiate(burger, burgerSpawn.position, burgerSpawn.rotation);        //creates an instance of bullet in fireSpawn positon
 
-            bulletInstance.AddForce(fireSpawn.forward * force);         // Shoots out the bullet
+            bulletInstance.AddForce(burgerSpawn.forward * force);         // Shoots out the bullet
         }
 
 
