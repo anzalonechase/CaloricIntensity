@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using Random = UnityEngine.Random;
 public class HudHandler : MonoBehaviour
 {
     private GameObject Timer;
@@ -22,15 +22,17 @@ public class HudHandler : MonoBehaviour
     private void Awake()
     {
         Timer = GameObject.Find("Timer").gameObject;
+        Customers = GameObject.Find("Customers").gameObject;
         
-
         RemainingTime = Timer.transform.Find("RemainingTime").GetComponent<Text>();
-        
+        RemainingCustomers = Customers.transform.Find("RemainingCustomers").GetComponent<Text>();
         totalTime = 180;
-        
+
         CalculateRemainingTime();
+        
     }
 
+   
     void Start()
     {
         
@@ -42,7 +44,8 @@ public class HudHandler : MonoBehaviour
     {
         totalTime -= Time.deltaTime;
         CalculateRemainingTime();
-        //UpdateCustomer();
+        UpdateCustomer();
+        //initialiseImageArray();
     }
 
     private void CalculateRemainingTime()
@@ -51,6 +54,12 @@ public class HudHandler : MonoBehaviour
         seconds = (int)totalTime % 60;
         RemainingTime.text = "Remaining Time: " + minute + ":" + seconds;
     }
-   
+    private void UpdateCustomer()
+    {
+        totalCustomers = (int)(totalTime / 6) * 10;
+        RemainingCustomers.text = "Remaining Customers: "+(totalCustomers).ToString();
+    }
+
+    
 
 }
