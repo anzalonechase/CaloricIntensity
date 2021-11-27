@@ -599,7 +599,6 @@ GameObject:
   - component: {fileID: 1227558406}
   - component: {fileID: 1227558409}
   - component: {fileID: 1227558408}
-  - component: {fileID: 1227558407}
   m_Layer: 0
   m_Name: Leg (1)
   m_TagString: Untagged
@@ -621,20 +620,6 @@ Transform:
   m_Father: {fileID: 852550658}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1227558407
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1227558405}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!23 &1227558408
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -695,7 +680,6 @@ GameObject:
   - component: {fileID: 1516076704}
   - component: {fileID: 1516076707}
   - component: {fileID: 1516076706}
-  - component: {fileID: 1516076705}
   m_Layer: 0
   m_Name: arm
   m_TagString: Untagged
@@ -717,20 +701,6 @@ Transform:
   m_Father: {fileID: 852550658}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -91.403, y: 0, z: 0}
---- !u!136 &1516076705
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1516076703}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!23 &1516076706
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -791,7 +761,6 @@ GameObject:
   - component: {fileID: 1879720635}
   - component: {fileID: 1879720638}
   - component: {fileID: 1879720637}
-  - component: {fileID: 1879720636}
   m_Layer: 0
   m_Name: arm (1)
   m_TagString: Untagged
@@ -813,20 +782,6 @@ Transform:
   m_Father: {fileID: 852550658}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -91.403, y: 0, z: 0}
---- !u!136 &1879720636
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1879720634}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!23 &1879720637
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -887,7 +842,6 @@ GameObject:
   - component: {fileID: 2090963197}
   - component: {fileID: 2090963200}
   - component: {fileID: 2090963199}
-  - component: {fileID: 2090963198}
   m_Layer: 0
   m_Name: Leg
   m_TagString: Untagged
@@ -909,20 +863,6 @@ Transform:
   m_Father: {fileID: 852550658}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &2090963198
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2090963196}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!23 &2090963199
 MeshRenderer:
   m_ObjectHideFlags: 0
