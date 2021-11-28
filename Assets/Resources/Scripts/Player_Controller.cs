@@ -68,4 +68,19 @@ public class Player_Controller : MonoBehaviour
         controller.Move(move * moveSpeed * Time.deltaTime);   //Applies movement
 
     }
+
+
+    public void OnCollisionEnter(Collision collision)
+    {
+
+        if (gameObject.tag == "Player" && collision.gameObject.tag == "Shop")  // If player is touching shop then reload ammo
+        {
+
+            burgerAmmo = 3;
+            hotdogAmmo = 3;
+        }
+
+
+
+    }
 }
