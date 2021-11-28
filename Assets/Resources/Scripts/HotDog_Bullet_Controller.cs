@@ -16,6 +16,7 @@ public class HotDog_Bullet_Controller : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
+        
         if(gameObject.tag == "Bullet" && collision.gameObject.tag == "Terrain")
         {
             Destroy(this.gameObject);
@@ -25,7 +26,7 @@ public class HotDog_Bullet_Controller : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
+        
 
     }
 
