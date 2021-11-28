@@ -46,7 +46,7 @@ public class Aim_Controller : MonoBehaviour
             }
             else
             {
-                Debug.Log("Hot dog ammo:     " + playerScript.hotdogAmmo);
+                Debug.Log("No hotdog ammo left");
                 // Lets the player know there is not enoguh hotdog ammo 
             }
 
@@ -71,7 +71,7 @@ public class Aim_Controller : MonoBehaviour
             }
             else
             {
-                Debug.Log("Burger ammo:     " + playerScript.burgerAmmo);
+                Debug.Log("No burger ammo left");
                 // Lest display message saying player has no burger ammo left
             }
         

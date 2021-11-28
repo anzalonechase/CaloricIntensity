@@ -21,12 +21,12 @@ public class Burger_Bullet_Controller : MonoBehaviour
         
         if (gameObject.tag == "Bullet" && collision.gameObject.tag == "Terrain")
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject, 2f);
         }
 
         if (gameObject.tag == "Bullet" && collision.gameObject.tag == "Obstacle")
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
         
 
