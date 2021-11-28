@@ -19,12 +19,12 @@ public class Burger_Bullet_Controller : MonoBehaviour
     public void OnCollisionEnter(Collision collision)
     {
         
-        if (gameObject.tag == "Bullet" && collision.gameObject.tag == "Terrain")
+        if (gameObject.tag == "Bullet" && collision.gameObject.tag == "Terrain")   // If there is a collision with this tag the burger will destroy itself after some time
         {
             Destroy(gameObject, 2f);
         }
 
-        if (gameObject.tag == "Bullet" && collision.gameObject.tag == "Obstacle")
+        if (gameObject.tag == "Bullet" && collision.gameObject.tag == "Obstacle")   // If there is a collision with this tag the burger will destroy itself instantly
         {
             Destroy(gameObject);
         }

@@ -27,7 +27,7 @@ public class Player_Controller : MonoBehaviour
     {
         //When the scene(game) starts give 3 burgers adn hotdogs as ammo
 
-        burgerAmmo = 3;
+        burgerAmmo = 3;                                                    //// change back to 3
         hotdogAmmo = 3;
 
     }
@@ -41,9 +41,6 @@ public class Player_Controller : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;   //calculates movement
 
 
-
-
-
         if(controller.isGrounded) //Pretty cool ocndition, basically if the "collider" in our player is touching something it isgrounded
         {
 
@@ -53,29 +50,22 @@ public class Player_Controller : MonoBehaviour
             }
 
         }
-
-
         yPosition -= gravity * Time.deltaTime;   // applies gravity (each frame it goes down) 
-
         move.y = yPosition;    // Makes sure to give CURRENT y position to the actual setter of the y position
 
-                                    
-
-
-
-
-
+                                                    
         controller.Move(move * moveSpeed * Time.deltaTime);   //Applies movement
 
     }
 
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnControllerColliderHit(ControllerColliderHit collision)     // This is what charatcer controller uses to detect collisions
     {
+        
 
         if (gameObject.tag == "Player" && collision.gameObject.tag == "Shop")  // If player is touching shop then reload ammo
         {
-
+            
             burgerAmmo = 3;
             hotdogAmmo = 3;
         }
