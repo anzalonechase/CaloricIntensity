@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet_Controller : MonoBehaviour
+public class HotDog_Bullet_Controller : MonoBehaviour
 {
     void Start()
     {
@@ -18,12 +18,12 @@ public class Bullet_Controller : MonoBehaviour
     {
         if(gameObject.tag == "Bullet" && collision.gameObject.tag == "Terrain")
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
 
         if(gameObject.tag == "Bullet" && collision.gameObject.tag == "Obstacle")
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
 
 

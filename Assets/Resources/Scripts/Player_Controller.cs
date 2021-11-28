@@ -5,10 +5,10 @@ using UnityEngine;
 public class Player_Controller : MonoBehaviour
 {
 
-    public float moveSpeed = 10f;
+    public float moveSpeed = 10f;        //was 10
 
-    public float gravity = 9.81f;
-    public float jumpHeight = 2.5f;
+    public float gravity = 9.81f;       // was 9.81
+    public float jumpHeight = 2.5f;      // was 2.5        when character was 1 to 1 to 1
 
     public float yPosition; //We need this bc otherwise the jump would not work
                             // This is Because each "frame" it resets y position in a bad manner. We need to keep track of CURRENT
@@ -19,7 +19,11 @@ public class Player_Controller : MonoBehaviour
   
     void Start()
     {
-        
+        /*
+        moveSpeed = 3f;
+        gravity = 0.981f;
+        jumpHeight = 0.25f;
+        */
     }
 
 
