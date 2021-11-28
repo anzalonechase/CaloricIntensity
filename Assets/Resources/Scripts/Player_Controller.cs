@@ -14,16 +14,22 @@ public class Player_Controller : MonoBehaviour
                             // This is Because each "frame" it resets y position in a bad manner. We need to keep track of CURRENT
                             // is through each "frame"
 
+    //Ammo
+    public float burgerAmmo;
+    public float hotdogAmmo;
+    
+
+
     public CharacterController controller;      // Refrences the component in player component game obejct    (Set in inspector) 
 
   
     void Start()
     {
-        /*
-        moveSpeed = 3f;
-        gravity = 0.981f;
-        jumpHeight = 0.25f;
-        */
+        //When the scene(game) starts give 3 burgers adn hotdogs as ammo
+
+        burgerAmmo = 3;
+        hotdogAmmo = 3;
+
     }
 
 
