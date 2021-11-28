@@ -8,6 +8,8 @@ TagManager:
   - Terrain
   - Obstacle
   - Shop
+  - NPC
+  - Boundary
   layers:
   - Default
   - TransparentFX

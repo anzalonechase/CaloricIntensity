@@ -41,16 +41,19 @@ public class Player_Controller : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;   //calculates movement
 
 
-        if(controller.isGrounded) //Pretty cool ocndition, basically if the "collider" in our player is touching something it isgrounded
+        if (controller.isGrounded) //Pretty cool ocndition, basically if the "collider" in our player is touching something it isgrounded
         {
 
-            if(Input.GetKeyDown(KeyCode.Space))     // If space bar is pressed then jump
+            if (Input.GetKeyDown(KeyCode.Space))     // If space bar is pressed then jump
             {
                 yPosition = jumpHeight;      // Here we use the variable that keeps track of CURRENT y position which is the jump hegiht
             }
 
         }
-        yPosition -= gravity * Time.deltaTime;   // applies gravity (each frame it goes down) 
+        else
+        {
+            yPosition -= gravity * Time.deltaTime;   // applies gravity (each frame it goes down) BUT only if it is not grounded
+        }
         move.y = yPosition;    // Makes sure to give CURRENT y position to the actual setter of the y position
 
                                                     
