@@ -1,15 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NPC_Controller : MonoBehaviour
 {
     public float moveSpeed;
 
     public Rigidbody rb;
-    //public Transform transform;
 
     public float flipBy;
+
+
+
+
+
+
+    public Text txt;                  // To display box above NPC              // (Both set in inspector)
+
+    public Transform positionText;  // WIll reference where the position of the text should be
+
+
+
+    
 
     void Start()
     {
@@ -22,7 +35,20 @@ public class NPC_Controller : MonoBehaviour
 
     
     void Update()
-    { 
+    {
+
+
+
+
+
+        Vector3 namePos = Camera.main.WorldToScreenPoint(positionText.position);         // Puts text right above NPC head
+        txt.transform.position = namePos;
+
+
+
+
+
+
         rb.velocity = transform.forward * Time.deltaTime * moveSpeed;         // Makes it move 
     }
 
