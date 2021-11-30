@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
-public class HudHandler : MonoBehaviour
+public class PanelHandler : MonoBehaviour
 {
     private GameObject Timer;
     private GameObject Customers;
@@ -22,16 +22,16 @@ public class HudHandler : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        Timer = GameObject.Find("Timer").gameObject;
-        Customers = GameObject.Find("Customers").gameObject;
+        HUDHolder = GameObject.Find("HUDPanel").gameObject;
+        Timer = HUDHolder.transform.Find("Timer").gameObject;
+        Customers = HUDHolder.transform.Find("Customers").gameObject;
         RemainingTime = Timer.transform.Find("RemainingTime").GetComponent<Text>();
         RemainingCustomers = Customers.transform.Find("RemainingCustomers").GetComponent<Text>();
-        BurgerHolder = GameObject.Find("BurgerHolder").GetComponent<Image>();
-        hotDogHolder = GameObject.Find("HotDogHolder").GetComponent<Image>();
+        BurgerHolder = HUDHolder.transform.Find("BurgerHolder").GetComponent<Image>();
+        hotDogHolder = HUDHolder.transform.Find("HotDogHolder").GetComponent<Image>();
         burgers = new Image[6];
         hotDogs = new Image[6];
-        totalTime = 180;
-        HUDHolder = this.gameObject;
+
 
         CalculateRemainingTime();
         
@@ -40,7 +40,7 @@ public class HudHandler : MonoBehaviour
    
     void Start()
     {
-
+        totalTime = GameController.GameInstance.gameTime;
         StartCoroutine("updateFood");
     }
 
