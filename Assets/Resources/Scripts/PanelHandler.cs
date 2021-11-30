@@ -9,6 +9,7 @@ public class PanelHandler : MonoBehaviour
     private GameObject Timer;
     private GameObject Customers;
     private GameObject HUDHolder;
+    private GameObject InventorySystem;
     private Image BurgerHolder;
     private Image hotDogHolder;
     private Text RemainingTime;
@@ -29,6 +30,7 @@ public class PanelHandler : MonoBehaviour
         RemainingCustomers = Customers.transform.Find("RemainingCustomers").GetComponent<Text>();
         BurgerHolder = HUDHolder.transform.Find("BurgerHolder").GetComponent<Image>();
         hotDogHolder = HUDHolder.transform.Find("HotDogHolder").GetComponent<Image>();
+        InventorySystem = GameObject.Find("GameInventoryPanel").gameObject;
         burgers = new Image[6];
         hotDogs = new Image[6];
 
@@ -56,13 +58,20 @@ public class PanelHandler : MonoBehaviour
         {
             UpdateCustomer();
         }
+
+        OpenCloseHudeAndInventorySystem();
+    }
+    private void OpenCloseHudeAndInventorySystem()
+    {
         if (Input.GetKeyDown(KeyCode.A))
         {
             HUDHolder.gameObject.SetActive(!HUDHolder.gameObject.activeInHierarchy);
         }
-
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            InventorySystem.gameObject.SetActive(!InventorySystem.gameObject.activeInHierarchy);
+        }
     }
-
     private void CalculateRemainingTime()
     {
         minute = (int)totalTime / 60;
