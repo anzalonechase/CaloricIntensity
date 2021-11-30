@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
     public byte blueColor;
     public byte redColor;
     public byte greenColor;
-    public float playerLives;
+    public float gameTime;
     public bool created;
     public Color playerColor;
     public List<string> itemList;
@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
             GameInstance.characterName = "";
             GameInstance.gameDifficulty = "Easy";
             GameInstance.playerColor = new Color32(redColor, greenColor, blueColor, 255);
-            GameInstance.playerLives = 4;
+            GameInstance.gameTime = 4;
             GameInstance.created = false;
             GameInstance.itemList = new List<string>();
             GameInstance.currentStatus = 1;
