@@ -29,24 +29,10 @@ public class PanelHandler : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        gameOverPanel = GameObject.Find("GameOverPanel").gameObject;
-        gameOverReplayBtn = gameOverPanel.transform.Find("Replay").GetComponent<Button>();
-        gameOverBackBtn = gameOverPanel.transform.Find("Back").GetComponent<Button>();
-        gameOverPanel.gameObject.SetActive(!gameOverPanel.gameObject.activeInHierarchy);
-        WinningScreen = GameObject.Find("WonPanel").gameObject;
-        WinningScreenBackBtn = WinningScreen.transform.Find("Back").GetComponent<Button>();
-        WinningScreenReplayBtn = WinningScreen.transform.Find("Replay").GetComponent<Button>();
-        WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
-        HUDHolder = GameObject.Find("HUDPanel").gameObject;
-        Timer = HUDHolder.transform.Find("Timer").gameObject;
-        Customers = HUDHolder.transform.Find("Customers").gameObject;
-        RemainingTime = Timer.transform.Find("RemainingTime").GetComponent<Text>();
-        RemainingCustomers = Customers.transform.Find("RemainingCustomers").GetComponent<Text>();
-        BurgerHolder = HUDHolder.transform.Find("BurgerHolder").GetComponent<Image>();
-        hotDogHolder = HUDHolder.transform.Find("HotDogHolder").GetComponent<Image>();
-        InventorySystem = GameObject.Find("GameInventoryPanel").gameObject;
-        burgers = new Image[6];
-        hotDogs = new Image[6];
+        InitialiseGameOverScreenAndButtons();
+        InitialiseWinningScreenAndButtons();
+        InitialiseHUDTextAndButtons();
+        
 
 
         CalculateRemainingTime();
@@ -55,7 +41,6 @@ public class PanelHandler : MonoBehaviour
 
     }
 
-   
     void Start()
     {
         totalTime = GameController.GameInstance.gameTime;
@@ -67,6 +52,14 @@ public class PanelHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        GameWinnerFunctionality();
+        GameOverConditionAndTimeFuctionality();
+        OpenCloseHudeAndInventorySystem();
+    }
+
+    private void GameWinnerFunctionality()
+    {
         if (GameController.GameInstance.numberOfCustomers == 0)
         {
             if (!AlreadyEnded)
@@ -76,6 +69,9 @@ public class PanelHandler : MonoBehaviour
                 WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
             }
         }
+    }
+    private void GameOverConditionAndTimeFuctionality()
+    {
         if (totalTime >= 0)
         {
             totalTime -= Time.deltaTime;
@@ -89,10 +85,8 @@ public class PanelHandler : MonoBehaviour
                 Time.timeScale = 0;
                 gameOverPanel.gameObject.SetActive(!gameOverPanel.gameObject.activeInHierarchy);
             }
-            
-        }
 
-        OpenCloseHudeAndInventorySystem();
+        }
     }
     private void OpenCloseHudeAndInventorySystem()
     {
@@ -181,6 +175,33 @@ public class PanelHandler : MonoBehaviour
 
     }
 
+    private void InitialiseGameOverScreenAndButtons()
+    {
+        gameOverPanel = GameObject.Find("GameOverPanel").gameObject;
+        gameOverReplayBtn = gameOverPanel.transform.Find("Replay").GetComponent<Button>();
+        gameOverBackBtn = gameOverPanel.transform.Find("Back").GetComponent<Button>();
+        gameOverPanel.gameObject.SetActive(!gameOverPanel.gameObject.activeInHierarchy);
+    }
 
+    private void InitialiseWinningScreenAndButtons()
+    {
+        WinningScreen = GameObject.Find("WonPanel").gameObject;
+        WinningScreenBackBtn = WinningScreen.transform.Find("Back").GetComponent<Button>();
+        WinningScreenReplayBtn = WinningScreen.transform.Find("Replay").GetComponent<Button>();
+        WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
+    }
+    private void InitialiseHUDTextAndButtons()
+    {
+        HUDHolder = GameObject.Find("HUDPanel").gameObject;
+        Timer = HUDHolder.transform.Find("Timer").gameObject;
+        Customers = HUDHolder.transform.Find("Customers").gameObject;
+        RemainingTime = Timer.transform.Find("RemainingTime").GetComponent<Text>();
+        RemainingCustomers = Customers.transform.Find("RemainingCustomers").GetComponent<Text>();
+        BurgerHolder = HUDHolder.transform.Find("BurgerHolder").GetComponent<Image>();
+        hotDogHolder = HUDHolder.transform.Find("HotDogHolder").GetComponent<Image>();
+        InventorySystem = GameObject.Find("GameInventoryPanel").gameObject;
+        burgers = new Image[6];
+        hotDogs = new Image[6];
+    }
 
 }
