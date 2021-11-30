@@ -23,7 +23,6 @@ public class PanelHandler : MonoBehaviour
     private int minute;
     private int seconds;
     private float totalTime;
-    private int totalCustomers;
     private Image[] burgers;
     private Image[] hotDogs;
     private bool AlreadyEnded;
@@ -50,7 +49,6 @@ public class PanelHandler : MonoBehaviour
         hotDogs = new Image[6];
 
 
-
         CalculateRemainingTime();
 
         AlreadyEnded = false;
@@ -62,11 +60,22 @@ public class PanelHandler : MonoBehaviour
     {
         totalTime = GameController.GameInstance.gameTime;
         StartCoroutine("updateFood");
+        StartCoroutine("updateFoodCoroutine");
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (GameController.GameInstance.numberOfCustomers == 0)
+        {
+            if (!AlreadyEnded)
+            {
+                AlreadyEnded = true;
+                Time.timeScale = 0;
+                WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
+            }
+        }
         if (totalTime >= 0)
         {
             totalTime -= Time.deltaTime;
@@ -81,11 +90,6 @@ public class PanelHandler : MonoBehaviour
                 gameOverPanel.gameObject.SetActive(!gameOverPanel.gameObject.activeInHierarchy);
             }
             
-        }
-
-        if (totalCustomers >= 0)
-        {
-            UpdateCustomer();
         }
 
         OpenCloseHudeAndInventorySystem();
@@ -117,9 +121,8 @@ public class PanelHandler : MonoBehaviour
     }
     private void UpdateCustomer()
     {
-        
-            totalCustomers = (int)(totalTime / 6) * 10;
-            RemainingCustomers.text = "Remaining Customers: " + (totalCustomers).ToString();
+        GameController.GameInstance.numberOfCustomers--;
+        RemainingCustomers.text = "Remaining Customers: " + (GameController.GameInstance.numberOfCustomers).ToString();
         
         
     }
@@ -162,6 +165,18 @@ public class PanelHandler : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             initialiseImageArray();
+            
+        }
+
+    }
+
+    private IEnumerator updateFoodCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            UpdateCustomer();
+
         }
 
     }
