@@ -12,6 +12,10 @@ public class Character_Selection : MonoBehaviour
     private Dropdown gameDifficultyDropDownMenu;
     private Dictionary<string, string> gameDifficultyHolder;
     private Text gameDifficultyDesc;
+    private Slider redSlider;
+    private Slider blueSlider;
+    private Slider greenSlider;
+    private Image characterColor;
 
 
 
@@ -22,14 +26,53 @@ public class Character_Selection : MonoBehaviour
         initiliseBackAndQuitButton();
         initiliseCharacterNameInputField();
         initilisegameDifficultyDropDownMenu();
+        initialiseSliders();
     }
+    private void initialiseSliders()
+    {
+        GameObject colors = GameObject.Find("CharacterColor").gameObject;
+        redSlider = colors.transform.Find("RedColor").GetComponent<Slider>();
+        greenSlider = colors.transform.Find("GreenColor").GetComponent<Slider>();
+        blueSlider = colors.transform.Find("BlueColor").GetComponent<Slider>();
+        Image playerColor = colors.transform.Find("CharacterColor").GetComponent<Image>();
+        characterColor = playerColor.transform.GetComponent<Image>();
+
+        redSlider.onValueChanged.AddListener(delegate { onChangeRedSliderValue(); });
+        greenSlider.onValueChanged.AddListener(delegate { onChangeGreenSliderValue(); });
+        blueSlider.onValueChanged.AddListener(delegate { onChangeBlueSliderValue(); });
+
+
+    }
+
+    public void onChangeRedSliderValue()
+    {
+        GameController.GameInstance.redColor = (byte)redSlider.value;
+        changeImageColor();
+    }
+
+    public void onChangeGreenSliderValue()
+    {
+        GameController.GameInstance.greenColor = (byte)greenSlider.value;
+        changeImageColor();
+    }
+
+    public void onChangeBlueSliderValue()
+    {
+        GameController.GameInstance.blueColor = (byte)blueSlider.value;
+        changeImageColor();
+    }
+
+    private void changeImageColor()
+    {
+        GameController.GameInstance.playerColor = new Color32(GameController.GameInstance.redColor,
+            GameController.GameInstance.greenColor, GameController.GameInstance.blueColor, 255);
+        characterColor.color = GameController.GameInstance.playerColor;
+    }
+
 
     private void initilisegameDifficultyDropDownMenu()
     {
         gameDifficultyDropDownMenu = GameObject.Find("GameDifficultyDropdown").GetComponent<Dropdown>();
-        GameObject gameDifficultylabel = gameDifficultyDropDownMenu.transform.Find("Label").GetComponent<GameObject>();
-        
-
 
         gameDifficultyDropDownMenu.options.Clear();
         gameDifficultyHolder = new Dictionary<string, string>();
