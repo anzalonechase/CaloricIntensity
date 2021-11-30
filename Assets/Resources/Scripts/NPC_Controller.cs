@@ -81,7 +81,23 @@ public class NPC_Controller : MonoBehaviour
 
 
 
-        order.text = (numBurgers + "  Burgers\n" + numHotdogs + "  Hotdogs");       // Puts out the order to NPC text box REMAINING
+
+
+
+
+
+        if (numHotdogs == 0 & numBurgers == 0)              // IF the numeber of hotdogs adn burgers are both 0 then that means the order has been statisfied
+        {
+            order.text = "THANK YOU";
+        }
+        else                             // Else order has not been completely satisfied and it should display what is left of the order
+        {
+            order.text = (numBurgers + "  Burgers\n" + numHotdogs + "  Hotdogs");       // Puts out the order to NPC text box REMAINING
+        }
+
+
+
+
 
 
     }
@@ -109,12 +125,26 @@ public class NPC_Controller : MonoBehaviour
 
         if (gameObject.tag == "NPC" && collision.gameObject.tag == "Burger")          // If hit by a burger decrease th burger order
         {
-            numBurgers -= 1;
+            if (numBurgers != 0)       // Then its still a positive number
+            {
+                numBurgers -= 1;  // Decrease order for burgers
+            }
+            else 
+            {
+             // Do something because the player just gave an extra burger 
+            }
         }
 
         if (gameObject.tag == "NPC" && collision.gameObject.tag == "Hotdog")          // If hit by a hotdog decrease the hotdog order
         {
-            numHotdogs -= 1;
+            if (numHotdogs != 0)       // Then its still a positive number
+            {
+                numHotdogs -= 1;  // Decrease order for htodogs
+            }
+            else
+            {
+                // Do something because the player just gave an extra hotdog 
+            }
         }
 
 
