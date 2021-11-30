@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
     public int numberOfCustomers;
     public bool created;
     public Color playerColor;
-    public List<string> itemList;
+    public List<InventoryItem> itemList;
     public int currentStatus;
     public bool wonTheGame;
 
@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour
             GameInstance.gameTime = 20;
             GameInstance.numberOfCustomers = 18;
             GameInstance.created = false;
-            GameInstance.itemList = new List<string>();
+            GameInstance.itemList = new List<InventoryItem>();
             GameInstance.currentStatus = 1;
             DontDestroyOnLoad(gameObject);
         }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 public class PanelHandler : MonoBehaviour
@@ -52,6 +53,8 @@ public class PanelHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //GameController.GameInstance.itemList.Add(new InventoryItem("Burger", 12));
+        //GameController.GameInstance.itemList.Add(new InventoryItem("HotDog", 12));
 
         GameWinnerFunctionality();
         GameOverConditionAndTimeFuctionality();
@@ -180,6 +183,8 @@ public class PanelHandler : MonoBehaviour
         gameOverPanel = GameObject.Find("GameOverPanel").gameObject;
         gameOverReplayBtn = gameOverPanel.transform.Find("Replay").GetComponent<Button>();
         gameOverBackBtn = gameOverPanel.transform.Find("Back").GetComponent<Button>();
+        gameOverBackBtn.onClick.AddListener(delegate { LoadSceneByNumber(0); });
+        gameOverReplayBtn.onClick.AddListener(delegate { replayTheGame(); });
         gameOverPanel.gameObject.SetActive(!gameOverPanel.gameObject.activeInHierarchy);
     }
 
@@ -188,6 +193,8 @@ public class PanelHandler : MonoBehaviour
         WinningScreen = GameObject.Find("WonPanel").gameObject;
         WinningScreenBackBtn = WinningScreen.transform.Find("Back").GetComponent<Button>();
         WinningScreenReplayBtn = WinningScreen.transform.Find("Replay").GetComponent<Button>();
+        WinningScreenBackBtn.onClick.AddListener(delegate { LoadSceneByNumber(0);});
+        WinningScreenReplayBtn.onClick.AddListener(delegate { replayTheGame(); });
         WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
     }
     private void InitialiseHUDTextAndButtons()
@@ -203,5 +210,13 @@ public class PanelHandler : MonoBehaviour
         burgers = new Image[6];
         hotDogs = new Image[6];
     }
+    private void replayTheGame()
+    {
+        
+    }
 
+    private void LoadSceneByNumber(int sceneNumber)
+    {
+        SceneManager.LoadScene(sceneNumber);
+    }
 }

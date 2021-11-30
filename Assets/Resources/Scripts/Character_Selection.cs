@@ -149,11 +149,14 @@ public class Character_Selection : MonoBehaviour
     }
 
     /**
-     * Turning character attribute to json file, and show it on the screen
+     * Creating the character and setting created to true
      */
     private void submitCharacter()
     {
         setName();
+
+        GameController.GameInstance.itemList.Add(new InventoryItem("Burger", 12));
+        GameController.GameInstance.itemList.Add(new InventoryItem("HotDog", 12));
         GameController.GameInstance.created = true;
     }
 
