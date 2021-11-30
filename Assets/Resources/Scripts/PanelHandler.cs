@@ -10,6 +10,12 @@ public class PanelHandler : MonoBehaviour
     private GameObject Customers;
     private GameObject HUDHolder;
     private GameObject InventorySystem;
+    private GameObject gameOverPanel;
+    private GameObject WinningScreen;
+    private Button gameOverReplayBtn;
+    private Button gameOverBackBtn;
+    private Button WinningScreenReplayBtn;
+    private Button WinningScreenBackBtn;
     private Image BurgerHolder;
     private Image hotDogHolder;
     private Text RemainingTime;
@@ -20,9 +26,18 @@ public class PanelHandler : MonoBehaviour
     private int totalCustomers;
     private Image[] burgers;
     private Image[] hotDogs;
+    private bool AlreadyEnded;
     // Start is called before the first frame update
     private void Awake()
     {
+        gameOverPanel = GameObject.Find("GameOverPanel").gameObject;
+        gameOverReplayBtn = gameOverPanel.transform.Find("Replay").GetComponent<Button>();
+        gameOverBackBtn = gameOverPanel.transform.Find("Back").GetComponent<Button>();
+        gameOverPanel.gameObject.SetActive(!gameOverPanel.gameObject.activeInHierarchy);
+        WinningScreen = GameObject.Find("WonPanel").gameObject;
+        WinningScreenBackBtn = WinningScreen.transform.Find("Back").GetComponent<Button>();
+        WinningScreenReplayBtn = WinningScreen.transform.Find("Replay").GetComponent<Button>();
+        WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
         HUDHolder = GameObject.Find("HUDPanel").gameObject;
         Timer = HUDHolder.transform.Find("Timer").gameObject;
         Customers = HUDHolder.transform.Find("Customers").gameObject;
@@ -35,8 +50,11 @@ public class PanelHandler : MonoBehaviour
         hotDogs = new Image[6];
 
 
+
         CalculateRemainingTime();
-        
+
+        AlreadyEnded = false;
+
     }
 
    
@@ -54,6 +72,17 @@ public class PanelHandler : MonoBehaviour
             totalTime -= Time.deltaTime;
             CalculateRemainingTime();
         }
+        else
+        {
+            if (!AlreadyEnded)
+            {
+                AlreadyEnded = true;
+                Time.timeScale = 0;
+                gameOverPanel.gameObject.SetActive(!gameOverPanel.gameObject.activeInHierarchy);
+            }
+            
+        }
+
         if (totalCustomers >= 0)
         {
             UpdateCustomer();

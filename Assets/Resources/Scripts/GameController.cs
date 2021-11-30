@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
             GameInstance.characterName = "";
             GameInstance.gameDifficulty = "Easy";
             GameInstance.playerColor = new Color32(redColor, blueColor, 0, 255);
-            GameInstance.gameTime = 180;
+            GameInstance.gameTime = 20;
             GameInstance.created = false;
             GameInstance.itemList = new List<string>();
             GameInstance.currentStatus = 1;
