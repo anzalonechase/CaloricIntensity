@@ -8,6 +8,7 @@ public class Character_Selection : MonoBehaviour
 {
     private Button backBtn;
     private Button quitBtn;
+    private Button makeCharacterBtn;
     private InputField characterName;
     private Dropdown gameDifficultyDropDownMenu;
     private Dictionary<string, string> gameDifficultyHolder;
@@ -23,7 +24,7 @@ public class Character_Selection : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        initiliseBackAndQuitButton();
+        initiliseButtons();
         initiliseCharacterNameInputField();
         initilisegameDifficultyDropDownMenu();
         initialiseSliders();
@@ -133,18 +134,32 @@ public class Character_Selection : MonoBehaviour
     private void setName()
     {
             GameController.GameInstance.characterName = characterName.text;
-            Debug.Log(GameController.GameInstance.characterName);
     }
 
-    private void initiliseBackAndQuitButton()
+    private void initiliseButtons()
     {
         backBtn = GameObject.Find("BackBtn").GetComponent<Button>();
         backBtn.onClick.AddListener(delegate { LoadSceneByNumber(0); });
 
         quitBtn = GameObject.Find("QuitBtn").GetComponent<Button>();
         quitBtn.onClick.AddListener(delegate { exitFromtheEditor(); });
+
+        makeCharacterBtn = GameObject.Find("MakeCharacter").GetComponent<Button>();
+        makeCharacterBtn.onClick.AddListener(delegate { submitCharacter(); });
     }
-    private void LoadSceneByNumber(int sceneNumber)
+
+    /**
+     * Turning character attribute to json file, and show it on the screen
+     */
+    private void submitCharacter()
+    {
+        setName();
+        GameController.GameInstance.created = true;
+    }
+
+
+
+private void LoadSceneByNumber(int sceneNumber)
     {
         SceneManager.LoadScene(sceneNumber);
     }
