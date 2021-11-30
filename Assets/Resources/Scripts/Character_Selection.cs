@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,10 +8,14 @@ public class Character_Selection : MonoBehaviour
 {
     private Button backBtn;
     private Button quitBtn;
+    private InputField characterName;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        initilisedBackButton();
+        initiliseBackAndQuitButton();
+        initiliseDropDownMenues();
     }
 
     // Update is called once per frame
@@ -18,8 +23,20 @@ public class Character_Selection : MonoBehaviour
     {
         
     }
+    private void initiliseDropDownMenues()
+    {
+        characterName = GameObject.Find("CharacterName").GetComponent<InputField>();
+        characterName.onValueChanged.AddListener(delegate { setName(); });
 
-    private void initilisedBackButton()
+    }
+
+    private void setName()
+    {
+            GameController.GameInstance.characterName = characterName.text;
+            Debug.Log(GameController.GameInstance.characterName);
+    }
+
+    private void initiliseBackAndQuitButton()
     {
         backBtn = GameObject.Find("BackBtn").GetComponent<Button>();
         backBtn.onClick.AddListener(delegate { LoadSceneByNumber(0); });
