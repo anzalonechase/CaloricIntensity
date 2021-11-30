@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6722563137604712555}
   m_Layer: 0
   m_Name: Hotdog_Correct_Rotation
-  m_TagString: Bullet
+  m_TagString: Hotdog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
