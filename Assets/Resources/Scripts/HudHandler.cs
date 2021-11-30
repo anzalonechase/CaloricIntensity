@@ -8,6 +8,7 @@ public class HudHandler : MonoBehaviour
 {
     private GameObject Timer;
     private GameObject Customers;
+    private GameObject HUDHolder;
     private Image BurgerHolder;
     private Image hotDogHolder;
     private Text RemainingTime;
@@ -30,6 +31,7 @@ public class HudHandler : MonoBehaviour
         burgers = new Image[6];
         hotDogs = new Image[6];
         totalTime = 180;
+        HUDHolder = this.gameObject;
 
         CalculateRemainingTime();
         
@@ -53,6 +55,10 @@ public class HudHandler : MonoBehaviour
         if (totalCustomers >= 0)
         {
             UpdateCustomer();
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            HUDHolder.gameObject.SetActive(!HUDHolder.gameObject.activeInHierarchy);
         }
 
     }
