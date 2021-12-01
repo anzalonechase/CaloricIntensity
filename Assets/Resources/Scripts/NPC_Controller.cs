@@ -38,20 +38,14 @@ public class NPC_Controller : MonoBehaviour
 
     void Start()
     {
-        rb = GameObject.Find("NPC").GetComponent<Rigidbody>();              //-----------------
-         
+        // I have to use the inspector for these bc NPC will be a prefab
+
+        //rb = GameObject.Find("NPC").GetComponent<Rigidbody>();              //-----------------
+        //playerPos = GameObject.Find("Player").GetComponent<Transform>();                    // refernece the player transform
+        //textBox = GameObject.Find("Order_Correct_Orientation").GetComponent<Transform>();    // reference the textbox transform        (To make sure textbox is LookAt() player
+        //order = GameObject.Find("Order_Text").GetComponent<TextMeshPro>();                  // Gets reference to the text above NPC
 
 
-
-
-        playerPos = GameObject.Find("Player").GetComponent<Transform>();                    // refernece the player transform
-        textBox = GameObject.Find("Order_Correct_Orientation").GetComponent<Transform>();  // reference the textbox transform        (To make sure textbox is LookAt() player
-
-
-
-
-
-        order = GameObject.Find("Order_Text").GetComponent<TextMeshPro>();   // Gets reference to the text above NPC
 
         while(numBurgers == 0 & numBurgers == 0)   // This makes sure that both the hotdog and burger count are never both 0
         {
@@ -74,9 +68,12 @@ public class NPC_Controller : MonoBehaviour
 
 
 
-        moveSpeed = 400;          //------------------------
+        //moveSpeed = 400;          //------------------------
 
-        flipBy = 270;    //On first flip we change the rotation of y to 270 which is exactly opposite way   //----------------------------
+
+
+
+        //       flipBy = 270;    //On first flip we change the rotation of y to 270 which is exactly opposite way   //----------------------------
     }
 
     
@@ -84,7 +81,7 @@ public class NPC_Controller : MonoBehaviour
     {
 
 
-        rb.velocity = transform.forward * Time.deltaTime * moveSpeed;         // Makes it move         ------------------------
+        //     rb.velocity = transform.forward * Time.deltaTime * moveSpeed;         // Makes it move         ------------------------
 
 
 
