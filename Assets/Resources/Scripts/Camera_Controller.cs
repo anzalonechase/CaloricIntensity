@@ -5,7 +5,7 @@ using UnityEngine;
 public class Camera_Controller : MonoBehaviour
 {
 
-    public float mouseSense = 100f;           // mosue sensitivty
+    public float mouseSense = 100f;           // mosue sensitivty       // was 100
     public float xRotation = 0f;        // rotation of chcarcter
 
     public Transform playerBody;       //will need to actually rotate character       (Set in inspector)
@@ -15,6 +15,7 @@ public class Camera_Controller : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+       
     }
 
     void Update()
