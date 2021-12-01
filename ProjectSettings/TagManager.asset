@@ -4,9 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Bullet
   - Terrain
   - Obstacle
+  - Shop
+  - NPC
+  - Boundary
+  - Burger
+  - Undefined
+  - Hotdog
+  - Bullet
   layers:
   - Default
   - TransparentFX
