@@ -3,7 +3,22 @@ guid: c6ead7eee92354d4486ba9a2982e7ba4
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _defaultMat
+    second: {fileID: 2100000, guid: 574368fb058b74d06b3cb0891b0907b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pavement
+    second: {fileID: 2100000, guid: 9f119bf814fa24b70b034b73a0867dc9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: roof
+    second: {fileID: 2100000, guid: ee747e053fdbb4580ab9a632bb4d0f30, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
