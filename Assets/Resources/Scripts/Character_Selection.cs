@@ -145,7 +145,10 @@ public class Character_Selection : MonoBehaviour
         quitBtn.onClick.AddListener(delegate { exitFromtheEditor(); });
 
         makeCharacterBtn = GameObject.Find("MakeCharacter").GetComponent<Button>();
-        makeCharacterBtn.onClick.AddListener(delegate { submitCharacter(); });
+        makeCharacterBtn.onClick.AddListener(delegate { 
+            submitCharacter();
+            LoadSceneByNumber(3); 
+        });
     }
 
     /**
