@@ -26,6 +26,10 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("Scene_Chase");
     }
 
+    public void LoadCharacterSelect()
+    {
+        SceneManager.LoadScene("Scene_CharacterSelection");
+    }
 
     public void LoadSettings()
     {
