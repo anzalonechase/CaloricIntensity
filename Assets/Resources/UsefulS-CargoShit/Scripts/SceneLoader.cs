@@ -21,6 +21,11 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("Scene_Menu");
     }
 
+    public void LoadGame()
+    {
+        SceneManager.LoadScene("Scene_Chase");
+    }
+
 
     public void LoadSettings()
     {

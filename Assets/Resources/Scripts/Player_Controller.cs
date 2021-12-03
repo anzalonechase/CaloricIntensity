@@ -27,8 +27,8 @@ public class Player_Controller : MonoBehaviour
     {
         //When the scene(game) starts give 3 burgers adn hotdogs as ammo
 
-        burgerAmmo = 3;                                                    //// change back to 3
-        hotdogAmmo = 3;
+        burgerAmmo = 12;                                                    //// change back to 3
+        hotdogAmmo = 12;
 
     }
 
@@ -69,8 +69,8 @@ public class Player_Controller : MonoBehaviour
         if (gameObject.tag == "Player" && collision.gameObject.tag == "Shop")  // If player is touching shop then reload ammo
         {
             
-            burgerAmmo = 3;
-            hotdogAmmo = 3;
+            burgerAmmo = 12;
+            hotdogAmmo = 12;
         }
 
 
