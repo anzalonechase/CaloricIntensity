@@ -3,7 +3,27 @@ guid: fb0aa7e96474647f782c23e95a822f43
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _defaultMat
+    second: {fileID: 2100000, guid: 5a9af16799eac4713ad75b1741fb69fa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: border
+    second: {fileID: 2100000, guid: 1145421a38c7640bea2b24f00a2f66f8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: door
+    second: {fileID: 2100000, guid: fe3846a9f421b4a129f9720a2014c682, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: window
+    second: {fileID: 2100000, guid: 49fbacf7639b7456a9121e8f56c83b0a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
