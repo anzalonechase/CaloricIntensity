@@ -241,7 +241,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 200}
-  m_SizeDelta: {x: 850, y: 280}
+  m_SizeDelta: {x: 850, y: 380}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &293526909
 MonoBehaviour:
@@ -276,8 +276,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Visual Assets...      Joaquin IFN\n\n\t\t \t Shy Foundry Fonts\n\n\t\t\t\t\u0141ukasz
-    Dziedzic\n"
+  m_Text: "Visual Assets...      Joaquin IFN\n\t\t        Chase Anzalone\n       
+    Peter Estrada Ledesma\n                Arman Shahriari\n     \t\t            
+    Kenney\n                 GlowFox Games\n\t\t\t\t\t  Shy Fonts\n               
+    \u0141ukasz Dziedzic\n                      Supercyan\n\n\t\n\n\t\t \t Shy Foundry
+    Fonts\n\n\t\t\t\t\u0141ukasz Dziedzic\n"
 --- !u!222 &293526910
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -320,8 +323,6 @@ RectTransform:
   - {fileID: 2096965673}
   - {fileID: 293526908}
   - {fileID: 1882944188}
-  - {fileID: 876967051}
-  - {fileID: 1990035550}
   m_Father: {fileID: 1681091020}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -384,88 +385,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!1 &876967050
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 876967051}
-  - component: {fileID: 876967053}
-  - component: {fileID: 876967052}
-  m_Layer: 5
-  m_Name: Special Thanks
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &876967051
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876967050}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 372825842}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -550}
-  m_SizeDelta: {x: 850, y: 680}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &876967052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876967050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: e8bca6302f41144ed8e05163410dc944, type: 3}
-    m_FontSize: 44
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 4
-    m_MaxSize: 44
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "Special Thanks to: Maria Nunez\n\n\t\t\t\tChase Anzalone\n\n\t\tProfessor
-    Steven Price     \n               \n\t\t\t   Beau Taylor-Ladd\n\n\t\t\t\t   Kalani
-    Durani\n\n\t\t\t\t  CJ Fuenzalida\n\n\t\t\t Antonia Fuenzalida\n\n\t\t\t\t Fletcher
-    Crone"
---- !u!222 &876967053
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876967050}
-  m_CullTransparentMesh: 1
 --- !u!1 &1033447674
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,8 +585,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 850, y: 80}
+  m_AnchoredPosition: {x: 0, y: -150}
+  m_SizeDelta: {x: 850, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1882944189
 MonoBehaviour:
@@ -702,7 +621,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Coding/Scripts...    Joaquin IFN
+  m_Text: "Coding/Scripts...    Joaquin IFN\n\t\t        Chase Anzalone\n\t\t       
+    Arman Shahriari\n\t    Peter Estrada Ledesma\n"
 --- !u!222 &1882944190
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -710,81 +630,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1882944187}
-  m_CullTransparentMesh: 1
---- !u!1 &1990035549
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1990035550}
-  - component: {fileID: 1990035552}
-  - component: {fileID: 1990035551}
-  m_Layer: 5
-  m_Name: Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1990035550
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1990035549}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 372825842}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1000}
-  m_SizeDelta: {x: 175, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1990035551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1990035549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 326182069040782643, guid: f03b62294121c401d94517b4c988641f, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1990035552
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1990035549}
   m_CullTransparentMesh: 1
 --- !u!1 &2096965672
 GameObject:
