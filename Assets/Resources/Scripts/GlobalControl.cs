@@ -11,22 +11,7 @@ public class GlobalControl : MonoBehaviour
 
     public bool musicState;
     public int musicTrack;
-    public int lettersCollected;
-    
-    public int snailChoice;
-    public int weightClassInt;
-    
-    public bool allMailCollected;
-    public float lowestTime1;
-    public float lowestTime2;
-    public float lowestTime3;
 
-    public bool cutsceneEnabled;
-    public bool instructionsEnabled;
-    public int instructionsStep;
-    public bool canMove;
-    public bool hasMoved;
-    public bool pause;
 
     void Awake ()   
        {
