@@ -76,7 +76,7 @@ public class PanelHandler : MonoBehaviour
     }
     private void GameOverConditionAndTimeFuctionality()
     {
-        if (totalTime >= 0)
+        if (GameController.GameInstance.gameTime >= 0)
         {
             GameController.GameInstance.gameTime -= Time.deltaTime; ;
             totalTime = GameController.GameInstance.gameTime;
