@@ -17,15 +17,13 @@ public class PanelHandler : MonoBehaviour
     private Button gameOverBackBtn;
     private Button WinningScreenReplayBtn;
     private Button WinningScreenBackBtn;
-    private Image BurgerHolder;
-    private Image hotDogHolder;
+
     private Text RemainingTime;
     private Text RemainingCustomers;
     private int minute;
     private int seconds;
     private float totalTime;
-    private Image[] burgers;
-    private Image[] hotDogs;
+   
     private bool AlreadyEnded;
     // Start is called before the first frame update
     private void Awake()
@@ -45,7 +43,7 @@ public class PanelHandler : MonoBehaviour
     void Start()
     {
         totalTime = GameController.GameInstance.gameTime;
-        StartCoroutine("updateFood");
+       // StartCoroutine("updateFood");
         StartCoroutine("updateFoodCoroutine");
         
     }
@@ -124,39 +122,10 @@ public class PanelHandler : MonoBehaviour
         
     }
 
-    private void initialiseImageArray()
-    {
+   
+    
 
-        int randomNum = Random.Range(1, burgers.Length + 1);
-        
-        for (int i = 1; i < burgers.Length + 1; i++)
-        {
-
-            burgers[i - 1] = BurgerHolder.transform.Find((i).ToString()).GetComponent<Image>();
-            hotDogs[i - 1] = hotDogHolder.transform.Find((i).ToString()).GetComponent<Image>();
-            if (i < randomNum)
-            {
-                burgers[i - 1].enabled = false;
-                hotDogs[i - 1].enabled = false;
-            }
-            else
-            {
-                if(burgers[i - 1].enabled == false)
-                {
-                    burgers[i - 1].enabled = true;
-                }
-                if (hotDogs[i - 1].enabled == false)
-                {
-                    hotDogs[i - 1].enabled = true;
-                }
-            }
-
-
-        }
-
-    }
-
-    private IEnumerator updateFood()
+    /*private IEnumerator updateFood()
     {
         while (true)
         {
@@ -165,7 +134,7 @@ public class PanelHandler : MonoBehaviour
             
         }
 
-    }
+    }*/
 
     private IEnumerator updateFoodCoroutine()
     {
@@ -204,11 +173,9 @@ public class PanelHandler : MonoBehaviour
         Customers = HUDHolder.transform.Find("Customers").gameObject;
         RemainingTime = Timer.transform.Find("RemainingTime").GetComponent<Text>();
         RemainingCustomers = Customers.transform.Find("RemainingCustomers").GetComponent<Text>();
-        BurgerHolder = HUDHolder.transform.Find("BurgerHolder").GetComponent<Image>();
-        hotDogHolder = HUDHolder.transform.Find("HotDogHolder").GetComponent<Image>();
+      
         InventorySystem = GameObject.Find("GameInventoryPanel").gameObject;
-        burgers = new Image[6];
-        hotDogs = new Image[6];
+     
     }
     private void replayTheGame()
     {
