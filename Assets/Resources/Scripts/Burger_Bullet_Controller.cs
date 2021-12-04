@@ -29,6 +29,11 @@ public class Burger_Bullet_Controller : MonoBehaviour
             Destroy(gameObject);
         }
 
+        if (collision.gameObject.tag == "Soda" )   // If there is a collision with this tag the burger will destroy itself instantly
+        {
+            Destroy(collision.gameObject,0.5f);
+        }
+
 
 
 

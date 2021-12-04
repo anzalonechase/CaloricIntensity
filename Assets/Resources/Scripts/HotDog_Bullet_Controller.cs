@@ -28,9 +28,11 @@ public class HotDog_Bullet_Controller : MonoBehaviour
             Destroy(gameObject);
         }
 
-
-
-
+        if (collision.gameObject.tag == "Soda")   // If there is a collision with this tag the burger will destroy itself instantly
+        {
+            Destroy(collision.gameObject, 0.5f);
+            Destroy(collision.gameObject, 0.5f);
+        }
 
         // The NPC Controller will ahndle a collisison bewteen hotdog adn the npc
 
