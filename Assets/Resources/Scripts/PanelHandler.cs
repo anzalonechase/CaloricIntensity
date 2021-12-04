@@ -28,9 +28,8 @@ public class PanelHandler : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        InitialiseGameOverScreenAndButtons();
-        InitialiseWinningScreenAndButtons();
-        InitialiseHUDTextAndButtons();
+        
+       
         
 
 
@@ -42,6 +41,9 @@ public class PanelHandler : MonoBehaviour
 
     void Start()
     {
+        InitialiseGameOverScreenAndButtons();
+        InitialiseWinningScreenAndButtons();
+        InitialiseHUDTextAndButtons();
         totalTime = GameController.GameInstance.gameTime;
         // StartCoroutine("updateFood");
         

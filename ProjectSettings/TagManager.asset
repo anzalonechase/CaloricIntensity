@@ -20,8 +20,8 @@ TagManager:
   - PostProcessing
   - Water
   - UI
+  - Canvas
   - Bar layer
-  - 
   - 
   - Player
   - Bullet
@@ -47,6 +47,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Canvas
+    uniqueID: 873686619
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

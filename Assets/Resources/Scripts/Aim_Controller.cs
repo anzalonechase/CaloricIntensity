@@ -29,53 +29,57 @@ public class Aim_Controller : MonoBehaviour
 
     void Update()
     {
-        
 
-        if(Input.GetMouseButtonDown(0))       //CLick left for sausage
-        {
-            if (playerScript.hotdogAmmo > 0)  // Checks if it has ammo
-            {
-                var bulletInstance = Instantiate(hotDog, hotdogSpawn.position, hotdogSpawn.rotation);        //creates an instance of bullet in fireSpawn positon
-
-                bulletInstance.AddForce(hotdogSpawn.forward * force);         // Shoots out the bullet
-
-                playerScript.hotdogAmmo -= 1;  // Decrements hotdog ammo bc you just used a shot
-
-
-                Debug.Log("Hot dog ammo:     " + playerScript.hotdogAmmo);
-            }
-            else
-            {
-                Debug.Log("No hotdog ammo left");
-                // Lets the player know there is not enoguh hotdog ammo 
-            }
-
-        }
-
-
-
-
-        if (Input.GetMouseButtonDown(1))   // CLick right for burger
+        if (GameController.GameInstance.numberOfCustomers > 0 && GameController.GameInstance.gameTime > 0)
         {
 
-            if (playerScript.burgerAmmo > 0)
+
+            if (Input.GetMouseButtonDown(0))       //CLick left for sausage
+            {
+                if (playerScript.hotdogAmmo > 0)  // Checks if it has ammo
+                {
+                    var bulletInstance = Instantiate(hotDog, hotdogSpawn.position, hotdogSpawn.rotation);        //creates an instance of bullet in fireSpawn positon
+
+                    bulletInstance.AddForce(hotdogSpawn.forward * force);         // Shoots out the bullet
+
+                    playerScript.hotdogAmmo -= 1;  // Decrements hotdog ammo bc you just used a shot
+
+
+                    Debug.Log("Hot dog ammo:     " + playerScript.hotdogAmmo);
+                }
+                else
+                {
+                    Debug.Log("No hotdog ammo left");
+                    // Lets the player know there is not enoguh hotdog ammo 
+                }
+
+            }
+
+
+
+
+            if (Input.GetMouseButtonDown(1))   // CLick right for burger
             {
 
-                var bulletInstance = Instantiate(burger, burgerSpawn.position, burgerSpawn.rotation);        //creates an instance of bullet in fireSpawn positon
+                if (playerScript.burgerAmmo > 0)
+                {
 
-                bulletInstance.AddForce(burgerSpawn.forward * force);         // Shoots out the bullet
+                    var bulletInstance = Instantiate(burger, burgerSpawn.position, burgerSpawn.rotation);        //creates an instance of bullet in fireSpawn positon
 
-                playerScript.burgerAmmo -= 1; // Decrement the burger ammo bc you just used a shot
+                    bulletInstance.AddForce(burgerSpawn.forward * force);         // Shoots out the bullet
 
-                Debug.Log("Burger ammo:     " + playerScript.burgerAmmo);
+                    playerScript.burgerAmmo -= 1; // Decrement the burger ammo bc you just used a shot
+
+                    Debug.Log("Burger ammo:     " + playerScript.burgerAmmo);
+                }
+                else
+                {
+                    Debug.Log("No burger ammo left");
+                    // Lest display message saying player has no burger ammo left
+                }
+
+
             }
-            else
-            {
-                Debug.Log("No burger ammo left");
-                // Lest display message saying player has no burger ammo left
-            }
-        
-        
         }
 
 

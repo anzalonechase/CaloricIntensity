@@ -1111,7 +1111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 33671865}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Customers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1149,7 +1149,7 @@ GameObject:
   - component: {fileID: 36579529}
   - component: {fileID: 36579531}
   - component: {fileID: 36579530}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3416,7 +3416,7 @@ GameObject:
   - component: {fileID: 117805159}
   - component: {fileID: 117805161}
   - component: {fileID: 117805160}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: 1T
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4554,7 +4554,7 @@ GameObject:
   - component: {fileID: 168032222}
   - component: {fileID: 168032224}
   - component: {fileID: 168032223}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: WonPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4569,7 +4569,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 168032221}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 297}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 349751763}
@@ -5519,7 +5519,7 @@ GameObject:
   - component: {fileID: 194790208}
   - component: {fileID: 194790207}
   - component: {fileID: 194790206}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6561,7 +6561,7 @@ GameObject:
   - component: {fileID: 227237150}
   - component: {fileID: 227237149}
   - component: {fileID: 227237148}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7686,7 +7686,7 @@ GameObject:
   - component: {fileID: 267837094}
   - component: {fileID: 267837096}
   - component: {fileID: 267837095}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8020,7 +8020,7 @@ GameObject:
   - component: {fileID: 277196429}
   - component: {fileID: 277196431}
   - component: {fileID: 277196430}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image_CrossHiar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10499,7 +10499,7 @@ GameObject:
   - component: {fileID: 349751763}
   - component: {fileID: 349751765}
   - component: {fileID: 349751764}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: WinningTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12907,7 +12907,7 @@ GameObject:
   - component: {fileID: 419387969}
   - component: {fileID: 419387971}
   - component: {fileID: 419387970}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15033,7 +15033,7 @@ GameObject:
   - component: {fileID: 472168276}
   - component: {fileID: 472168278}
   - component: {fileID: 472168277}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19650,7 +19650,7 @@ GameObject:
   - component: {fileID: 638604992}
   - component: {fileID: 638604994}
   - component: {fileID: 638604993}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: RemainingCustomers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24481,7 +24481,7 @@ GameObject:
   - component: {fileID: 774341786}
   - component: {fileID: 774341785}
   - component: {fileID: 774341784}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Replay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26841,7 +26841,7 @@ GameObject:
   - component: {fileID: 864891982}
   - component: {fileID: 864891984}
   - component: {fileID: 864891983}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: RemainingTime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28612,7 +28612,7 @@ GameObject:
   - component: {fileID: 922339929}
   - component: {fileID: 922339931}
   - component: {fileID: 922339930}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33186,7 +33186,7 @@ GameObject:
   - component: {fileID: 1062285807}
   - component: {fileID: 1062285809}
   - component: {fileID: 1062285808}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HUDPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36770,7 +36770,7 @@ GameObject:
   - component: {fileID: 1162883997}
   - component: {fileID: 1162883999}
   - component: {fileID: 1162883998}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37317,7 +37317,7 @@ GameObject:
   - component: {fileID: 1178635039}
   - component: {fileID: 1178635041}
   - component: {fileID: 1178635040}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39040,7 +39040,7 @@ GameObject:
   - component: {fileID: 1214802973}
   - component: {fileID: 1214802972}
   - component: {fileID: 1214802971}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Replay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39814,7 +39814,7 @@ GameObject:
   - component: {fileID: 1226693983}
   - component: {fileID: 1226693985}
   - component: {fileID: 1226693984}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: GameOverTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40677,7 +40677,7 @@ GameObject:
   - component: {fileID: 1255927644}
   - component: {fileID: 1255927646}
   - component: {fileID: 1255927645}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44633,7 +44633,7 @@ GameObject:
   - component: {fileID: 1349709081}
   - component: {fileID: 1349709083}
   - component: {fileID: 1349709082}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: GameOverPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49929,7 +49929,7 @@ GameObject:
   - component: {fileID: 1529709249}
   - component: {fileID: 1529709251}
   - component: {fileID: 1529709250}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: 2T
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51540,7 +51540,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1578933028}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51995,7 +51995,7 @@ GameObject:
   - component: {fileID: 1599462107}
   - component: {fileID: 1599462109}
   - component: {fileID: 1599462108}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54819,7 +54819,7 @@ GameObject:
   - component: {fileID: 1672936715}
   - component: {fileID: 1672936717}
   - component: {fileID: 1672936716}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: GameOverMessage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54900,7 +54900,7 @@ GameObject:
   - component: {fileID: 1678971745}
   - component: {fileID: 1678971747}
   - component: {fileID: 1678971746}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55234,7 +55234,7 @@ GameObject:
   - component: {fileID: 1683854369}
   - component: {fileID: 1683854368}
   - component: {fileID: 1683854367}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: GameInventoryPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60269,7 +60269,7 @@ GameObject:
   - component: {fileID: 1826834375}
   - component: {fileID: 1826834374}
   - component: {fileID: 1826834373}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67759,7 +67759,7 @@ GameObject:
   - component: {fileID: 2064986075}
   - component: {fileID: 2064986077}
   - component: {fileID: 2064986076}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
