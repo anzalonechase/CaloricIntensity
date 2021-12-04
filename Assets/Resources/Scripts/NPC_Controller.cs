@@ -12,8 +12,11 @@ public class NPC_Controller : MonoBehaviour
 
     public float flipBy;  //------------------------
 
-    public SpriteRenderer burgerSprite;
-    public SpriteRenderer hotdogSprite;
+    private bool moveOnce;
+
+    public SpriteRenderer burgerSprite; //the sprite of the burger
+    public SpriteRenderer hotdogSprite; //the sprite of the hot dog
+    public SpriteRenderer speechSprite; //the sprite of the speech bubble
 
 
 
@@ -75,7 +78,7 @@ public class NPC_Controller : MonoBehaviour
 
 
 
-
+        moveOnce = true; 
         //       flipBy = 270;    //On first flip we change the rotation of y to 270 which is exactly opposite way   //----------------------------
     }
 
@@ -100,9 +103,10 @@ public class NPC_Controller : MonoBehaviour
 
         if (numHotdogs == 0 & numBurgers == 0)              // IF the numeber of hotdogs adn burgers are both 0 then that means the order has been statisfied
         {
-            order.text = "THANKS!";
-            burgerSprite.enabled = false;
+            order.text = "    THANKS!";  // extra spaces for buffering
+            burgerSprite.enabled = false;  //disable the burger and hotdog sprites
             hotdogSprite.enabled = false;
+            speechSprite.transform.localScale = new Vector3(1.8f, 1.8f, 1);  //resize the speech bubble
         }
         else                             // Else order has not been completely satisfied and it should display what is left of the order
         {
