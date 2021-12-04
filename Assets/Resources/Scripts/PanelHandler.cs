@@ -28,11 +28,11 @@ public class PanelHandler : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        
-       
-        
 
 
+
+
+        InitialiseHUDTextAndButtons();
         CalculateRemainingTime();
 
         AlreadyEnded = false;
@@ -43,7 +43,7 @@ public class PanelHandler : MonoBehaviour
     {
         InitialiseGameOverScreenAndButtons();
         InitialiseWinningScreenAndButtons();
-        InitialiseHUDTextAndButtons();
+ 
         totalTime = GameController.GameInstance.gameTime;
         // StartCoroutine("updateFood");
         
@@ -178,7 +178,7 @@ public class PanelHandler : MonoBehaviour
         
     }
 
-    private void LoadSceneByNumber(int sceneNumber)
+    public void LoadSceneByNumber(int sceneNumber)
     {
         SceneManager.LoadScene(sceneNumber);
     }
