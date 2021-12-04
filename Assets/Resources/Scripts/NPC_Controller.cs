@@ -12,6 +12,9 @@ public class NPC_Controller : MonoBehaviour
 
     public float flipBy;  //------------------------
 
+    public SpriteRenderer burgerSprite;
+    public SpriteRenderer hotdogSprite;
+
 
 
 
@@ -54,7 +57,7 @@ public class NPC_Controller : MonoBehaviour
 
         }
 
-        order.text = (numBurgers + "  Burgers\n" + numHotdogs + "  Hotdogs");       // Puts out the order to NPC text box
+        order.text = (numBurgers + ":       \n" + numHotdogs + ":       ");       // Puts out the order to NPC text box
 
 
 
@@ -97,11 +100,13 @@ public class NPC_Controller : MonoBehaviour
 
         if (numHotdogs == 0 & numBurgers == 0)              // IF the numeber of hotdogs adn burgers are both 0 then that means the order has been statisfied
         {
-            order.text = "THANK YOU";
+            order.text = "THANKS!";
+            burgerSprite.enabled = false;
+            hotdogSprite.enabled = false;
         }
         else                             // Else order has not been completely satisfied and it should display what is left of the order
         {
-            order.text = (numBurgers + "  Burgers\n" + numHotdogs + "  Hotdogs");       // Puts out the order to NPC text box REMAINING
+            order.text = (numBurgers + ":    \n" + numHotdogs + ":     ");       // Puts out the order to NPC text box REMAINING
         }
 
 
