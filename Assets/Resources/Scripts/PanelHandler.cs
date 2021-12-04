@@ -43,9 +43,9 @@ public class PanelHandler : MonoBehaviour
     void Start()
     {
         totalTime = GameController.GameInstance.gameTime;
-       // StartCoroutine("updateFood");
-        StartCoroutine("updateFoodCoroutine");
+        // StartCoroutine("updateFood");
         
+
     }
 
     // Update is called once per frame
@@ -53,7 +53,7 @@ public class PanelHandler : MonoBehaviour
     {
         //GameController.GameInstance.itemList.Add(new InventoryItem("Burger", 12));
         //GameController.GameInstance.itemList.Add(new InventoryItem("HotDog", 12));
-
+        UpdateCustomer();
         GameWinnerFunctionality();
         GameOverConditionAndTimeFuctionality();
         OpenCloseHudeAndInventorySystem();
@@ -61,11 +61,12 @@ public class PanelHandler : MonoBehaviour
 
     private void GameWinnerFunctionality()
     {
-        if (GameController.GameInstance.numberOfCustomers == 0)
+        if (GameController.GameInstance.numberOfCustomers <= 0)
         {
             if (!AlreadyEnded)
             {
                 AlreadyEnded = true;
+                Cursor.lockState = CursorLockMode.None;
                 Time.timeScale = 0;
                 WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
             }
@@ -75,7 +76,8 @@ public class PanelHandler : MonoBehaviour
     {
         if (totalTime >= 0)
         {
-            totalTime -= Time.deltaTime;
+            GameController.GameInstance.gameTime -= Time.deltaTime; ;
+            totalTime = GameController.GameInstance.gameTime;
             CalculateRemainingTime();
         }
         else
@@ -83,6 +85,7 @@ public class PanelHandler : MonoBehaviour
             if (!AlreadyEnded)
             {
                 AlreadyEnded = true;
+                Cursor.lockState = CursorLockMode.None;
                 Time.timeScale = 0;
                 gameOverPanel.gameObject.SetActive(!gameOverPanel.gameObject.activeInHierarchy);
             }
@@ -116,7 +119,7 @@ public class PanelHandler : MonoBehaviour
     }
     private void UpdateCustomer()
     {
-        GameController.GameInstance.numberOfCustomers--;
+       
         RemainingCustomers.text = "Remaining Customers: " + (GameController.GameInstance.numberOfCustomers).ToString();
         
         
@@ -136,16 +139,7 @@ public class PanelHandler : MonoBehaviour
 
     }*/
 
-    private IEnumerator updateFoodCoroutine()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(1f);
-            UpdateCustomer();
-
-        }
-
-    }
+   
 
     private void InitialiseGameOverScreenAndButtons()
     {
