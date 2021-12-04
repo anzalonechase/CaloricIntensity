@@ -30,7 +30,8 @@ public class PanelHandler : MonoBehaviour
     {
 
 
-
+        InitialiseGameOverScreenAndButtons();
+        InitialiseWinningScreenAndButtons();
 
         InitialiseHUDTextAndButtons();
         CalculateRemainingTime();
@@ -41,8 +42,7 @@ public class PanelHandler : MonoBehaviour
 
     void Start()
     {
-        InitialiseGameOverScreenAndButtons();
-        InitialiseWinningScreenAndButtons();
+        
  
         totalTime = GameController.GameInstance.gameTime;
         // StartCoroutine("updateFood");
