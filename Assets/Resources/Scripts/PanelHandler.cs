@@ -37,7 +37,7 @@ public class PanelHandler : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        
+        startNewGameFunctionality();
         InitialiseWinningScreenAndButtons();
         InitialiseGameOverScreenAndButtons();
         InitialiseInventorySystemScreenAndButtons();
@@ -56,32 +56,14 @@ public class PanelHandler : MonoBehaviour
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
 
-        if (GameController.GameInstance.numberOfCustomers == 0)
-        {
-            GameController.GameInstance.GunHotDogAmount = 12;
-            GameController.GameInstance.GunBurgerAmount = 12;
-            GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 30 :
-            GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 60;
-            AlreadyEnded = false;
-            GameController.GameInstance.numberOfCustomers = 1;
-        }
-
-        if (GameController.GameInstance.gameTime <= 0)
-        {
-            GameController.GameInstance.GunHotDogAmount = 12;
-            GameController.GameInstance.GunBurgerAmount = 12;
-            GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 30 :
-            GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 60;
-            AlreadyEnded = false;
-
-            GameController.GameInstance.numberOfCustomers = 1;
-            totalTime = GameController.GameInstance.gameTime;
-        }
+        
         
         // StartCoroutine("updateFood");
         
 
     }
+
+    
 
     /**
      * Shows player name on the screen
@@ -98,6 +80,7 @@ public class PanelHandler : MonoBehaviour
             {
                 if (GameController.GameInstance.itemList[i].name == "Speedups")
                 {
+                    InventorySystemSpeedUpImage.enabled = true;
                     // set image to speedups
                     InventorySystemSpeedUpImage.sprite = Soda;
                     // update the text
@@ -154,6 +137,10 @@ public class PanelHandler : MonoBehaviour
 
         }
     }
+
+    /**
+    * Handle the case when player wants to close the inventory system
+    */
     private void OpenCloseHudeAndInventorySystem()
     {
         if (Input.GetKeyDown(KeyCode.V))
@@ -165,6 +152,10 @@ public class PanelHandler : MonoBehaviour
             InventorySystem.gameObject.SetActive(!InventorySystem.gameObject.activeInHierarchy);
         }
     }
+
+    /**
+     * Updates Time on the HUD
+     */
     private void CalculateRemainingTime()
     {
         minute = (int)totalTime / 60;
@@ -186,22 +177,6 @@ public class PanelHandler : MonoBehaviour
     { 
         RemainingCustomers.text = "Remaining Customers: " + (GameController.GameInstance.numberOfCustomers).ToString();
     }
-
-   
-    
-
-    /*private IEnumerator updateFood()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(1f);
-            initialiseImageArray();
-            
-        }
-
-    }*/
-
-   
 
     private void InitialiseGameOverScreenAndButtons()
     {
@@ -252,6 +227,7 @@ public class PanelHandler : MonoBehaviour
         InventorySystemImage.color = GameController.GameInstance.HUDColor;
         InventorySystemSpeedUpImage = InventorySystem.transform.Find((3).ToString()).GetComponent<Image>();
         InventorySystemSpeedUpValue = InventorySystemSpeedUpImage.transform.Find((3+"T").ToString()).GetComponent<Text>();
+        InventorySystemSpeedUpImage.enabled = false;
         InventorySystemBurgerAmountImage = InventorySystem.transform.Find((1).ToString()).GetComponent<Image>();
         InventorySystemBurgerAmountValue = InventorySystemBurgerAmountImage.transform.Find((1 + "T").ToString()).GetComponent<Text>();
         InventorySystemHotDogAmountImage = InventorySystem.transform.Find((2).ToString()).GetComponent<Image>();
@@ -275,5 +251,30 @@ public class PanelHandler : MonoBehaviour
     {
 
         SceneManager.LoadScene(sceneNumber);
+    }
+
+    private void startNewGameFunctionality()
+    {
+        if (GameController.GameInstance.numberOfCustomers == 0)
+        {
+            GameController.GameInstance.GunHotDogAmount = 12;
+            GameController.GameInstance.GunBurgerAmount = 12;
+            GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 30 :
+            GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 60;
+            AlreadyEnded = false;
+            GameController.GameInstance.numberOfCustomers = 1;
+        }
+
+        if (GameController.GameInstance.gameTime <= 0)
+        {
+            GameController.GameInstance.GunHotDogAmount = 12;
+            GameController.GameInstance.GunBurgerAmount = 12;
+            GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 30 :
+            GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 60;
+            AlreadyEnded = false;
+
+            GameController.GameInstance.numberOfCustomers = 1;
+            totalTime = GameController.GameInstance.gameTime;
+        }
     }
 }
