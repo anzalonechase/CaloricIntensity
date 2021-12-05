@@ -57,9 +57,11 @@ public class LevelControl : MonoBehaviour
             if(globalController.pause) {
                 globalController.pause = false;
                 pausePanel.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked; 
             } else {
                 globalController.pause = true;
                 pausePanel.SetActive(true);
+                Cursor.lockState = CursorLockMode.None; 
             }
     }
 }
