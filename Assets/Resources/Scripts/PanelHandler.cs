@@ -21,10 +21,11 @@ public class PanelHandler : MonoBehaviour
     private Text InventorySystemHotDogAmountValue;
     private GameObject gameOverPanel;
     private GameObject WinningScreen;
-    private Button backBtn;
+    
     private Button gameOverReplayBtn;
+    private Button GameOverbackBtn;
     private Button WinningScreenReplayBtn;
-
+    private Button WinningScreenBackBtn;
     private Text RemainingTime;
     private Text RemainingCustomers;
     private Text PlayerName;
@@ -185,6 +186,8 @@ public class PanelHandler : MonoBehaviour
             gameOverPanel = GameObject.Find("GameOverPanel").gameObject;
             gameOverReplayBtn = gameOverPanel.transform.Find("Replay").GetComponent<Button>();
             gameOverReplayBtn.onClick.AddListener(delegate { replayTheGame(gameOverPanel); });
+            GameOverbackBtn = gameOverPanel.transform.Find("Back").GetComponent<Button>();
+            GameOverbackBtn.onClick.AddListener(delegate { SceneManager.LoadScene("Scene_Menu"); });
             gameOverPanel.gameObject.SetActive(!gameOverPanel.gameObject.activeInHierarchy);
         }
         
@@ -197,7 +200,9 @@ public class PanelHandler : MonoBehaviour
         {
             WinningScreen = GameObject.Find("WonPanel").gameObject;
             WinningScreenReplayBtn = WinningScreen.transform.Find("Replay").GetComponent<Button>();
-            WinningScreenReplayBtn.onClick.AddListener(delegate { replayTheGame(WinningScreen); });
+            WinningScreenReplayBtn.onClick.AddListener(delegate { replayTheGame(gameOverPanel); });
+            WinningScreenBackBtn = WinningScreen.transform.Find("Back").GetComponent<Button>();
+            WinningScreenBackBtn.onClick.AddListener(delegate { SceneManager.LoadScene("Scene_Menu"); });
             WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
         }
         

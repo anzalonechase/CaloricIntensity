@@ -34,6 +34,8 @@ public class Character_Selection : MonoBehaviour
     {
         GameController.GameInstance.gameDifficulty = "Easy";
         GameController.GameInstance.gameTime = 180;
+        GameController.GameInstance.HUDColor = new Color32(0, 0, 0, 255);
+        GameController.GameInstance.characterName = "";
     }
     private void initialiseSliders()
     {
@@ -134,6 +136,7 @@ public class Character_Selection : MonoBehaviour
     {
         characterName = GameObject.Find("CharacterName").GetComponent<InputField>();
         characterName.onValueChanged.AddListener(delegate { setName(); });
+
 
     }
 
