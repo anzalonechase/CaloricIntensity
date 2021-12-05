@@ -259,8 +259,8 @@ public class PanelHandler : MonoBehaviour
         {
             GameController.GameInstance.GunHotDogAmount = 12;
             GameController.GameInstance.GunBurgerAmount = 12;
-            GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 30 :
-            GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 60;
+            GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 180 :
+            GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 30;
             AlreadyEnded = false;
             GameController.GameInstance.numberOfCustomers = 1;
         }
@@ -269,8 +269,8 @@ public class PanelHandler : MonoBehaviour
         {
             GameController.GameInstance.GunHotDogAmount = 12;
             GameController.GameInstance.GunBurgerAmount = 12;
-            GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 30 :
-            GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 60;
+            GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 180 :
+            GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 30;
             AlreadyEnded = false;
 
             GameController.GameInstance.numberOfCustomers = 1;
