@@ -13,10 +13,9 @@ public class PanelHandler : MonoBehaviour
     private GameObject InventorySystem;
     private GameObject gameOverPanel;
     private GameObject WinningScreen;
+    private Button backBtn;
     private Button gameOverReplayBtn;
-    private Button gameOverBackBtn;
     private Button WinningScreenReplayBtn;
-    private Button WinningScreenBackBtn;
 
     private Text RemainingTime;
     private Text RemainingCustomers;
@@ -46,16 +45,25 @@ public class PanelHandler : MonoBehaviour
     {
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
-        AlreadyEnded = false;
-        if(GameController.GameInstance.numberOfCustomers==0)
+
+        if (GameController.GameInstance.numberOfCustomers == 0)
+        {
+            GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 180 :
+            GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 60;
+            AlreadyEnded = false;
             GameController.GameInstance.numberOfCustomers = 1;
+        }
+            
 
-
-
+        if (GameController.GameInstance.gameTime == 0)
+        {
+            GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 180 :
+            GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 60;
+            GameController.GameInstance.numberOfCustomers = 1;
+            totalTime = GameController.GameInstance.gameTime;
+            AlreadyEnded = false;
+        }
         
-        GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty=="Easy"?180: 
-            GameController.GameInstance.gameDifficulty == "Medium"?120:60;
-        totalTime = GameController.GameInstance.gameTime;
         // StartCoroutine("updateFood");
         
 
@@ -160,8 +168,6 @@ public class PanelHandler : MonoBehaviour
         {
             gameOverPanel = GameObject.Find("GameOverPanel").gameObject;
             gameOverReplayBtn = gameOverPanel.transform.Find("Replay").GetComponent<Button>();
-            gameOverBackBtn = gameOverPanel.transform.Find("Back").GetComponent<Button>();
-            // gameOverBackBtn.onClick.AddListener(delegate { LoadSceneByNumber(0); });
             gameOverReplayBtn.onClick.AddListener(delegate { replayTheGame(gameOverPanel); });
             gameOverPanel.gameObject.SetActive(!gameOverPanel.gameObject.activeInHierarchy);
         }
@@ -174,9 +180,7 @@ public class PanelHandler : MonoBehaviour
         if(WinningScreen== null)
         {
             WinningScreen = GameObject.Find("WonPanel").gameObject;
-            WinningScreenBackBtn = WinningScreen.transform.Find("Back").GetComponent<Button>();
             WinningScreenReplayBtn = WinningScreen.transform.Find("Replay").GetComponent<Button>();
-            // WinningScreenBackBtn.onClick.AddListener(delegate { LoadSceneByNumber(0);});
             WinningScreenReplayBtn.onClick.AddListener(delegate { replayTheGame(WinningScreen); });
             WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
         }
@@ -188,6 +192,8 @@ public class PanelHandler : MonoBehaviour
         HUDHolder = GameObject.Find("HUDPanel").gameObject;
         Timer = HUDHolder.transform.Find("Timer").gameObject;
         Customers = HUDHolder.transform.Find("Customers").gameObject;
+        backBtn = HUDHolder.transform.Find("Back").GetComponent<Button>();
+        backBtn.onClick.AddListener(delegate { SceneManager.LoadScene("Scene_Menu"); ; });
         RemainingTime = Timer.transform.Find("RemainingTime").GetComponent<Text>();
         RemainingCustomers = Customers.transform.Find("RemainingCustomers").GetComponent<Text>();
       
