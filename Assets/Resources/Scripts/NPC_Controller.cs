@@ -12,8 +12,6 @@ public class NPC_Controller : MonoBehaviour
 
     public float flipBy;  //------------------------
 
-    private bool moveOnce;
-
     public SpriteRenderer burgerSprite; //the sprite of the burger
     public SpriteRenderer hotdogSprite; //the sprite of the hot dog
     public SpriteRenderer speechSprite; //the sprite of the speech bubble
@@ -75,10 +73,6 @@ public class NPC_Controller : MonoBehaviour
 
 
         //moveSpeed = 400;          //------------------------
-
-
-
-        moveOnce = true; 
         //       flipBy = 270;    //On first flip we change the rotation of y to 270 which is exactly opposite way   //----------------------------
     }
 
