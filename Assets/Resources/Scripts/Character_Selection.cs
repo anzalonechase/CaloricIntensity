@@ -24,10 +24,16 @@ public class Character_Selection : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ReseTGameContoller();
         initiliseButtons();
         initiliseCharacterNameInputField();
         initilisegameDifficultyDropDownMenu();
         initialiseSliders();
+    }
+    private void ReseTGameContoller()
+    {
+        GameController.GameInstance.gameDifficulty = "Easy";
+        GameController.GameInstance.gameTime = 180;
     }
     private void initialiseSliders()
     {
@@ -79,7 +85,7 @@ public class Character_Selection : MonoBehaviour
         gameDifficultyHolder = new Dictionary<string, string>();
         gameDifficultyHolder.Add("Easy", "You'll have 180 seconds to complete the game.");
         gameDifficultyHolder.Add("Medium", "You'll have 120 seconds to complete the game.");
-        gameDifficultyHolder.Add("Hard", "You'll have 60 seconds to complete the game.");
+        gameDifficultyHolder.Add("Hard", "You'll have 30 seconds to complete the game.");
         gameDifficultyDesc = GameObject.Find("DropDownMenuDesc").GetComponent<Text>();
 
         foreach (var DifficultyLevel in gameDifficultyHolder)
@@ -114,7 +120,7 @@ public class Character_Selection : MonoBehaviour
         }
         else if (GameController.GameInstance.gameDifficulty == "Hard")
         {
-            GameController.GameInstance.gameTime = 60;
+            GameController.GameInstance.gameTime = 30;
         }
 
     }
