@@ -16524,8 +16524,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 41.5, y: -8.9}
-  m_SizeDelta: {x: 8, y: 12}
+  m_AnchoredPosition: {x: 39.9, y: -15.699982}
+  m_SizeDelta: {x: 10.68777, y: 12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &567280365
 MonoBehaviour:
@@ -16549,7 +16549,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 10
+    m_FontSize: 9
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -16560,7 +16560,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 12
 --- !u!222 &567280366
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -29531,7 +29531,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 10
+    m_FontSize: 9
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -42470,6 +42470,8 @@ MonoBehaviour:
   currentStatus: 0
   GainedSpeedUps: 0
   wonTheGame: 0
+  GunBurgerAmount: 0
+  GunHotDogAmount: 0
 --- !u!4 &1301181593
 Transform:
   m_ObjectHideFlags: 0
@@ -46326,8 +46328,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 42.7, y: -9.4}
-  m_SizeDelta: {x: 8, y: 12}
+  m_AnchoredPosition: {x: 40.271915, y: -16.582947}
+  m_SizeDelta: {x: 11.97323, y: 10.23408}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1407615809
 MonoBehaviour:
@@ -46351,7 +46353,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 10
+    m_FontSize: 9
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -46362,7 +46364,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 12
 --- !u!222 &1407615810
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -47242,7 +47244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.43137258, g: 0.5686275, b: 0.36078432, a: 1}
+  m_Color: {r: 0.9294118, g: 0.9450981, b: 0.9215687, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

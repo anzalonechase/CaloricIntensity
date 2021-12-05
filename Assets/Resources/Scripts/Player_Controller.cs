@@ -68,7 +68,8 @@ public class Player_Controller : MonoBehaviour
 
         if (gameObject.tag == "Player" && collision.gameObject.tag == "Shop")  // If player is touching shop then reload ammo
         {
-            
+            GameController.GameInstance.GunHotDogAmount = 12;
+            GameController.GameInstance.GunBurgerAmount = 12;
             burgerAmmo = 12;
             hotdogAmmo = 12;
         }

@@ -13,8 +13,12 @@ public class PanelHandler : MonoBehaviour
     private Image HUDImage;
     private GameObject InventorySystem;
     private Image InventorySystemImage;
+    private Image InventorySystemBurgerAmountImage;
+    private Text InventorySystemBurgerAmountValue;
     private Image InventorySystemSpeedUpImage;
     private Text InventorySystemSpeedUpValue;
+    private Image InventorySystemHotDogAmountImage;
+    private Text InventorySystemHotDogAmountValue;
     private GameObject gameOverPanel;
     private GameObject WinningScreen;
     private Button backBtn;
@@ -54,6 +58,8 @@ public class PanelHandler : MonoBehaviour
 
         if (GameController.GameInstance.numberOfCustomers == 0)
         {
+            GameController.GameInstance.GunHotDogAmount = 12;
+            GameController.GameInstance.GunBurgerAmount = 12;
             GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 30 :
             GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 60;
             AlreadyEnded = false;
@@ -62,6 +68,8 @@ public class PanelHandler : MonoBehaviour
 
         if (GameController.GameInstance.gameTime <= 0)
         {
+            GameController.GameInstance.GunHotDogAmount = 12;
+            GameController.GameInstance.GunBurgerAmount = 12;
             GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 30 :
             GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 60;
             AlreadyEnded = false;
@@ -97,6 +105,7 @@ public class PanelHandler : MonoBehaviour
                 }
             }
         }
+        BurgerHotDogAmount();
         UpdateCustomer();
         GameWinnerFunctionality();
         GameOverConditionAndTimeFuctionality();
@@ -242,8 +251,11 @@ public class PanelHandler : MonoBehaviour
         InventorySystemImage = InventorySystem.transform.GetComponent<Image>();
         InventorySystemImage.color = GameController.GameInstance.HUDColor;
         InventorySystemSpeedUpImage = InventorySystem.transform.Find((3).ToString()).GetComponent<Image>();
-        //InventorySystemSpeedUpImage.color = GameController.GameInstance.HUDColor;
         InventorySystemSpeedUpValue = InventorySystemSpeedUpImage.transform.Find((3+"T").ToString()).GetComponent<Text>();
+        InventorySystemBurgerAmountImage = InventorySystem.transform.Find((1).ToString()).GetComponent<Image>();
+        InventorySystemBurgerAmountValue = InventorySystemBurgerAmountImage.transform.Find((1 + "T").ToString()).GetComponent<Text>();
+        InventorySystemHotDogAmountImage = InventorySystem.transform.Find((2).ToString()).GetComponent<Image>();
+        InventorySystemHotDogAmountValue = InventorySystemHotDogAmountImage.transform.Find((2 + "T").ToString()).GetComponent<Text>();
     }
     private void replayTheGame(GameObject panel)
     {
@@ -252,6 +264,13 @@ public class PanelHandler : MonoBehaviour
         
     }
 
+    private void BurgerHotDogAmount()
+    {
+
+        InventorySystemBurgerAmountValue.text = GameController.GameInstance.GunBurgerAmount.ToString();
+        InventorySystemHotDogAmountValue.text = GameController.GameInstance.GunHotDogAmount.ToString();
+
+    }
     public void LoadSceneByNumber(int sceneNumber)
     {
 

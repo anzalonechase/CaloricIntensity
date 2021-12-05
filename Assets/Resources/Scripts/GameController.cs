@@ -18,9 +18,10 @@ public class GameController : MonoBehaviour
     public int currentStatus;
     public int GainedSpeedUps;
     public bool wonTheGame;
-   
-    
-   
+    public int GunBurgerAmount;
+    public int GunHotDogAmount;
+
+
     private void Awake()
     {
         if (GameInstance == null)
@@ -35,6 +36,8 @@ public class GameController : MonoBehaviour
             GameInstance.itemList = new List<InventoryItem>();
             GameInstance.currentStatus = 1;
             GameInstance.GainedSpeedUps = 0;
+            GameInstance.GunBurgerAmount = 12;
+            GameInstance.GunHotDogAmount = 12;
             DontDestroyOnLoad(gameObject);
         }
 

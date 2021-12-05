@@ -36,6 +36,11 @@ public class Aim_Controller : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))       //CLick left for sausage
             {
+                if (GameController.GameInstance.GunHotDogAmount > 0)
+                {
+                    GameController.GameInstance.GunHotDogAmount--;
+                }
+               
                 if (playerScript.hotdogAmmo > 0)  // Checks if it has ammo
                 {
                     var bulletInstance = Instantiate(hotDog, hotdogSpawn.position, hotdogSpawn.rotation);        //creates an instance of bullet in fireSpawn positon
@@ -60,7 +65,10 @@ public class Aim_Controller : MonoBehaviour
 
             if (Input.GetMouseButtonDown(1))   // CLick right for burger
             {
-
+                if (GameController.GameInstance.GunBurgerAmount > 0)
+                {
+                    GameController.GameInstance.GunBurgerAmount--;
+                }
                 if (playerScript.burgerAmmo > 0)
                 {
 
