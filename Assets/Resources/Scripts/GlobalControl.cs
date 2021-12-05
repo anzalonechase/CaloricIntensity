@@ -11,6 +11,7 @@ public class GlobalControl : MonoBehaviour
 
     public bool musicState;
     public int musicTrack;
+    public bool pause;
 
 
     void Awake ()   
