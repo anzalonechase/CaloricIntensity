@@ -16,7 +16,9 @@ public class GameController : MonoBehaviour
     public Color HUDColor;
     public List<InventoryItem> itemList;
     public int currentStatus;
+    public int GainedSpeedUps;
     public bool wonTheGame;
+   
     
    
     private void Awake()
@@ -32,6 +34,7 @@ public class GameController : MonoBehaviour
             GameInstance.created = false;
             GameInstance.itemList = new List<InventoryItem>();
             GameInstance.currentStatus = 1;
+            GameInstance.GainedSpeedUps = 0;
             DontDestroyOnLoad(gameObject);
         }
 

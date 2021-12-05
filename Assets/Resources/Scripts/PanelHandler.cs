@@ -13,6 +13,8 @@ public class PanelHandler : MonoBehaviour
     private Image HUDImage;
     private GameObject InventorySystem;
     private Image InventorySystemImage;
+    private Image InventorySystemSpeedUpImage;
+    private Text InventorySystemSpeedUpValue;
     private GameObject gameOverPanel;
     private GameObject WinningScreen;
     private Button backBtn;
@@ -25,7 +27,8 @@ public class PanelHandler : MonoBehaviour
     private int minute;
     private int seconds;
     private float totalTime;
-   
+    [SerializeField] Sprite Soda;
+
     private bool AlreadyEnded;
     // Start is called before the first frame update
     private void Awake()
@@ -80,7 +83,20 @@ public class PanelHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     
+
+        if (GameController.GameInstance.GainedSpeedUps > 0 && GameController.GameInstance.GainedSpeedUps <3)
+        {
+            for (int i=0; i < GameController.GameInstance.itemList.Count; i++)
+            {
+                if (GameController.GameInstance.itemList[i].name == "Speedups")
+                {
+                    // set image to speedups
+                    InventorySystemSpeedUpImage.sprite = Soda;
+                    // update the text
+                    InventorySystemSpeedUpValue.text = (GameController.GameInstance.itemList[i].count).ToString();
+                }
+            }
+        }
         UpdateCustomer();
         GameWinnerFunctionality();
         GameOverConditionAndTimeFuctionality();
@@ -158,11 +174,8 @@ public class PanelHandler : MonoBehaviour
      * Updating number of cutomers
      */
     private void UpdateCustomer()
-    {
-       
+    { 
         RemainingCustomers.text = "Remaining Customers: " + (GameController.GameInstance.numberOfCustomers).ToString();
-        
-        
     }
 
    
@@ -228,6 +241,9 @@ public class PanelHandler : MonoBehaviour
         InventorySystem = GameObject.Find("GameInventoryPanel").gameObject;
         InventorySystemImage = InventorySystem.transform.GetComponent<Image>();
         InventorySystemImage.color = GameController.GameInstance.HUDColor;
+        InventorySystemSpeedUpImage = InventorySystem.transform.Find((3).ToString()).GetComponent<Image>();
+        //InventorySystemSpeedUpImage.color = GameController.GameInstance.HUDColor;
+        InventorySystemSpeedUpValue = InventorySystemSpeedUpImage.transform.Find((3+"T").ToString()).GetComponent<Text>();
     }
     private void replayTheGame(GameObject panel)
     {
