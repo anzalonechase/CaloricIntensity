@@ -17,8 +17,8 @@ public class GameController : MonoBehaviour
     public List<InventoryItem> itemList;
     public int currentStatus;
     public bool wonTheGame;
-
-
+    
+   
     private void Awake()
     {
         if (GameInstance == null)

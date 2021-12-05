@@ -45,7 +45,7 @@ public class PanelHandler : MonoBehaviour
 
     void Start()
     {
-       
+        updatePlayerName();
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -85,6 +85,14 @@ public class PanelHandler : MonoBehaviour
         GameWinnerFunctionality();
         GameOverConditionAndTimeFuctionality();
         OpenCloseHudeAndInventorySystem();
+    }
+
+    private void updatePlayerName()
+    {
+        if (GameController.GameInstance.characterName != null)
+        {
+            PlayerName.text = "Welcome " + GameController.GameInstance.characterName;
+        }
     }
 
     private void GameWinnerFunctionality()

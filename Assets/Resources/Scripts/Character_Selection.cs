@@ -66,7 +66,7 @@ public class Character_Selection : MonoBehaviour
     private void changeImageColor()
     {
         GameController.GameInstance.HUDColor = new Color32(GameController.GameInstance.redColor,
-            GameController.GameInstance.greenColor, GameController.GameInstance.blueColor, 255);
+        GameController.GameInstance.greenColor, GameController.GameInstance.blueColor, 255);
         characterColor.color = GameController.GameInstance.HUDColor;
     }
 
@@ -164,7 +164,7 @@ public class Character_Selection : MonoBehaviour
     }
 
 
-
+   
 private void LoadSceneByNumber(int sceneNumber)
     {
         SceneManager.LoadScene(sceneNumber);
