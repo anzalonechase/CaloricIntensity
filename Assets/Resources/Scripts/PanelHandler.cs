@@ -208,11 +208,9 @@ public class PanelHandler : MonoBehaviour
         HUDHolder = GameObject.Find("HUDPanel").gameObject;
         Timer = HUDHolder.transform.Find("Timer").gameObject;
         Customers = HUDHolder.transform.Find("Customers").gameObject;
-        backBtn = HUDHolder.transform.Find("Back").GetComponent<Button>();
         HUDImage = HUDHolder.transform.GetComponent<Image>();
         HUDImage.color = GameController.GameInstance.HUDColor;
         PlayerName = HUDHolder.transform.Find("Name").GetComponent<Text>();
-        backBtn.onClick.AddListener(delegate { SceneManager.LoadScene("Scene_Menu"); ; });
         RemainingTime = Timer.transform.Find("RemainingTime").GetComponent<Text>();
         RemainingCustomers = Customers.transform.Find("RemainingCustomers").GetComponent<Text>();
       
