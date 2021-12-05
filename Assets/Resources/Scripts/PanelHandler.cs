@@ -35,7 +35,8 @@ public class PanelHandler : MonoBehaviour
 
         InitialiseHUDTextAndButtons();
         CalculateRemainingTime();
-
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
         AlreadyEnded = false;
 
     }
@@ -149,17 +150,18 @@ public class PanelHandler : MonoBehaviour
         gameOverReplayBtn = gameOverPanel.transform.Find("Replay").GetComponent<Button>();
         gameOverBackBtn = gameOverPanel.transform.Find("Back").GetComponent<Button>();
         gameOverBackBtn.onClick.AddListener(delegate { LoadSceneByNumber(0); });
-        gameOverReplayBtn.onClick.AddListener(delegate { replayTheGame(); });
+        gameOverReplayBtn.onClick.AddListener(delegate { replayTheGame(gameOverPanel); });
         gameOverPanel.gameObject.SetActive(!gameOverPanel.gameObject.activeInHierarchy);
     }
 
     private void InitialiseWinningScreenAndButtons()
     {
+        
         WinningScreen = GameObject.Find("WonPanel").gameObject;
         WinningScreenBackBtn = WinningScreen.transform.Find("Back").GetComponent<Button>();
         WinningScreenReplayBtn = WinningScreen.transform.Find("Replay").GetComponent<Button>();
         WinningScreenBackBtn.onClick.AddListener(delegate { LoadSceneByNumber(0);});
-        WinningScreenReplayBtn.onClick.AddListener(delegate { replayTheGame(); });
+        WinningScreenReplayBtn.onClick.AddListener(delegate { replayTheGame(WinningScreen); });
         WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
     }
     private void InitialiseHUDTextAndButtons()
@@ -173,13 +175,15 @@ public class PanelHandler : MonoBehaviour
         InventorySystem = GameObject.Find("GameInventoryPanel").gameObject;
      
     }
-    private void replayTheGame()
+    private void replayTheGame(GameObject panel)
     {
+        SceneManager.LoadScene("Scene_Chase");
         
     }
 
     public void LoadSceneByNumber(int sceneNumber)
     {
+
         SceneManager.LoadScene(sceneNumber);
     }
 }
