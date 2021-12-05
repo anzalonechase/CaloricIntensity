@@ -29,22 +29,32 @@ public class PanelHandler : MonoBehaviour
     private void Awake()
     {
 
-
         InitialiseGameOverScreenAndButtons();
         InitialiseWinningScreenAndButtons();
 
         InitialiseHUDTextAndButtons();
         CalculateRemainingTime();
-        Time.timeScale = 1;
-        Cursor.lockState = CursorLockMode.Locked;
-        AlreadyEnded = false;
+     //   WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
+
+
+
+      //  gameOverPanel.gameObject.SetActive(!gameOverPanel.gameObject.activeInHierarchy);
 
     }
 
     void Start()
     {
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        AlreadyEnded = false;
+        if(GameController.GameInstance.numberOfCustomers==0)
+            GameController.GameInstance.numberOfCustomers = 1;
+
+
+
         
- 
+        GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty=="Easy"?180: 
+            GameController.GameInstance.gameDifficulty == "Medium"?120:60;
         totalTime = GameController.GameInstance.gameTime;
         // StartCoroutine("updateFood");
         
@@ -146,26 +156,35 @@ public class PanelHandler : MonoBehaviour
 
     private void InitialiseGameOverScreenAndButtons()
     {
-        gameOverPanel = GameObject.Find("GameOverPanel").gameObject;
-        gameOverReplayBtn = gameOverPanel.transform.Find("Replay").GetComponent<Button>();
-        gameOverBackBtn = gameOverPanel.transform.Find("Back").GetComponent<Button>();
-        gameOverBackBtn.onClick.AddListener(delegate { LoadSceneByNumber(0); });
-        gameOverReplayBtn.onClick.AddListener(delegate { replayTheGame(gameOverPanel); });
-        gameOverPanel.gameObject.SetActive(!gameOverPanel.gameObject.activeInHierarchy);
+        if (gameOverPanel == null)
+        {
+            gameOverPanel = GameObject.Find("GameOverPanel").gameObject;
+            gameOverReplayBtn = gameOverPanel.transform.Find("Replay").GetComponent<Button>();
+            gameOverBackBtn = gameOverPanel.transform.Find("Back").GetComponent<Button>();
+            // gameOverBackBtn.onClick.AddListener(delegate { LoadSceneByNumber(0); });
+            gameOverReplayBtn.onClick.AddListener(delegate { replayTheGame(gameOverPanel); });
+            gameOverPanel.gameObject.SetActive(!gameOverPanel.gameObject.activeInHierarchy);
+        }
+        
     }
 
     private void InitialiseWinningScreenAndButtons()
     {
+     
+        if(WinningScreen== null)
+        {
+            WinningScreen = GameObject.Find("WonPanel").gameObject;
+            WinningScreenBackBtn = WinningScreen.transform.Find("Back").GetComponent<Button>();
+            WinningScreenReplayBtn = WinningScreen.transform.Find("Replay").GetComponent<Button>();
+            // WinningScreenBackBtn.onClick.AddListener(delegate { LoadSceneByNumber(0);});
+            WinningScreenReplayBtn.onClick.AddListener(delegate { replayTheGame(WinningScreen); });
+            WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
+        }
         
-        WinningScreen = GameObject.Find("WonPanel").gameObject;
-        WinningScreenBackBtn = WinningScreen.transform.Find("Back").GetComponent<Button>();
-        WinningScreenReplayBtn = WinningScreen.transform.Find("Replay").GetComponent<Button>();
-        WinningScreenBackBtn.onClick.AddListener(delegate { LoadSceneByNumber(0);});
-        WinningScreenReplayBtn.onClick.AddListener(delegate { replayTheGame(WinningScreen); });
-        WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
     }
     private void InitialiseHUDTextAndButtons()
     {
+
         HUDHolder = GameObject.Find("HUDPanel").gameObject;
         Timer = HUDHolder.transform.Find("Timer").gameObject;
         Customers = HUDHolder.transform.Find("Customers").gameObject;
@@ -177,6 +196,7 @@ public class PanelHandler : MonoBehaviour
     }
     private void replayTheGame(GameObject panel)
     {
+        panel.gameObject.SetActive(!panel.gameObject.activeInHierarchy);
         SceneManager.LoadScene("Scene_Chase");
         
     }
