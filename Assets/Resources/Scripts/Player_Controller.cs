@@ -68,12 +68,31 @@ public class Player_Controller : MonoBehaviour
 
         if (gameObject.tag == "Player" && collision.gameObject.tag == "Shop")  // If player is touching shop then reload ammo
         {
-            
+            GameController.GameInstance.GunHotDogAmount = 12;
+            GameController.GameInstance.GunBurgerAmount = 12;
             burgerAmmo = 12;
             hotdogAmmo = 12;
         }
+        else if (gameObject.tag == "Player" && collision.gameObject.tag == "Soda")   // If there is a collision with this tag the burger will destroy itself instantly
+        {
+            bool exists = false;
+            for (int i = 0; i < GameController.GameInstance.itemList.Count; i++)
+            {
+                if (GameController.GameInstance.itemList[i].name == "Speedups")
+                {
+                    GameController.GameInstance.itemList[i].count++;
+                    exists = true;
 
+                }
+            }
+            if (!exists)
+            {
+                GameController.GameInstance.itemList.Add(new InventoryItem("Speedups", 1));
+            }
 
+            GameController.GameInstance.GainedSpeedUps++;
+            Destroy(collision.gameObject);
+        }
 
     }
 }

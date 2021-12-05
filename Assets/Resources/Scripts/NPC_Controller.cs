@@ -37,7 +37,7 @@ public class NPC_Controller : MonoBehaviour
 
 
 
-
+    private bool customerSatisfied = false;
 
 
     void Start()
@@ -49,9 +49,9 @@ public class NPC_Controller : MonoBehaviour
         //textBox = GameObject.Find("Order_Correct_Orientation").GetComponent<Transform>();    // reference the textbox transform        (To make sure textbox is LookAt() player
         //order = GameObject.Find("Order_Text").GetComponent<TextMeshPro>();                  // Gets reference to the text above NPC
 
+        //customerSatisfied = false;
 
-
-        while(numBurgers == 0 & numBurgers == 0)   // This makes sure that both the hotdog and burger count are never both 0
+        while (numBurgers == 0 & numBurgers == 0)   // This makes sure that both the hotdog and burger count are never both 0
         {
             numHotdogs = Random.Range(0, 4);  // 0, 1, 2, or 3
             numBurgers = Random.Range(0, 4);
@@ -97,9 +97,15 @@ public class NPC_Controller : MonoBehaviour
 
         if (numHotdogs == 0 & numBurgers == 0)              // IF the numeber of hotdogs adn burgers are both 0 then that means the order has been statisfied
         {
-            order.text = "    THANKS!";  // extra spaces for buffering
-            burgerSprite.enabled = false;  //disable the burger and hotdog sprites
-            hotdogSprite.enabled = false;
+            if (customerSatisfied == false)
+            {
+                order.text = "    THANKS!";  // extra spaces for buffering
+                customerSatisfied = true;
+                GameController.GameInstance.numberOfCustomers--;
+                burgerSprite.enabled = false;  //disable the burger and hotdog sprites
+                hotdogSprite.enabled = false;
+            }
+            
             speechSprite.transform.localScale = new Vector3(1.8f, 1.8f, 1);  //resize the speech bubble
         }
         else                             // Else order has not been completely satisfied and it should display what is left of the order

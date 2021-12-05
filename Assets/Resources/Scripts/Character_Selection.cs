@@ -24,10 +24,18 @@ public class Character_Selection : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ReseTGameContoller();
         initiliseButtons();
         initiliseCharacterNameInputField();
         initilisegameDifficultyDropDownMenu();
         initialiseSliders();
+    }
+    private void ReseTGameContoller()
+    {
+        GameController.GameInstance.gameDifficulty = "Easy";
+        GameController.GameInstance.gameTime = 180;
+        GameController.GameInstance.HUDColor = new Color32(0, 0, 0, 255);
+        GameController.GameInstance.characterName = "";
     }
     private void initialiseSliders()
     {
@@ -65,9 +73,9 @@ public class Character_Selection : MonoBehaviour
 
     private void changeImageColor()
     {
-        GameController.GameInstance.playerColor = new Color32(GameController.GameInstance.redColor,
-            GameController.GameInstance.greenColor, GameController.GameInstance.blueColor, 255);
-        characterColor.color = GameController.GameInstance.playerColor;
+        GameController.GameInstance.HUDColor = new Color32(GameController.GameInstance.redColor,
+        GameController.GameInstance.greenColor, GameController.GameInstance.blueColor, 255);
+        characterColor.color = GameController.GameInstance.HUDColor;
     }
 
 
@@ -79,7 +87,7 @@ public class Character_Selection : MonoBehaviour
         gameDifficultyHolder = new Dictionary<string, string>();
         gameDifficultyHolder.Add("Easy", "You'll have 180 seconds to complete the game.");
         gameDifficultyHolder.Add("Medium", "You'll have 120 seconds to complete the game.");
-        gameDifficultyHolder.Add("Hard", "You'll have 60 seconds to complete the game.");
+        gameDifficultyHolder.Add("Hard", "You'll have 30 seconds to complete the game.");
         gameDifficultyDesc = GameObject.Find("DropDownMenuDesc").GetComponent<Text>();
 
         foreach (var DifficultyLevel in gameDifficultyHolder)
@@ -114,7 +122,7 @@ public class Character_Selection : MonoBehaviour
         }
         else if (GameController.GameInstance.gameDifficulty == "Hard")
         {
-            GameController.GameInstance.gameTime = 60;
+            GameController.GameInstance.gameTime = 30;
         }
 
     }
@@ -128,6 +136,7 @@ public class Character_Selection : MonoBehaviour
     {
         characterName = GameObject.Find("CharacterName").GetComponent<InputField>();
         characterName.onValueChanged.AddListener(delegate { setName(); });
+
 
     }
 
@@ -164,7 +173,7 @@ public class Character_Selection : MonoBehaviour
     }
 
 
-
+   
 private void LoadSceneByNumber(int sceneNumber)
     {
         SceneManager.LoadScene(sceneNumber);

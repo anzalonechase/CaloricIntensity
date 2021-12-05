@@ -29,6 +29,7 @@ public class Burger_Bullet_Controller : MonoBehaviour
             Destroy(gameObject);
         }
 
+       
 
 
 

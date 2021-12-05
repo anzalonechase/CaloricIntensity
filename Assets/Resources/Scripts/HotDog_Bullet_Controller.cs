@@ -28,8 +28,7 @@ public class HotDog_Bullet_Controller : MonoBehaviour
             Destroy(gameObject);
         }
 
-
-
+       
 
 
         // The NPC Controller will ahndle a collisison bewteen hotdog adn the npc

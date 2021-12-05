@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2458,7 +2458,7 @@ MonoBehaviour:
   gameTime: 0
   numberOfCustomers: 0
   created: 0
-  playerColor: {r: 0, g: 0, b: 0, a: 0}
+  HUDColor: {r: 0, g: 0, b: 0, a: 0}
   itemList: []
   currentStatus: 0
   wonTheGame: 0
@@ -3649,8 +3649,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -88.86, y: 93}
-  m_SizeDelta: {x: 280, y: 30}
+  m_AnchoredPosition: {x: -59.42997, y: 93}
+  m_SizeDelta: {x: 338.86, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1697887312
 MonoBehaviour:
@@ -3685,7 +3685,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Please choose Character Color:'
+  m_Text: 'Please choose HUD background Color:'
 --- !u!222 &1697887313
 CanvasRenderer:
   m_ObjectHideFlags: 0

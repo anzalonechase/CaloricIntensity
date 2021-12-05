@@ -10,74 +10,120 @@ public class PanelHandler : MonoBehaviour
     private GameObject Timer;
     private GameObject Customers;
     private GameObject HUDHolder;
+    private Image HUDImage;
     private GameObject InventorySystem;
+    private Image InventorySystemImage;
+    private Image InventorySystemBurgerAmountImage;
+    private Text InventorySystemBurgerAmountValue;
+    private Image InventorySystemSpeedUpImage;
+    private Text InventorySystemSpeedUpValue;
+    private Image InventorySystemHotDogAmountImage;
+    private Text InventorySystemHotDogAmountValue;
     private GameObject gameOverPanel;
     private GameObject WinningScreen;
+    
     private Button gameOverReplayBtn;
-    private Button gameOverBackBtn;
+    private Button GameOverbackBtn;
     private Button WinningScreenReplayBtn;
     private Button WinningScreenBackBtn;
-    private Image BurgerHolder;
-    private Image hotDogHolder;
     private Text RemainingTime;
     private Text RemainingCustomers;
+    private Text PlayerName;
     private int minute;
     private int seconds;
     private float totalTime;
-    private Image[] burgers;
-    private Image[] hotDogs;
+    [SerializeField] Sprite Soda;
+
     private bool AlreadyEnded;
     // Start is called before the first frame update
     private void Awake()
     {
-        InitialiseGameOverScreenAndButtons();
+        startNewGameFunctionality();
         InitialiseWinningScreenAndButtons();
+        InitialiseGameOverScreenAndButtons();
+        InitialiseInventorySystemScreenAndButtons();
+
         InitialiseHUDTextAndButtons();
+        CalculateRemainingTime();
         
 
-
-        CalculateRemainingTime();
-
-        AlreadyEnded = false;
-
     }
+
+    
 
     void Start()
     {
-        totalTime = GameController.GameInstance.gameTime;
-        StartCoroutine("updateFood");
-        StartCoroutine("updateFoodCoroutine");
+        updatePlayerName();
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+
         
+        
+        // StartCoroutine("updateFood");
+        
+
     }
+
+    
+
+    /**
+     * Shows player name on the screen
+     */
+    
 
     // Update is called once per frame
     void Update()
     {
-        //GameController.GameInstance.itemList.Add(new InventoryItem("Burger", 12));
-        //GameController.GameInstance.itemList.Add(new InventoryItem("HotDog", 12));
 
+        if (GameController.GameInstance.GainedSpeedUps > 0 && GameController.GameInstance.GainedSpeedUps <3)
+        {
+            for (int i=0; i < GameController.GameInstance.itemList.Count; i++)
+            {
+                if (GameController.GameInstance.itemList[i].name == "Speedups")
+                {
+                    InventorySystemSpeedUpImage.enabled = true;
+                    // set image to speedups
+                    InventorySystemSpeedUpImage.sprite = Soda;
+                    // update the text
+                    InventorySystemSpeedUpValue.text = (GameController.GameInstance.itemList[i].count).ToString();
+                }
+            }
+        }
+        BurgerHotDogAmount();
+        UpdateCustomer();
         GameWinnerFunctionality();
         GameOverConditionAndTimeFuctionality();
         OpenCloseHudeAndInventorySystem();
     }
 
+    private void updatePlayerName()
+    {
+        if (GameController.GameInstance.characterName != null)
+        {
+            PlayerName.text = "Welcome " + GameController.GameInstance.characterName;
+        }
+    }
+
     private void GameWinnerFunctionality()
     {
-        if (GameController.GameInstance.numberOfCustomers == 0)
+        if (GameController.GameInstance.numberOfCustomers <= 0)
         {
             if (!AlreadyEnded)
             {
                 AlreadyEnded = true;
+                Cursor.lockState = CursorLockMode.None;
                 Time.timeScale = 0;
                 WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
+                
             }
         }
     }
     private void GameOverConditionAndTimeFuctionality()
     {
-        if (totalTime >= 0)
+        if (GameController.GameInstance.gameTime >= 0)
         {
-            totalTime -= Time.deltaTime;
+            GameController.GameInstance.gameTime -= Time.deltaTime; ;
+            totalTime = GameController.GameInstance.gameTime;
             CalculateRemainingTime();
         }
         else
@@ -85,15 +131,20 @@ public class PanelHandler : MonoBehaviour
             if (!AlreadyEnded)
             {
                 AlreadyEnded = true;
+                Cursor.lockState = CursorLockMode.None;
                 Time.timeScale = 0;
                 gameOverPanel.gameObject.SetActive(!gameOverPanel.gameObject.activeInHierarchy);
             }
 
         }
     }
+
+    /**
+    * Handle the case when player wants to close the inventory system
+    */
     private void OpenCloseHudeAndInventorySystem()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.V))
         {
             HUDHolder.gameObject.SetActive(!HUDHolder.gameObject.activeInHierarchy);
         }
@@ -102,6 +153,10 @@ public class PanelHandler : MonoBehaviour
             InventorySystem.gameObject.SetActive(!InventorySystem.gameObject.activeInHierarchy);
         }
     }
+
+    /**
+     * Updates Time on the HUD
+     */
     private void CalculateRemainingTime()
     {
         minute = (int)totalTime / 60;
@@ -116,107 +171,113 @@ public class PanelHandler : MonoBehaviour
         }
         
     }
+    /**
+     * Updating number of cutomers
+     */
     private void UpdateCustomer()
-    {
-        GameController.GameInstance.numberOfCustomers--;
+    { 
         RemainingCustomers.text = "Remaining Customers: " + (GameController.GameInstance.numberOfCustomers).ToString();
-        
-        
-    }
-
-    private void initialiseImageArray()
-    {
-
-        int randomNum = Random.Range(1, burgers.Length + 1);
-        
-        for (int i = 1; i < burgers.Length + 1; i++)
-        {
-
-            burgers[i - 1] = BurgerHolder.transform.Find((i).ToString()).GetComponent<Image>();
-            hotDogs[i - 1] = hotDogHolder.transform.Find((i).ToString()).GetComponent<Image>();
-            if (i < randomNum)
-            {
-                burgers[i - 1].enabled = false;
-                hotDogs[i - 1].enabled = false;
-            }
-            else
-            {
-                if(burgers[i - 1].enabled == false)
-                {
-                    burgers[i - 1].enabled = true;
-                }
-                if (hotDogs[i - 1].enabled == false)
-                {
-                    hotDogs[i - 1].enabled = true;
-                }
-            }
-
-
-        }
-
-    }
-
-    private IEnumerator updateFood()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(1f);
-            initialiseImageArray();
-            
-        }
-
-    }
-
-    private IEnumerator updateFoodCoroutine()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(1f);
-            UpdateCustomer();
-
-        }
-
     }
 
     private void InitialiseGameOverScreenAndButtons()
     {
-        gameOverPanel = GameObject.Find("GameOverPanel").gameObject;
-        gameOverReplayBtn = gameOverPanel.transform.Find("Replay").GetComponent<Button>();
-        gameOverBackBtn = gameOverPanel.transform.Find("Back").GetComponent<Button>();
-        gameOverBackBtn.onClick.AddListener(delegate { LoadSceneByNumber(0); });
-        gameOverReplayBtn.onClick.AddListener(delegate { replayTheGame(); });
-        gameOverPanel.gameObject.SetActive(!gameOverPanel.gameObject.activeInHierarchy);
+        if (gameOverPanel == null)
+        {
+            gameOverPanel = GameObject.Find("GameOverPanel").gameObject;
+            gameOverReplayBtn = gameOverPanel.transform.Find("Replay").GetComponent<Button>();
+            gameOverReplayBtn.onClick.AddListener(delegate { replayTheGame(gameOverPanel); });
+            GameOverbackBtn = gameOverPanel.transform.Find("Back").GetComponent<Button>();
+            GameOverbackBtn.onClick.AddListener(delegate { SceneManager.LoadScene("Scene_Menu"); });
+            gameOverPanel.gameObject.SetActive(!gameOverPanel.gameObject.activeInHierarchy);
+        }
+        
     }
 
     private void InitialiseWinningScreenAndButtons()
     {
-        WinningScreen = GameObject.Find("WonPanel").gameObject;
-        WinningScreenBackBtn = WinningScreen.transform.Find("Back").GetComponent<Button>();
-        WinningScreenReplayBtn = WinningScreen.transform.Find("Replay").GetComponent<Button>();
-        WinningScreenBackBtn.onClick.AddListener(delegate { LoadSceneByNumber(0);});
-        WinningScreenReplayBtn.onClick.AddListener(delegate { replayTheGame(); });
-        WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
+     
+        if(WinningScreen == null)
+        {
+            WinningScreen = GameObject.Find("WonPanel").gameObject;
+            WinningScreenReplayBtn = WinningScreen.transform.Find("Replay").GetComponent<Button>();
+            WinningScreenReplayBtn.onClick.AddListener(delegate { replayTheGame(gameOverPanel); });
+            WinningScreenBackBtn = WinningScreen.transform.Find("Back").GetComponent<Button>();
+            WinningScreenBackBtn.onClick.AddListener(delegate { SceneManager.LoadScene("Scene_Menu"); });
+            WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
+        }
+        
     }
     private void InitialiseHUDTextAndButtons()
     {
+
         HUDHolder = GameObject.Find("HUDPanel").gameObject;
         Timer = HUDHolder.transform.Find("Timer").gameObject;
         Customers = HUDHolder.transform.Find("Customers").gameObject;
+        HUDImage = HUDHolder.transform.GetComponent<Image>();
+        HUDImage.color = GameController.GameInstance.HUDColor;
+        PlayerName = HUDHolder.transform.Find("Name").GetComponent<Text>();
         RemainingTime = Timer.transform.Find("RemainingTime").GetComponent<Text>();
         RemainingCustomers = Customers.transform.Find("RemainingCustomers").GetComponent<Text>();
-        BurgerHolder = HUDHolder.transform.Find("BurgerHolder").GetComponent<Image>();
-        hotDogHolder = HUDHolder.transform.Find("HotDogHolder").GetComponent<Image>();
-        InventorySystem = GameObject.Find("GameInventoryPanel").gameObject;
-        burgers = new Image[6];
-        hotDogs = new Image[6];
+      
+        
+     
     }
-    private void replayTheGame()
+
+    private void InitialiseInventorySystemScreenAndButtons()
     {
+        InventorySystem = GameObject.Find("GameInventoryPanel").gameObject;
+        InventorySystemImage = InventorySystem.transform.GetComponent<Image>();
+        InventorySystemImage.color = GameController.GameInstance.HUDColor;
+        InventorySystemSpeedUpImage = InventorySystem.transform.Find((3).ToString()).GetComponent<Image>();
+        InventorySystemSpeedUpValue = InventorySystemSpeedUpImage.transform.Find((3+"T").ToString()).GetComponent<Text>();
+        InventorySystemSpeedUpImage.enabled = false;
+        InventorySystemBurgerAmountImage = InventorySystem.transform.Find((1).ToString()).GetComponent<Image>();
+        InventorySystemBurgerAmountValue = InventorySystemBurgerAmountImage.transform.Find((1 + "T").ToString()).GetComponent<Text>();
+        InventorySystemHotDogAmountImage = InventorySystem.transform.Find((2).ToString()).GetComponent<Image>();
+        InventorySystemHotDogAmountValue = InventorySystemHotDogAmountImage.transform.Find((2 + "T").ToString()).GetComponent<Text>();
+    }
+    private void replayTheGame(GameObject panel)
+    {
+        panel.gameObject.SetActive(!panel.gameObject.activeInHierarchy);
+        SceneManager.LoadScene("Scene_Chase");
         
     }
 
-    private void LoadSceneByNumber(int sceneNumber)
+    private void BurgerHotDogAmount()
     {
+
+        InventorySystemBurgerAmountValue.text = GameController.GameInstance.GunBurgerAmount.ToString();
+        InventorySystemHotDogAmountValue.text = GameController.GameInstance.GunHotDogAmount.ToString();
+
+    }
+    public void LoadSceneByNumber(int sceneNumber)
+    {
+
         SceneManager.LoadScene(sceneNumber);
+    }
+
+    private void startNewGameFunctionality()
+    {
+        if (GameController.GameInstance.numberOfCustomers == 0)
+        {
+            GameController.GameInstance.GunHotDogAmount = 12;
+            GameController.GameInstance.GunBurgerAmount = 12;
+            GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 180 :
+            GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 30;
+            AlreadyEnded = false;
+            GameController.GameInstance.numberOfCustomers = 1;
+        }
+
+        if (GameController.GameInstance.gameTime <= 0)
+        {
+            GameController.GameInstance.GunHotDogAmount = 12;
+            GameController.GameInstance.GunBurgerAmount = 12;
+            GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 180 :
+            GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 30;
+            AlreadyEnded = false;
+
+            GameController.GameInstance.numberOfCustomers = 1;
+            totalTime = GameController.GameInstance.gameTime;
+        }
     }
 }
