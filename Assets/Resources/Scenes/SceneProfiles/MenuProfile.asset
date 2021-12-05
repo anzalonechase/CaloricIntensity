@@ -33,7 +33,7 @@ MonoBehaviour:
     value: 1
   sampleDist:
     overrideState: 1
-    value: 6
+    value: 2
   edgesOnly:
     overrideState: 0
     value: 0

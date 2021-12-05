@@ -32,6 +32,12 @@ public class LevelControl : MonoBehaviour
             thisScene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(thisScene.name);
         }
+        if (globalController.pause) {
+            if (Input.GetKey(KeyCode.M))
+            {
+                SceneManager.LoadScene("Scene_Menu");
+            }
+        }
         if (Input.GetKey(KeyCode.P) && canOpenClose)
         {
             unpause();
