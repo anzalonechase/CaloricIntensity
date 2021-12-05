@@ -27,9 +27,9 @@ public class PanelHandler : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-
-        InitialiseGameOverScreenAndButtons();
         InitialiseWinningScreenAndButtons();
+        InitialiseGameOverScreenAndButtons();
+        
 
         InitialiseHUDTextAndButtons();
         CalculateRemainingTime();
@@ -43,20 +43,20 @@ public class PanelHandler : MonoBehaviour
 
         if (GameController.GameInstance.numberOfCustomers == 0)
         {
-            GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 180 :
+            GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 10 :
             GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 60;
             AlreadyEnded = false;
             GameController.GameInstance.numberOfCustomers = 1;
         }
-            
 
-        if (GameController.GameInstance.gameTime == 0)
+        if (GameController.GameInstance.gameTime <= 0)
         {
-            GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 180 :
+            GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 10 :
             GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 60;
+            AlreadyEnded = false;
+
             GameController.GameInstance.numberOfCustomers = 1;
             totalTime = GameController.GameInstance.gameTime;
-            AlreadyEnded = false;
         }
         
         // StartCoroutine("updateFood");
@@ -67,8 +67,7 @@ public class PanelHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //GameController.GameInstance.itemList.Add(new InventoryItem("Burger", 12));
-        //GameController.GameInstance.itemList.Add(new InventoryItem("HotDog", 12));
+     
         UpdateCustomer();
         GameWinnerFunctionality();
         GameOverConditionAndTimeFuctionality();
@@ -111,7 +110,7 @@ public class PanelHandler : MonoBehaviour
     }
     private void OpenCloseHudeAndInventorySystem()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.V))
         {
             HUDHolder.gameObject.SetActive(!HUDHolder.gameObject.activeInHierarchy);
         }
@@ -173,7 +172,7 @@ public class PanelHandler : MonoBehaviour
     private void InitialiseWinningScreenAndButtons()
     {
      
-        if(WinningScreen== null)
+        if(WinningScreen == null)
         {
             WinningScreen = GameObject.Find("WonPanel").gameObject;
             WinningScreenReplayBtn = WinningScreen.transform.Find("Replay").GetComponent<Button>();
