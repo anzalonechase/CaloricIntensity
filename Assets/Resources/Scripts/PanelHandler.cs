@@ -10,7 +10,9 @@ public class PanelHandler : MonoBehaviour
     private GameObject Timer;
     private GameObject Customers;
     private GameObject HUDHolder;
+    private Image HUDImage;
     private GameObject InventorySystem;
+    private Image InventorySystemImage;
     private GameObject gameOverPanel;
     private GameObject WinningScreen;
     private Button backBtn;
@@ -19,6 +21,7 @@ public class PanelHandler : MonoBehaviour
 
     private Text RemainingTime;
     private Text RemainingCustomers;
+    private Text PlayerName;
     private int minute;
     private int seconds;
     private float totalTime;
@@ -27,23 +30,28 @@ public class PanelHandler : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        
         InitialiseWinningScreenAndButtons();
         InitialiseGameOverScreenAndButtons();
-        
+        InitialiseInventorySystemScreenAndButtons();
 
         InitialiseHUDTextAndButtons();
         CalculateRemainingTime();
+        
 
     }
 
+    
+
     void Start()
     {
+       
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
 
         if (GameController.GameInstance.numberOfCustomers == 0)
         {
-            GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 10 :
+            GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 30 :
             GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 60;
             AlreadyEnded = false;
             GameController.GameInstance.numberOfCustomers = 1;
@@ -51,7 +59,7 @@ public class PanelHandler : MonoBehaviour
 
         if (GameController.GameInstance.gameTime <= 0)
         {
-            GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 10 :
+            GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 30 :
             GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 60;
             AlreadyEnded = false;
 
@@ -63,6 +71,11 @@ public class PanelHandler : MonoBehaviour
         
 
     }
+
+    /**
+     * Shows player name on the screen
+     */
+    
 
     // Update is called once per frame
     void Update()
@@ -133,6 +146,9 @@ public class PanelHandler : MonoBehaviour
         }
         
     }
+    /**
+     * Updating number of cutomers
+     */
     private void UpdateCustomer()
     {
        
@@ -188,12 +204,22 @@ public class PanelHandler : MonoBehaviour
         Timer = HUDHolder.transform.Find("Timer").gameObject;
         Customers = HUDHolder.transform.Find("Customers").gameObject;
         backBtn = HUDHolder.transform.Find("Back").GetComponent<Button>();
+        HUDImage = HUDHolder.transform.GetComponent<Image>();
+        HUDImage.color = GameController.GameInstance.HUDColor;
+        PlayerName = HUDHolder.transform.Find("Name").GetComponent<Text>();
         backBtn.onClick.AddListener(delegate { SceneManager.LoadScene("Scene_Menu"); ; });
         RemainingTime = Timer.transform.Find("RemainingTime").GetComponent<Text>();
         RemainingCustomers = Customers.transform.Find("RemainingCustomers").GetComponent<Text>();
       
-        InventorySystem = GameObject.Find("GameInventoryPanel").gameObject;
+        
      
+    }
+
+    private void InitialiseInventorySystemScreenAndButtons()
+    {
+        InventorySystem = GameObject.Find("GameInventoryPanel").gameObject;
+        InventorySystemImage = InventorySystem.transform.GetComponent<Image>();
+        InventorySystemImage.color = GameController.GameInstance.HUDColor;
     }
     private void replayTheGame(GameObject panel)
     {

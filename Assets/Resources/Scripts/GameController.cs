@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     public float gameTime;
     public int numberOfCustomers;
     public bool created;
-    public Color playerColor;
+    public Color HUDColor;
     public List<InventoryItem> itemList;
     public int currentStatus;
     public bool wonTheGame;
@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
             GameInstance = this;
             GameInstance.characterName = "";
             GameInstance.gameDifficulty = "Easy";
-            GameInstance.playerColor = new Color32(redColor, blueColor, 0, 255);
+            GameInstance.HUDColor = new Color32(redColor, blueColor, 0, 255);
             GameInstance.gameTime = 180;
             GameInstance.numberOfCustomers = 1;
             GameInstance.created = false;
