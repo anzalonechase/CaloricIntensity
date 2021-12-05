@@ -29,28 +29,7 @@ public class Burger_Bullet_Controller : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (collision.gameObject.tag == "Soda" )   // If there is a collision with this tag the burger will destroy itself instantly
-        {
-            bool exists = false;
-            for (int i = 0; i < GameController.GameInstance.itemList.Count; i++)
-            {
-                if (GameController.GameInstance.itemList[i].name == "Speedups")
-                {
-                    GameController.GameInstance.itemList[i].count++;
-                    exists = true;
-                  
-                }
-            }
-            if (!exists)
-            {
-                GameController.GameInstance.itemList.Add(new InventoryItem("Speedups", 1));
-            }
-           
-            GameController.GameInstance.GainedSpeedUps++;
-            Destroy(collision.gameObject, 0.5f);
-            Destroy(gameObject);
-        }
-
+       
 
 
 
