@@ -33,11 +33,6 @@ public class PanelHandler : MonoBehaviour
 
         InitialiseHUDTextAndButtons();
         CalculateRemainingTime();
-     //   WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
-
-
-
-      //  gameOverPanel.gameObject.SetActive(!gameOverPanel.gameObject.activeInHierarchy);
 
     }
 
@@ -90,6 +85,7 @@ public class PanelHandler : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
                 Time.timeScale = 0;
                 WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
+                
             }
         }
     }
