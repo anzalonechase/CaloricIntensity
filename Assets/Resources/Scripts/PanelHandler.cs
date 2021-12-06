@@ -265,7 +265,7 @@ public class PanelHandler : MonoBehaviour
                 if (GameController.GameInstance.itemList[i].name == "Speedups")
                 {
                     InventorySystemSpeedUpImage.enabled = true;
-                    InventorySystemSpeedUpImage.color = Color.white;
+                   // InventorySystemSpeedUpImage.color = Color.white;
                     // set image to speedups
                     InventorySystemSpeedUpImage.sprite = Soda;
                     // update the text
@@ -284,7 +284,7 @@ public class PanelHandler : MonoBehaviour
             {
                 GameController.GameInstance.itemList.RemoveAt(GameController.GameInstance.itemList.Count-1);
                 InventorySystemSpeedUpImage.sprite = null;
-                InventorySystemSpeedUpImage.color = GameController.GameInstance.HUDColor;
+                InventorySystemSpeedUpImage.enabled = false;
             }
         }
         else
@@ -299,7 +299,7 @@ public class PanelHandler : MonoBehaviour
         InventorySystemSpeedUpValue.text = "";
         GameController.GameInstance.itemList.RemoveAt(GameController.GameInstance.itemList.Count - 1);
         InventorySystemSpeedUpImage.sprite = null;
-        InventorySystemSpeedUpImage.color = GameController.GameInstance.HUDColor;
+        InventorySystemSpeedUpImage.enabled = false;
         panel.gameObject.SetActive(!panel.gameObject.activeInHierarchy);
         SceneManager.LoadScene("Scene_Chase");
 
@@ -311,7 +311,7 @@ public class PanelHandler : MonoBehaviour
         InventorySystemSpeedUpValue.text = "";
         GameController.GameInstance.itemList.RemoveAt(GameController.GameInstance.itemList.Count - 1);
         InventorySystemSpeedUpImage.sprite = null;
-        InventorySystemSpeedUpImage.color = GameController.GameInstance.HUDColor;
+        InventorySystemSpeedUpImage.enabled = false;
         SceneManager.LoadScene(sceneName);
     }
 
