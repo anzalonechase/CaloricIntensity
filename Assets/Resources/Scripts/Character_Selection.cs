@@ -24,17 +24,17 @@ public class Character_Selection : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ReseTGameContoller();
+        ReseGameContoller();
         initiliseButtons();
         initiliseCharacterNameInputField();
         initilisegameDifficultyDropDownMenu();
         initialiseSliders();
     }
-    private void ReseTGameContoller()
+    private void ReseGameContoller()
     {
         GameController.GameInstance.gameDifficulty = "Easy";
         GameController.GameInstance.gameTime = 180;
-        GameController.GameInstance.HUDColor = new Color32(0, 0, 0, 255);
+        GameController.GameInstance.HUDColor = new Color32(0, 0, 0, 225);
         GameController.GameInstance.characterName = "";
     }
     private void initialiseSliders()

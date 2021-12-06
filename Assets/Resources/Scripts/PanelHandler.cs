@@ -32,6 +32,7 @@ public class PanelHandler : MonoBehaviour
     private int minute;
     private int seconds;
     private float totalTime;
+    private bool occuring;
     [SerializeField] Sprite Soda;
 
     private bool AlreadyEnded;
@@ -55,8 +56,16 @@ public class PanelHandler : MonoBehaviour
     {
         updatePlayerName();
         Time.timeScale = 1;
+        occuring = false;
         Cursor.lockState = CursorLockMode.Locked;
-
+        if (GameController.GameInstance.itemList.Count > 2)
+        {
+            GameController.GameInstance.itemList.RemoveAt(GameController.GameInstance.itemList.Count - 1);
+        }
+        else
+        {
+            Debug.Log("Num elements " + GameController.GameInstance.itemList.Count);
+        }
         
         
         // StartCoroutine("updateFood");
@@ -139,23 +148,26 @@ public class PanelHandler : MonoBehaviour
             InventorySystem.gameObject.SetActive(!InventorySystem.gameObject.activeInHierarchy);
         }
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) && occuring == false)
         {
             if (GameController.GameInstance.GainedSpeedUps > 0)
             {
-                GameController.GameInstance.GainedSpeedUps--;   
+               
                 StartCoroutine("UseSpeedups");
-                
+
             }
-            
+
         }
     }
 
     private IEnumerator UseSpeedups()
     {
+        occuring = true;
+        GameController.GameInstance.GainedSpeedUps--;
         GameController.GameInstance.playerSpeed *= 3;
         yield return new WaitForSeconds(20f);
         GameController.GameInstance.playerSpeed /= 3;
+        occuring = false;
 
     }
 
@@ -193,7 +205,7 @@ public class PanelHandler : MonoBehaviour
             gameOverReplayBtn = gameOverPanel.transform.Find("Replay").GetComponent<Button>();
             gameOverReplayBtn.onClick.AddListener(delegate { replayTheGame(gameOverPanel); });
             GameOverbackBtn = gameOverPanel.transform.Find("Back").GetComponent<Button>();
-            GameOverbackBtn.onClick.AddListener(delegate { SceneManager.LoadScene("Scene_Menu"); });
+            GameOverbackBtn.onClick.AddListener(delegate { LoadSceneByName("Scene_Menu"); });
             gameOverPanel.gameObject.SetActive(!gameOverPanel.gameObject.activeInHierarchy);
         }
         
@@ -208,7 +220,7 @@ public class PanelHandler : MonoBehaviour
             WinningScreenReplayBtn = WinningScreen.transform.Find("Replay").GetComponent<Button>();
             WinningScreenReplayBtn.onClick.AddListener(delegate { replayTheGame(gameOverPanel); });
             WinningScreenBackBtn = WinningScreen.transform.Find("Back").GetComponent<Button>();
-            WinningScreenBackBtn.onClick.AddListener(delegate { SceneManager.LoadScene("Scene_Menu"); });
+            WinningScreenBackBtn.onClick.AddListener(delegate { LoadSceneByName("Scene_Menu"); });
             WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
         }
         
@@ -236,19 +248,14 @@ public class PanelHandler : MonoBehaviour
         InventorySystemImage.color = GameController.GameInstance.HUDColor;
         InventorySystemSpeedUpImage = InventorySystem.transform.Find((3).ToString()).GetComponent<Image>();
         InventorySystemSpeedUpValue = InventorySystemSpeedUpImage.transform.Find((3+"T").ToString()).GetComponent<Text>();
+        InventorySystemSpeedUpValue.text = "";
         InventorySystemSpeedUpImage.enabled = false;
         InventorySystemBurgerAmountImage = InventorySystem.transform.Find((1).ToString()).GetComponent<Image>();
         InventorySystemBurgerAmountValue = InventorySystemBurgerAmountImage.transform.Find((1 + "T").ToString()).GetComponent<Text>();
         InventorySystemHotDogAmountImage = InventorySystem.transform.Find((2).ToString()).GetComponent<Image>();
         InventorySystemHotDogAmountValue = InventorySystemHotDogAmountImage.transform.Find((2 + "T").ToString()).GetComponent<Text>();
     }
-    private void replayTheGame(GameObject panel)
-    {
-        panel.gameObject.SetActive(!panel.gameObject.activeInHierarchy);
-        SceneManager.LoadScene("Scene_Chase");
-        
-    }
-
+ 
     private void UpdateInventory()
     {
         if (GameController.GameInstance.GainedSpeedUps > 0 && GameController.GameInstance.GainedSpeedUps < 3)
@@ -258,6 +265,7 @@ public class PanelHandler : MonoBehaviour
                 if (GameController.GameInstance.itemList[i].name == "Speedups")
                 {
                     InventorySystemSpeedUpImage.enabled = true;
+                    InventorySystemSpeedUpImage.color = Color.white;
                     // set image to speedups
                     InventorySystemSpeedUpImage.sprite = Soda;
                     // update the text
@@ -269,18 +277,50 @@ public class PanelHandler : MonoBehaviour
 
         InventorySystemBurgerAmountValue.text = GameController.GameInstance.GunBurgerAmount.ToString();
         InventorySystemHotDogAmountValue.text = GameController.GameInstance.GunHotDogAmount.ToString();
-        InventorySystemSpeedUpValue.text = GameController.GameInstance.GainedSpeedUps.ToString();
+        if (GameController.GameInstance.GainedSpeedUps == 0)
+        {
+            InventorySystemSpeedUpValue.text = "";
+            if (GameController.GameInstance.itemList.Count > 2)
+            {
+                GameController.GameInstance.itemList.RemoveAt(GameController.GameInstance.itemList.Count-1);
+                InventorySystemSpeedUpImage.sprite = null;
+                InventorySystemSpeedUpImage.color = GameController.GameInstance.HUDColor;
+            }
+        }
+        else
+        {
+            InventorySystemSpeedUpValue.text = GameController.GameInstance.GainedSpeedUps.ToString();
+        }
+        
     }
-    public void LoadSceneByNumber(int sceneNumber)
+    private void replayTheGame(GameObject panel)
     {
+        GameController.GameInstance.GainedSpeedUps = 0;
+        InventorySystemSpeedUpValue.text = "";
+        GameController.GameInstance.itemList.RemoveAt(GameController.GameInstance.itemList.Count - 1);
+        InventorySystemSpeedUpImage.sprite = null;
+        InventorySystemSpeedUpImage.color = GameController.GameInstance.HUDColor;
+        panel.gameObject.SetActive(!panel.gameObject.activeInHierarchy);
+        SceneManager.LoadScene("Scene_Chase");
 
-        SceneManager.LoadScene(sceneNumber);
+    }
+
+    public void LoadSceneByName(string sceneName)
+    {
+        GameController.GameInstance.GainedSpeedUps=0;
+        InventorySystemSpeedUpValue.text = "";
+        GameController.GameInstance.itemList.RemoveAt(GameController.GameInstance.itemList.Count - 1);
+        InventorySystemSpeedUpImage.sprite = null;
+        InventorySystemSpeedUpImage.color = GameController.GameInstance.HUDColor;
+        SceneManager.LoadScene(sceneName);
     }
 
     private void startNewGameFunctionality()
     {
         if (GameController.GameInstance.numberOfCustomers == 0)
         {
+            GameController.GameInstance.playerSpeed = 10f;
+            GameController.GameInstance.GainedSpeedUps = 0;
             GameController.GameInstance.GunHotDogAmount = 12;
             GameController.GameInstance.GunBurgerAmount = 12;
             GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 180 :
@@ -291,6 +331,8 @@ public class PanelHandler : MonoBehaviour
 
         if (GameController.GameInstance.gameTime <= 0)
         {
+            GameController.GameInstance.playerSpeed = 10f;
+            GameController.GameInstance.GainedSpeedUps = 0;
             GameController.GameInstance.GunHotDogAmount = 12;
             GameController.GameInstance.GunBurgerAmount = 12;
             GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 180 :

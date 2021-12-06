@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour
             GameInstance = this;
             GameInstance.characterName = "";
             GameInstance.gameDifficulty = "Easy";
-            GameInstance.HUDColor = new Color32(redColor, blueColor, 0, 255);
+            GameInstance.HUDColor = new Color32(redColor, blueColor, greenColor, 225);
             GameInstance.gameTime = 180;
             GameInstance.numberOfCustomers = 1;
             GameInstance.created = false;
