@@ -75,21 +75,7 @@ public class PanelHandler : MonoBehaviour
     void Update()
     {
 
-        if (GameController.GameInstance.GainedSpeedUps > 0 && GameController.GameInstance.GainedSpeedUps <3)
-        {
-            for (int i=0; i < GameController.GameInstance.itemList.Count; i++)
-            {
-                if (GameController.GameInstance.itemList[i].name == "Speedups")
-                {
-                    InventorySystemSpeedUpImage.enabled = true;
-                    // set image to speedups
-                    InventorySystemSpeedUpImage.sprite = Soda;
-                    // update the text
-                    InventorySystemSpeedUpValue.text = (GameController.GameInstance.itemList[i].count).ToString();
-                }
-            }
-        }
-        BurgerHotDogAmount();
+        UpdateInventory();
         UpdateCustomer();
         GameWinnerFunctionality();
         GameOverConditionAndTimeFuctionality();
@@ -152,7 +138,27 @@ public class PanelHandler : MonoBehaviour
         {
             InventorySystem.gameObject.SetActive(!InventorySystem.gameObject.activeInHierarchy);
         }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            if (GameController.GameInstance.GainedSpeedUps > 0)
+            {
+                GameController.GameInstance.GainedSpeedUps--;   
+                StartCoroutine("UseSpeedups");
+                
+            }
+            
+        }
     }
+
+    private IEnumerator UseSpeedups()
+    {
+        GameController.GameInstance.playerSpeed *= 3;
+        yield return new WaitForSeconds(20f);
+        GameController.GameInstance.playerSpeed /= 3;
+
+    }
+
 
     /**
      * Updates Time on the HUD
@@ -243,12 +249,27 @@ public class PanelHandler : MonoBehaviour
         
     }
 
-    private void BurgerHotDogAmount()
+    private void UpdateInventory()
     {
+        if (GameController.GameInstance.GainedSpeedUps > 0 && GameController.GameInstance.GainedSpeedUps < 3)
+        {
+            for (int i = 0; i < GameController.GameInstance.itemList.Count; i++)
+            {
+                if (GameController.GameInstance.itemList[i].name == "Speedups")
+                {
+                    InventorySystemSpeedUpImage.enabled = true;
+                    // set image to speedups
+                    InventorySystemSpeedUpImage.sprite = Soda;
+                    // update the text
+                    InventorySystemSpeedUpValue.text = (GameController.GameInstance.itemList[i].count).ToString();
+                }
+
+            }
+        }
 
         InventorySystemBurgerAmountValue.text = GameController.GameInstance.GunBurgerAmount.ToString();
         InventorySystemHotDogAmountValue.text = GameController.GameInstance.GunHotDogAmount.ToString();
-
+        InventorySystemSpeedUpValue.text = GameController.GameInstance.GainedSpeedUps.ToString();
     }
     public void LoadSceneByNumber(int sceneNumber)
     {

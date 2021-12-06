@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
     public bool wonTheGame;
     public int GunBurgerAmount;
     public int GunHotDogAmount;
-
+    public float playerSpeed;
 
     private void Awake()
     {
@@ -38,6 +38,7 @@ public class GameController : MonoBehaviour
             GameInstance.GainedSpeedUps = 0;
             GameInstance.GunBurgerAmount = 12;
             GameInstance.GunHotDogAmount = 12;
+            GameInstance.playerSpeed = 10f;
             DontDestroyOnLoad(gameObject);
         }
 
