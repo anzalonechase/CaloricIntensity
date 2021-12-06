@@ -17,6 +17,7 @@ public class Character_Selection : MonoBehaviour
     private Slider blueSlider;
     private Slider greenSlider;
     private Image characterColor;
+    private GameObject colors;
 
 
 
@@ -24,22 +25,28 @@ public class Character_Selection : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ReseGameContoller();
+        
         initiliseButtons();
         initiliseCharacterNameInputField();
         initilisegameDifficultyDropDownMenu();
         initialiseSliders();
+        ReseGameContoller();
     }
     private void ReseGameContoller()
     {
         GameController.GameInstance.gameDifficulty = "Easy";
         GameController.GameInstance.gameTime = 180;
-        GameController.GameInstance.HUDColor = new Color32(0, 0, 0, 225);
+        GameController.GameInstance.HUDColor = new Color32(0, 0, 0, 255);
+        GameController.GameInstance.redColor = 0;
+        GameController.GameInstance.blueColor = 0;
+        GameController.GameInstance.greenColor = 0;
+        GameController.GameInstance.GainedSpeedUps = 0;
         GameController.GameInstance.characterName = "";
+        characterColor.color = new Color32(0, 0, 0, 255);
     }
     private void initialiseSliders()
     {
-        GameObject colors = GameObject.Find("CharacterColor").gameObject;
+        colors = GameObject.Find("CharacterColor").gameObject;
         redSlider = colors.transform.Find("RedColor").GetComponent<Slider>();
         greenSlider = colors.transform.Find("GreenColor").GetComponent<Slider>();
         blueSlider = colors.transform.Find("BlueColor").GetComponent<Slider>();
@@ -75,7 +82,8 @@ public class Character_Selection : MonoBehaviour
     {
         GameController.GameInstance.HUDColor = new Color32(GameController.GameInstance.redColor,
         GameController.GameInstance.greenColor, GameController.GameInstance.blueColor, 255);
-        characterColor.color = GameController.GameInstance.HUDColor;
+        characterColor.color = new Color32(GameController.GameInstance.redColor,
+        GameController.GameInstance.greenColor, GameController.GameInstance.blueColor, 255);
     }
 
 

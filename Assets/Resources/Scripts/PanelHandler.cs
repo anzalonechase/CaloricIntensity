@@ -67,9 +67,7 @@ public class PanelHandler : MonoBehaviour
             Debug.Log("Num elements " + GameController.GameInstance.itemList.Count);
         }
         
-        
-        // StartCoroutine("updateFood");
-        
+               
 
     }
 
@@ -245,7 +243,7 @@ public class PanelHandler : MonoBehaviour
     {
         InventorySystem = GameObject.Find("GameInventoryPanel").gameObject;
         InventorySystemImage = InventorySystem.transform.GetComponent<Image>();
-        InventorySystemImage.color = GameController.GameInstance.HUDColor;
+        InventorySystemImage.color = new Color32(GameController.GameInstance.redColor, GameController.GameInstance.greenColor, GameController.GameInstance.blueColor, 255);
         InventorySystemSpeedUpImage = InventorySystem.transform.Find((3).ToString()).GetComponent<Image>();
         InventorySystemSpeedUpValue = InventorySystemSpeedUpImage.transform.Find((3+"T").ToString()).GetComponent<Text>();
         InventorySystemSpeedUpValue.text = "";
@@ -277,13 +275,14 @@ public class PanelHandler : MonoBehaviour
 
         InventorySystemBurgerAmountValue.text = GameController.GameInstance.GunBurgerAmount.ToString();
         InventorySystemHotDogAmountValue.text = GameController.GameInstance.GunHotDogAmount.ToString();
-        if (GameController.GameInstance.GainedSpeedUps == 0)
+        if (GameController.GameInstance.GainedSpeedUps <= 0)
         {
             InventorySystemSpeedUpValue.text = "";
+            GameController.GameInstance.GainedSpeedUps = 0;
             if (GameController.GameInstance.itemList.Count > 2)
             {
                 GameController.GameInstance.itemList.RemoveAt(GameController.GameInstance.itemList.Count-1);
-                InventorySystemSpeedUpImage.sprite = null;
+                //InventorySystemSpeedUpImage.sprite = null;
                 InventorySystemSpeedUpImage.enabled = false;
             }
         }
@@ -317,10 +316,11 @@ public class PanelHandler : MonoBehaviour
 
     private void startNewGameFunctionality()
     {
+        GameController.GameInstance.GainedSpeedUps = 0;
         if (GameController.GameInstance.numberOfCustomers == 0)
         {
             GameController.GameInstance.playerSpeed = 10f;
-            GameController.GameInstance.GainedSpeedUps = 0;
+            
             GameController.GameInstance.GunHotDogAmount = 12;
             GameController.GameInstance.GunBurgerAmount = 12;
             GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 180 :
@@ -332,7 +332,7 @@ public class PanelHandler : MonoBehaviour
         if (GameController.GameInstance.gameTime <= 0)
         {
             GameController.GameInstance.playerSpeed = 10f;
-            GameController.GameInstance.GainedSpeedUps = 0;
+           
             GameController.GameInstance.GunHotDogAmount = 12;
             GameController.GameInstance.GunBurgerAmount = 12;
             GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 180 :
