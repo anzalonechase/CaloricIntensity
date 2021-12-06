@@ -146,9 +146,10 @@ public class PanelHandler : MonoBehaviour
             InventorySystem.gameObject.SetActive(!InventorySystem.gameObject.activeInHierarchy);
         }
 
-        if (Input.GetKeyDown(KeyCode.C) && occuring == false)
+        if (Input.GetKeyDown(KeyCode.C))
         {
-            if (GameController.GameInstance.GainedSpeedUps > 0)
+            GameController.GameInstance.GainedSpeedUps--;
+            if (GameController.GameInstance.GainedSpeedUps > -1 && occuring == false)
             {
                
                 StartCoroutine("UseSpeedups");
@@ -160,8 +161,9 @@ public class PanelHandler : MonoBehaviour
 
     private IEnumerator UseSpeedups()
     {
+        
+        
         occuring = true;
-        GameController.GameInstance.GainedSpeedUps--;
         GameController.GameInstance.playerSpeed *= 3;
         yield return new WaitForSeconds(20f);
         GameController.GameInstance.playerSpeed /= 3;
@@ -316,11 +318,11 @@ public class PanelHandler : MonoBehaviour
 
     private void startNewGameFunctionality()
     {
-        GameController.GameInstance.GainedSpeedUps = 0;
-        if (GameController.GameInstance.numberOfCustomers == 0)
+        
+        if (GameController.GameInstance.numberOfCustomers <= 0)
         {
             GameController.GameInstance.playerSpeed = 10f;
-            
+            GameController.GameInstance.GainedSpeedUps = 0;
             GameController.GameInstance.GunHotDogAmount = 12;
             GameController.GameInstance.GunBurgerAmount = 12;
             GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 180 :
@@ -331,6 +333,7 @@ public class PanelHandler : MonoBehaviour
 
         if (GameController.GameInstance.gameTime <= 0)
         {
+            GameController.GameInstance.GainedSpeedUps = 0;
             GameController.GameInstance.playerSpeed = 10f;
            
             GameController.GameInstance.GunHotDogAmount = 12;
