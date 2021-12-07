@@ -154,7 +154,7 @@ public class PanelHandler : MonoBehaviour
     private void updateTopScorere()
     {
         int playerScored = (100 * (int)totalTime);
-        score.text = "Player Score: " + playerScored.ToString();
+        score.text = "Score: " + playerScored.ToString();
         if (GameController.GameInstance.gameDifficulty == "Easy")
         {
             if (playerScored > GameController.GameInstance.HighestScore[0])
