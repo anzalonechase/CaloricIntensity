@@ -11,19 +11,14 @@ public class MusicController : MonoBehaviour
     private Button buttonMute;
     private Text muteButtonText;
     private GlobalControl globalController;
-    private Dropdown musicDropdown;
     public AudioClip Track1;
-    public AudioClip Track2; 
 
     void Start () {
         audioSource = GameObject.Find("GameManager").GetComponent<AudioSource>();
         buttonMute = GameObject.Find("MuteButton").GetComponent<Button>();
         muteButtonText = GameObject.Find("MuteText").GetComponent<Text>();
-        globalController = GameObject.Find("GameManager").GetComponent<GlobalControl>();
-        musicDropdown = GameObject.Find("MusicTracks").GetComponent<Dropdown>();
+        globalController = GameObject.Find("GameManager").GetComponent<GlobalControl>(); 
         buttonMute.onClick.AddListener( () => {ChangeMusicState(); }  );
-        musicDropdown.onValueChanged.AddListener(delegate {
-            changeMusicTrack();});
     }
     
     void ChangeMusicState() {
@@ -34,16 +29,5 @@ public class MusicController : MonoBehaviour
         }
         globalController.musicState = !globalController.musicState;
         audioSource.mute = !audioSource.mute;
-    }
-
-    public void changeMusicTrack() {
-        globalController.musicTrack = musicDropdown.value;
-        if (globalController.musicTrack == 0) {
-            audioSource.clip = Track1;
-            audioSource.Play();
-        } else {
-            audioSource.clip = Track2;
-            audioSource.Play();
-        }
     }
 }
