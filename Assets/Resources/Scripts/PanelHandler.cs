@@ -325,24 +325,43 @@ public class PanelHandler : MonoBehaviour
             GameController.GameInstance.GainedSpeedUps = 0;
             GameController.GameInstance.GunHotDogAmount = 12;
             GameController.GameInstance.GunBurgerAmount = 12;
-            GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 180 :
-            GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 30;
+
+
+            if (GameController.GameInstance.gameDifficulty == "Easy") { GameController.GameInstance.gameTime = 180; GameController.GameInstance.numberOfCustomers = 8; }
+            if (GameController.GameInstance.gameDifficulty == "Medium") { GameController.GameInstance.gameTime = 150; GameController.GameInstance.numberOfCustomers = 10; }
+            if (GameController.GameInstance.gameDifficulty == "Hard") { GameController.GameInstance.gameTime = 120; GameController.GameInstance.numberOfCustomers = 12; }
+
+            //GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 180 :
+            //GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 30;
+
+
             AlreadyEnded = false;
-            GameController.GameInstance.numberOfCustomers = 1;
+
+
+            //GameController.GameInstance.numberOfCustomers = GameController.GameInstance.gameDifficulty == "Easy" ? 8 :
+            //GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 10;
         }
 
         if (GameController.GameInstance.gameTime <= 0)
         {
             GameController.GameInstance.GainedSpeedUps = 0;
             GameController.GameInstance.playerSpeed = 10f;
-           
             GameController.GameInstance.GunHotDogAmount = 12;
             GameController.GameInstance.GunBurgerAmount = 12;
-            GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 180 :
-            GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 30;
+
+            if (GameController.GameInstance.gameDifficulty == "Easy") { GameController.GameInstance.gameTime = 180; GameController.GameInstance.numberOfCustomers = 8; }
+            if (GameController.GameInstance.gameDifficulty == "Medium") { GameController.GameInstance.gameTime = 150; GameController.GameInstance.numberOfCustomers = 10; }
+            if (GameController.GameInstance.gameDifficulty == "Hard") { GameController.GameInstance.gameTime = 120; GameController.GameInstance.numberOfCustomers = 12; }
+
+
+
+            //GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 180 :
+            //GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 30;
+
+
             AlreadyEnded = false;
 
-            GameController.GameInstance.numberOfCustomers = 1;
+            //GameController.GameInstance.numberOfCustomers = 1;
             totalTime = GameController.GameInstance.gameTime;
         }
     }
