@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
     public bool wonTheGame;
     public int GunBurgerAmount;
     public int GunHotDogAmount;
+    public int HighestScore;
     public float playerSpeed;
 
     private void Awake()
@@ -39,6 +40,7 @@ public class GameController : MonoBehaviour
             GameInstance.GunBurgerAmount = 12;
             GameInstance.GunHotDogAmount = 12;
             GameInstance.playerSpeed = 10f;
+            GameInstance.HighestScore = 0;
             DontDestroyOnLoad(gameObject);
         }
 
