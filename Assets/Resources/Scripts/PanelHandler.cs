@@ -138,13 +138,16 @@ public class PanelHandler : MonoBehaviour
             {
                 AlreadyEnded = true;
                 Cursor.lockState = CursorLockMode.None;
-                score.text = (100 * (int)totalTime).ToString();
+
+                //updateTopScorere();
                 Time.timeScale = 0;
                 WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
                 
             }
         }
     }
+
+    
     private void GameOverConditionAndTimeFuctionality()
     {
         if (GameController.GameInstance.gameTime >= 0)
