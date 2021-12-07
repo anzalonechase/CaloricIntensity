@@ -45,7 +45,7 @@ public class PanelHandler : MonoBehaviour
     private GameObject gameInformation;              // refrences the canvas to display the game information
     private bool informationActive;               // boolean to know how the user is toggling the panel
 
-
+    private AudioSource onDrink;  //referneces drinking audio source FOUND IN EMPTY OBJECT UNDER CAMERA < AIM CONTROLLER 
 
 
     private void Awake()
@@ -79,7 +79,7 @@ public class PanelHandler : MonoBehaviour
         }
 
 
-
+        onDrink = GameObject.Find("OnDrink_Audio").GetComponent<AudioSource>();  //referneces audio clip with ondrink effect
 
         gameInformation = GameObject.Find("Canvas_Information"); // Get reference to the canvas gameobject
         informationActive = false;                        // Ste boolean to false because initially we dont want it shwoing
@@ -110,8 +110,9 @@ public class PanelHandler : MonoBehaviour
         
         if (Input.GetKeyDown("i"))                             // Displays the information panel to the player if 'i' is pressed, if pressed again it will take it down
         {
+            
             gameInformation.SetActive(!informationActive);            // Makes the panel appear and disappear according to the last toggle.
-            informationActive = !informationActive;        // Changes the true adn false according to the last toggle. This way it ensures that it will be taken down and up 
+            informationActive = !informationActive;        // Changes the true and false according to the last toggle. This way it ensures that it will be taken down and up 
         }                                                  // as user pleases
 
 
@@ -119,19 +120,6 @@ public class PanelHandler : MonoBehaviour
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -198,9 +186,11 @@ public class PanelHandler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             GameController.GameInstance.GainedSpeedUps--;
+            
             if (GameController.GameInstance.GainedSpeedUps > -1 && occuring == false)
             {
-               
+                onDrink.Play();
+              
                 StartCoroutine("UseSpeedups");
 
             }
