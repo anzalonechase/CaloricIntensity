@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
     public bool wonTheGame;
     public int GunBurgerAmount;
     public int GunHotDogAmount;
-
+    public float playerSpeed;
 
     private void Awake()
     {
@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour
             GameInstance = this;
             GameInstance.characterName = "";
             GameInstance.gameDifficulty = "Easy";
-            GameInstance.HUDColor = new Color32(redColor, blueColor, 0, 255);
+            GameInstance.HUDColor = new Color32(0, 0, 0, 255);
             GameInstance.gameTime = 180;
             GameInstance.numberOfCustomers = 1;
             GameInstance.created = false;
@@ -38,6 +38,7 @@ public class GameController : MonoBehaviour
             GameInstance.GainedSpeedUps = 0;
             GameInstance.GunBurgerAmount = 12;
             GameInstance.GunHotDogAmount = 12;
+            GameInstance.playerSpeed = 10f;
             DontDestroyOnLoad(gameObject);
         }
 
