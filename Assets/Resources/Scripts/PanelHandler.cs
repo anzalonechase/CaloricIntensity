@@ -242,9 +242,9 @@ public class PanelHandler : MonoBehaviour
         
         
         occuring = true;
-        GameController.GameInstance.playerSpeed *= 3;
-        yield return new WaitForSeconds(20f);
-        GameController.GameInstance.playerSpeed /= 3;
+        GameController.GameInstance.playerSpeed *= 2;
+        yield return new WaitForSeconds(15f);
+        GameController.GameInstance.playerSpeed /= 2;
         occuring = false;
 
     }
@@ -401,9 +401,9 @@ public class PanelHandler : MonoBehaviour
             GameController.GameInstance.playerSpeed = 10f;
             GameController.GameInstance.GainedSpeedUps = 0;
 
-            if (GameController.GameInstance.gameDifficulty == "Easy") { GameController.GameInstance.gameTime = 180; GameController.GameInstance.numberOfCustomers = 8; }
-            if (GameController.GameInstance.gameDifficulty == "Medium") { GameController.GameInstance.gameTime = 150; GameController.GameInstance.numberOfCustomers = 10; }
-            if (GameController.GameInstance.gameDifficulty == "Hard") { GameController.GameInstance.gameTime = 120; GameController.GameInstance.numberOfCustomers = 12; }
+            if (GameController.GameInstance.gameDifficulty == "Easy") { GameController.GameInstance.gameTime = 240; GameController.GameInstance.numberOfCustomers = 8; }
+            if (GameController.GameInstance.gameDifficulty == "Medium") { GameController.GameInstance.gameTime = 210; GameController.GameInstance.numberOfCustomers = 10; }
+            if (GameController.GameInstance.gameDifficulty == "Hard") { GameController.GameInstance.gameTime = 180; GameController.GameInstance.numberOfCustomers = 12; }
 
 
 
@@ -417,9 +417,9 @@ public class PanelHandler : MonoBehaviour
             GameController.GameInstance.GainedSpeedUps = 0;
             GameController.GameInstance.playerSpeed = 10f;
 
-            if (GameController.GameInstance.gameDifficulty == "Easy") { GameController.GameInstance.gameTime = 180; GameController.GameInstance.numberOfCustomers = 8; }
-            if (GameController.GameInstance.gameDifficulty == "Medium") { GameController.GameInstance.gameTime = 150; GameController.GameInstance.numberOfCustomers = 10; }
-            if (GameController.GameInstance.gameDifficulty == "Hard") { GameController.GameInstance.gameTime = 120; GameController.GameInstance.numberOfCustomers = 12; }
+            if (GameController.GameInstance.gameDifficulty == "Easy") { GameController.GameInstance.gameTime = 240; GameController.GameInstance.numberOfCustomers = 8; }
+            if (GameController.GameInstance.gameDifficulty == "Medium") { GameController.GameInstance.gameTime = 210; GameController.GameInstance.numberOfCustomers = 10; }
+            if (GameController.GameInstance.gameDifficulty == "Hard") { GameController.GameInstance.gameTime = 180; GameController.GameInstance.numberOfCustomers = 12; }
 
 
             AlreadyEnded = false;
