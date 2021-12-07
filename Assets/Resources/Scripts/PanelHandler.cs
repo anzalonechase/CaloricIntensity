@@ -67,14 +67,24 @@ public class PanelHandler : MonoBehaviour
     void Start()
     {
         updatePlayerName();
+        gameReset();
+
+    }
+
+    
+
+    private void gameReset() {
         Time.timeScale = 1;
         occuring = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        GameController.GameInstance.GainedSpeedUps = 0;
+        GameController.GameInstance.playerSpeed = 10f;
         if (GameController.GameInstance.itemList.Count > 2)
         {
             GameController.GameInstance.itemList.RemoveAt(GameController.GameInstance.itemList.Count - 1);
         }
-        
+
 
         onDrink = GameObject.Find("OnDrink_Audio").GetComponent<AudioSource>();  //referneces audio clip with ondrink effect
 
@@ -82,14 +92,7 @@ public class PanelHandler : MonoBehaviour
         informationActive = false;                        // Ste boolean to false because initially we dont want it shwoing
 
         gameInformation.SetActive(informationActive);         // Sets canvas to not visible
-       
-
-
     }
-
-    
-
-    
 
     // Update is called once per frame
     void Update()
