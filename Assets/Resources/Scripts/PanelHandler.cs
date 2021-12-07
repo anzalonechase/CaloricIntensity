@@ -68,12 +68,10 @@ public class PanelHandler : MonoBehaviour
     {
         updatePlayerName();
         gameReset();
-
     }
 
-    
-
-    private void gameReset() {
+    private void gameReset()
+    {
         Time.timeScale = 1;
         occuring = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -93,6 +91,10 @@ public class PanelHandler : MonoBehaviour
 
         gameInformation.SetActive(informationActive);         // Sets canvas to not visible
     }
+
+
+
+
 
     // Update is called once per frame
     void Update()
