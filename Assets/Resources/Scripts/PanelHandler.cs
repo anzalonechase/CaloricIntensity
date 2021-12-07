@@ -33,6 +33,7 @@ public class PanelHandler : MonoBehaviour
     private int seconds;
     private float totalTime;
     private bool occuring;
+    private Text score;
     [SerializeField] Sprite Soda;
 
     private bool AlreadyEnded;
@@ -73,9 +74,6 @@ public class PanelHandler : MonoBehaviour
 
     
 
-    /**
-     * Shows player name on the screen
-     */
     
 
     // Update is called once per frame
@@ -89,6 +87,9 @@ public class PanelHandler : MonoBehaviour
         OpenCloseHudeAndInventorySystem();
     }
 
+    /**
+     * Shows player name on the screen
+     */
     private void updatePlayerName()
     {
         if (GameController.GameInstance.characterName != null)
@@ -105,6 +106,7 @@ public class PanelHandler : MonoBehaviour
             {
                 AlreadyEnded = true;
                 Cursor.lockState = CursorLockMode.None;
+                score.text = (100 * (int)totalTime).ToString();
                 Time.timeScale = 0;
                 WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
                 
@@ -152,14 +154,18 @@ public class PanelHandler : MonoBehaviour
             if (GameController.GameInstance.GainedSpeedUps > -1 && occuring == false)
             {
                
-                StartCoroutine("UseSpeedups");
+                StartCoroutine("speedupEffects");
 
             }
 
         }
     }
 
-    private IEnumerator UseSpeedups()
+    /*
+     * Handels the speedup soda effect functionality
+     * Gives 3x speed to player for 20 seconds
+     */
+    private IEnumerator speedupEffects()
     {
         
         
@@ -217,6 +223,7 @@ public class PanelHandler : MonoBehaviour
         if(WinningScreen == null)
         {
             WinningScreen = GameObject.Find("WonPanel").gameObject;
+            score = WinningScreen.transform.Find("Score").GetComponent<Text>();
             WinningScreenReplayBtn = WinningScreen.transform.Find("Replay").GetComponent<Button>();
             WinningScreenReplayBtn.onClick.AddListener(delegate { replayTheGame(gameOverPanel); });
             WinningScreenBackBtn = WinningScreen.transform.Find("Back").GetComponent<Button>();
@@ -265,7 +272,6 @@ public class PanelHandler : MonoBehaviour
                 if (GameController.GameInstance.itemList[i].name == "Speedups")
                 {
                     InventorySystemSpeedUpImage.enabled = true;
-                   // InventorySystemSpeedUpImage.color = Color.white;
                     // set image to speedups
                     InventorySystemSpeedUpImage.sprite = Soda;
                     // update the text
@@ -284,7 +290,6 @@ public class PanelHandler : MonoBehaviour
             if (GameController.GameInstance.itemList.Count > 2)
             {
                 GameController.GameInstance.itemList.RemoveAt(GameController.GameInstance.itemList.Count-1);
-                //InventorySystemSpeedUpImage.sprite = null;
                 InventorySystemSpeedUpImage.enabled = false;
             }
         }
