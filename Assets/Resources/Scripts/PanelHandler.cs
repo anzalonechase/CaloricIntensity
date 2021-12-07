@@ -38,7 +38,15 @@ public class PanelHandler : MonoBehaviour
     private bool AlreadyEnded;
     // Start is called before the first frame update
 
-    private GameObject gameInformation;              // To display the game information
+
+
+
+
+    private GameObject gameInformation;              // refrences the canvas to display the game information
+    private bool informationActive;               // boolean to know how the user is toggling the panel
+
+
+
 
     private void Awake()
     {
@@ -72,7 +80,12 @@ public class PanelHandler : MonoBehaviour
 
 
 
-        gameInformation = GameObject.Find("Canvas_Information");       // gives gameInformation a reference to the canvas i want
+
+        gameInformation = GameObject.Find("Canvas_Information"); // Get reference to the canvas gameobject
+        informationActive = false;                        // Ste boolean to false because initially we dont want it shwoing
+
+        gameInformation.SetActive(informationActive);         // Sets canvas to not visible
+       
 
 
     }
@@ -94,11 +107,12 @@ public class PanelHandler : MonoBehaviour
         GameOverConditionAndTimeFuctionality();
         OpenCloseHudeAndInventorySystem();
 
-        // Displays the information panel to the player while 'i' is held down
-        while (Input.GetKeyDown("i"))
+        
+        if (Input.GetKeyDown("i"))                             // Displays the information panel to the player if 'i' is pressed, if pressed again it will take it down
         {
-            gameInformation.SetActive(false);
-        }
+            gameInformation.SetActive(!informationActive);            // Makes the panel appear and disappear according to the last toggle.
+            informationActive = !informationActive;        // Changes the true adn false according to the last toggle. This way it ensures that it will be taken down and up 
+        }                                                  // as user pleases
 
 
 
