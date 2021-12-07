@@ -38,6 +38,17 @@ public class PanelHandler : MonoBehaviour
 
     private bool AlreadyEnded;
     // Start is called before the first frame update
+
+
+
+
+
+    private GameObject gameInformation;              // refrences the canvas to display the game information
+    private bool informationActive;               // boolean to know how the user is toggling the panel
+
+    private AudioSource onDrink;  //referneces drinking audio source FOUND IN EMPTY OBJECT UNDER CAMERA < AIM CONTROLLER 
+
+
     private void Awake()
     {
         startNewGameFunctionality();
@@ -67,8 +78,16 @@ public class PanelHandler : MonoBehaviour
         {
             Debug.Log("Num elements " + GameController.GameInstance.itemList.Count);
         }
-        
-               
+
+
+        onDrink = GameObject.Find("OnDrink_Audio").GetComponent<AudioSource>();  //referneces audio clip with ondrink effect
+
+        gameInformation = GameObject.Find("Canvas_Information"); // Get reference to the canvas gameobject
+        informationActive = false;                        // Ste boolean to false because initially we dont want it shwoing
+
+        gameInformation.SetActive(informationActive);         // Sets canvas to not visible
+       
+
 
     }
 
@@ -85,6 +104,19 @@ public class PanelHandler : MonoBehaviour
         GameWinnerFunctionality();
         GameOverConditionAndTimeFuctionality();
         OpenCloseHudeAndInventorySystem();
+
+        
+        if (Input.GetKeyDown("i"))                             // Displays the information panel to the player if 'i' is pressed, if pressed again it will take it down
+        {
+            
+            gameInformation.SetActive(!informationActive);            // Makes the panel appear and disappear according to the last toggle.
+            informationActive = !informationActive;        // Changes the true and false according to the last toggle. This way it ensures that it will be taken down and up 
+        }                                                  // as user pleases
+
+
+
+
+
     }
 
     /**
@@ -151,9 +183,12 @@ public class PanelHandler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             GameController.GameInstance.GainedSpeedUps--;
+            
             if (GameController.GameInstance.GainedSpeedUps > -1 && occuring == false)
             {
-               
+
+                onDrink.Play();
+              
                 StartCoroutine("speedupEffects");
 
             }
@@ -165,8 +200,7 @@ public class PanelHandler : MonoBehaviour
      * Handels the speedup soda effect functionality
      * Gives 3x speed to player for 20 seconds
      */
-    private IEnumerator speedupEffects()
-    {
+    private IEnumerator speedupEffects(){
         
         
         occuring = true;
@@ -330,24 +364,33 @@ public class PanelHandler : MonoBehaviour
             GameController.GameInstance.GainedSpeedUps = 0;
             GameController.GameInstance.GunHotDogAmount = 12;
             GameController.GameInstance.GunBurgerAmount = 12;
-            GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 180 :
-            GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 30;
+
+
+            if (GameController.GameInstance.gameDifficulty == "Easy") { GameController.GameInstance.gameTime = 180; GameController.GameInstance.numberOfCustomers = 8; }
+            if (GameController.GameInstance.gameDifficulty == "Medium") { GameController.GameInstance.gameTime = 150; GameController.GameInstance.numberOfCustomers = 10; }
+            if (GameController.GameInstance.gameDifficulty == "Hard") { GameController.GameInstance.gameTime = 120; GameController.GameInstance.numberOfCustomers = 12; }
+
+
+
             AlreadyEnded = false;
-            GameController.GameInstance.numberOfCustomers = 1;
+
+
         }
 
         if (GameController.GameInstance.gameTime <= 0)
         {
             GameController.GameInstance.GainedSpeedUps = 0;
             GameController.GameInstance.playerSpeed = 10f;
-           
             GameController.GameInstance.GunHotDogAmount = 12;
             GameController.GameInstance.GunBurgerAmount = 12;
-            GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 180 :
-            GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 30;
+
+            if (GameController.GameInstance.gameDifficulty == "Easy") { GameController.GameInstance.gameTime = 180; GameController.GameInstance.numberOfCustomers = 8; }
+            if (GameController.GameInstance.gameDifficulty == "Medium") { GameController.GameInstance.gameTime = 150; GameController.GameInstance.numberOfCustomers = 10; }
+            if (GameController.GameInstance.gameDifficulty == "Hard") { GameController.GameInstance.gameTime = 120; GameController.GameInstance.numberOfCustomers = 12; }
+
+
             AlreadyEnded = false;
 
-            GameController.GameInstance.numberOfCustomers = 1;
             totalTime = GameController.GameInstance.gameTime;
         }
     }

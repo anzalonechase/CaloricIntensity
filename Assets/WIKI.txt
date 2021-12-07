@@ -1,0 +1,52 @@
+Controls:
+There is player movement
+
+-Using 'a', 's', 'd', 'w' to move around in the map
+-Jump: Spacebar
+-Shoot: Left mouse click for left blaster
+-shoot: right mouse clock for right blaster
+-Aim: "mouse"
+-Game Information: Press 'i' for game relevant information
+-Speed boost: Press 'c' to use speed boost once it has been collected
+
+
+
+Player:
+-Player has a standard speed that will increase once boost is actiavted
+-Player's blaster range is static throughtout the game
+-Player is only able to jump while it is on the ground
+
+
+NPCs:
+-There are 12 spread out in the map
+-They are conducting some type of movement, some stay in th same place
+-They will display an "order" of food above their heads that player must fullfill
+-NPCs do not attack or hurt player
+
+
+Boosts:
+-As mentioned, when the player has collceted the "sodas" that are spread in the map they can use them for a temporary speed boost. Only last a couple of seconds
+
+
+HUD display:
+-Displays number of customers that still need ot be satisfied
+-Displays the players current ammo (Inventory Ssystem)
+-Displays the time left before failure 
+
+
+Character Create:
+-Name 
+-Color (This will set HUD a certain color)
+-Difficulty level (This will adjust the time the player has and how many customer orders they must fullfill)
+
+
+Objective:
+The objective of the game is to satisfy all of the orders the player is required to satify before the time runs out. The orders the NPCs display are random, if not carefull the player might waste ammo and will be forced to run back to the "shop" to reload ammo which will cost them time. The order must be completed before time runs out.
+
+Instructions:
+The player will spawn in fornt of the shop the character works at. They must run around the map looking for the customers and their orders. They will then have to shoot their blaster to satisfy their orders. Beware that missing the customer will simply result in a waste of ammo that might become a massive mistake. The difficulty level dictates the time the player has to ocmplete the obejctive and how many orders they must fullfill.
+
+Easy: 3 minutes (180 seconds), 8 customers  
+Medium: 2.5 minutes (150 seconds), 10 customers  
+Easy: 2 minutes (120 seconds), 12 customers  
+

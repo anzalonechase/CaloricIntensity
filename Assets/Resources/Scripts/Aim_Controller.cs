@@ -18,13 +18,18 @@ public class Aim_Controller : MonoBehaviour
 
     Player_Controller playerScript;   //Refrence the player script to get the ammo number
 
+    public AudioSource burgerBlaster;  // references the audio source for burger balaster
+    public AudioSource hotdogBlaster;  // references the audio source for hotdog blaster
 
     void Start()
     {
         force = 1000f;
 
         playerScript = GameObject.Find("Player").GetComponent<Player_Controller>();     // gets reference to player script to access ammo count
-         
+
+        burgerBlaster = GameObject.Find("BurgerBlaster").GetComponent<AudioSource>();   // references the audio source in burger blaster
+        hotdogBlaster = GameObject.Find("SausageShooter").GetComponent<AudioSource>();   // references the audio source in burger blaster
+
     }
 
     void Update()
@@ -43,6 +48,8 @@ public class Aim_Controller : MonoBehaviour
                
                 if (playerScript.hotdogAmmo > 0)  // Checks if it has ammo
                 {
+                    hotdogBlaster.Play();
+
                     var bulletInstance = Instantiate(hotDog, hotdogSpawn.position, hotdogSpawn.rotation);        //creates an instance of bullet in fireSpawn positon
 
                     bulletInstance.AddForce(hotdogSpawn.forward * force);         // Shoots out the bullet
@@ -71,6 +78,7 @@ public class Aim_Controller : MonoBehaviour
                 }
                 if (playerScript.burgerAmmo > 0)
                 {
+                    burgerBlaster.Play();       // Plays the audio clip it makes when shooting
 
                     var bulletInstance = Instantiate(burger, burgerSpawn.position, burgerSpawn.rotation);        //creates an instance of bullet in fireSpawn positon
 

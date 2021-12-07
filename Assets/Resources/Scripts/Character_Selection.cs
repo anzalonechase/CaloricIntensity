@@ -93,9 +93,9 @@ public class Character_Selection : MonoBehaviour
 
         gameDifficultyDropDownMenu.options.Clear();
         gameDifficultyHolder = new Dictionary<string, string>();
-        gameDifficultyHolder.Add("Easy", "You'll have 180 seconds to complete the game.");
-        gameDifficultyHolder.Add("Medium", "You'll have 120 seconds to complete the game.");
-        gameDifficultyHolder.Add("Hard", "You'll have 30 seconds to complete the game.");
+        gameDifficultyHolder.Add("Easy", "You'll have 180 seconds to feed 8 customers to complete the game.");
+        gameDifficultyHolder.Add("Medium", "You'll have 150 seconds to feed 10 customers to complete the game.");
+        gameDifficultyHolder.Add("Hard", "You'll have 120 seconds to feed 12 customers to complete the game.");
         gameDifficultyDesc = GameObject.Find("DropDownMenuDesc").GetComponent<Text>();
 
         foreach (var DifficultyLevel in gameDifficultyHolder)
@@ -123,14 +123,17 @@ public class Character_Selection : MonoBehaviour
         if (GameController.GameInstance.gameDifficulty == "Easy")
         {
             GameController.GameInstance.gameTime = 180;
+            GameController.GameInstance.numberOfCustomers = 8;
         }
         else if (GameController.GameInstance.gameDifficulty == "Medium")
         {
-            GameController.GameInstance.gameTime = 120;
+            GameController.GameInstance.gameTime = 150;
+            GameController.GameInstance.numberOfCustomers = 10;
         }
         else if (GameController.GameInstance.gameDifficulty == "Hard")
         {
-            GameController.GameInstance.gameTime = 30;
+            GameController.GameInstance.gameTime = 120;
+            GameController.GameInstance.numberOfCustomers = 12;
         }
 
     }
