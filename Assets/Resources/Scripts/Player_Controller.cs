@@ -5,14 +5,16 @@ using UnityEngine;
 public class Player_Controller : MonoBehaviour
 {
 
-    public float moveSpeed = 10f;        //was 10
+    private float moveSpeed;        //was 10
 
-    public float gravity = 9.81f;       // was 9.81
-    public float jumpHeight = 2.5f;      // was 2.5        when character was 1 to 1 to 1
+    private float gravity;       // was 9.81
+    private float jumpHeight;    // was 2.5        when character was 1 to 1 to 1
 
-    public float yPosition; //We need this bc otherwise the jump would not work
-                            // This is Because each "frame" it resets y position in a bad manner. We need to keep track of CURRENT
-                            // is through each "frame"
+    private float yPosition; //We need this bc otherwise the jump would not work
+                             // This is Because each "frame" it resets y position in a bad manner. We need to keep track of CURRENT
+                             // is through each "frame"
+
+    private bool firstTrigger;
 
     //Ammo
     public float burgerAmmo;
@@ -26,7 +28,9 @@ public class Player_Controller : MonoBehaviour
     void Start()
     {
         //When the scene(game) starts give 3 burgers adn hotdogs as ammo
-
+        moveSpeed = GameController.GameInstance.playerSpeed;
+        gravity = 9.81f;
+        jumpHeight = 2.5f;
         burgerAmmo = 12;                                                    //// change back to 3
         hotdogAmmo = 12;
 
@@ -35,8 +39,11 @@ public class Player_Controller : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("Moving speed " +moveSpeed);
+        moveSpeed = GameController.GameInstance.playerSpeed;
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
+        firstTrigger = true; 
 
         Vector3 move = transform.right * x + transform.forward * z;   //calculates movement
 
@@ -64,9 +71,9 @@ public class Player_Controller : MonoBehaviour
 
     public void OnControllerColliderHit(ControllerColliderHit collision)     // This is what charatcer controller uses to detect collisions
     {
-        
-
-        if (gameObject.tag == "Player" && collision.gameObject.tag == "Shop")  // If player is touching shop then reload ammo
+        if (firstTrigger){
+            firstTrigger = false;
+            if (gameObject.tag == "Player" && collision.gameObject.tag == "Shop")  // If player is touching shop then reload ammo
         {
             GameController.GameInstance.GunHotDogAmount = 12;
             GameController.GameInstance.GunBurgerAmount = 12;
@@ -93,6 +100,8 @@ public class Player_Controller : MonoBehaviour
             GameController.GameInstance.GainedSpeedUps++;
             Destroy(collision.gameObject);
         }
-
+        } else {
+            return;
+        }
     }
 }
