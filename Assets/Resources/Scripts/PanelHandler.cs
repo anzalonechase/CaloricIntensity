@@ -342,7 +342,7 @@ public class PanelHandler : MonoBehaviour
  
     private void UpdateInventory()
     {
-        if (GameController.GameInstance.GainedSpeedUps > 0 && GameController.GameInstance.GainedSpeedUps < 3)
+        if (GameController.GameInstance.GainedSpeedUps > 0 && GameController.GameInstance.GainedSpeedUps < 5)
         {
             for (int i = 0; i < GameController.GameInstance.itemList.Count; i++)
             {
