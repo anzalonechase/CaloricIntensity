@@ -29,13 +29,11 @@ public class PanelHandler : MonoBehaviour
     private Text RemainingTime;
     private Text RemainingCustomers;
     private Text PlayerName;
-    private Text score;
     private int minute;
     private int seconds;
     private float totalTime;
     private bool occuring;
     [SerializeField] Sprite Soda;
-    private Text score;
 
     private bool AlreadyEnded;
     // Start is called before the first frame update
@@ -107,9 +105,7 @@ public class PanelHandler : MonoBehaviour
             {
                 AlreadyEnded = true;
                 Cursor.lockState = CursorLockMode.None;
-                score.text = "Score: " + (100 * (int)totalTime).ToString();
                 Time.timeScale = 0;
-                score.text = "Score: "+(100 * (int)totalTime).ToString();
                 WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
                 
             }
@@ -226,16 +222,9 @@ public class PanelHandler : MonoBehaviour
             WinningScreenBackBtn = WinningScreen.transform.Find("Back").GetComponent<Button>();
             WinningScreenBackBtn.onClick.AddListener(delegate { LoadSceneByName("Scene_Menu"); });
             WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
-            score = WinningScreen.transform.Find("Score").GetComponent<Text>();
         }
         
     }
-
-    /**
-     * 
-     * Initialise elements on the HUD
-     * 
-     */
     private void InitialiseHUDTextAndButtons()
     {
 
@@ -244,7 +233,6 @@ public class PanelHandler : MonoBehaviour
         Customers = HUDHolder.transform.Find("Customers").gameObject;
         HUDImage = HUDHolder.transform.GetComponent<Image>();
         HUDImage.color = GameController.GameInstance.HUDColor;
-        
         PlayerName = HUDHolder.transform.Find("Name").GetComponent<Text>();
         RemainingTime = Timer.transform.Find("RemainingTime").GetComponent<Text>();
         RemainingCustomers = Customers.transform.Find("RemainingCustomers").GetComponent<Text>();
@@ -315,7 +303,6 @@ public class PanelHandler : MonoBehaviour
         InventorySystemSpeedUpImage.enabled = false;
         panel.gameObject.SetActive(!panel.gameObject.activeInHierarchy);
         SceneManager.LoadScene("Scene_Chase");
-
 
     }
 
