@@ -6,11 +6,7 @@ using TMPro;
 
 public class NPC_Controller : MonoBehaviour
 {
-    public float moveSpeed;   //----------------------            might delete all this later when i find proper movement
-
-    public Rigidbody rb;     //------------------------
-
-    public float flipBy;  //------------------------
+    
 
     public SpriteRenderer burgerSprite; //the sprite of the burger
     public SpriteRenderer hotdogSprite; //the sprite of the hot dog
@@ -42,14 +38,6 @@ public class NPC_Controller : MonoBehaviour
 
     void Start()
     {
-        // I have to use the inspector for these bc NPC will be a prefab
-
-        //rb = GameObject.Find("NPC").GetComponent<Rigidbody>();              //-----------------
-        //playerPos = GameObject.Find("Player").GetComponent<Transform>();                    // refernece the player transform
-        //textBox = GameObject.Find("Order_Correct_Orientation").GetComponent<Transform>();    // reference the textbox transform        (To make sure textbox is LookAt() player
-        //order = GameObject.Find("Order_Text").GetComponent<TextMeshPro>();                  // Gets reference to the text above NPC
-
-        //customerSatisfied = false;
 
         while (numBurgers == 0 & numBurgers == 0)   // This makes sure that both the hotdog and burger count are never both 0
         {
@@ -60,20 +48,6 @@ public class NPC_Controller : MonoBehaviour
 
         order.text = (numBurgers + ":       \n" + numHotdogs + ":       ");       // Puts out the order to NPC text box
 
-
-
-
-
-
-
-
-
-
-
-
-
-        //moveSpeed = 400;          //------------------------
-        //       flipBy = 270;    //On first flip we change the rotation of y to 270 which is exactly opposite way   //----------------------------
     }
 
     
@@ -81,13 +55,7 @@ public class NPC_Controller : MonoBehaviour
     {
 
 
-        //     rb.velocity = transform.forward * Time.deltaTime * moveSpeed;         // Makes it move         ------------------------
-
-
-
-
-
-
+     
         textBox.LookAt(playerPos);
 
 
@@ -122,26 +90,6 @@ public class NPC_Controller : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-
-
-
-
-        if(gameObject.tag == "NPC" && collision.gameObject.tag =="Boundary" )                              // -----------
-        { 
-          
-            transform.rotation = Quaternion.Euler(new Vector3(0,flipBy,0));  // Flips npc by 180 each time
-
-            flipBy += 180;   // TO make sure that next time the rotation is set, it will go exactly the opposite way
-
-        }
-
-
-
-
-
-
-
-
 
         if (gameObject.tag == "NPC" && collision.gameObject.tag == "Burger")          // If hit by a burger 
         {
