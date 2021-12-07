@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 //after 22 seconds. 
 public class CreditScript : MonoBehaviour
 {
-    private float timer = 18f;
+    private float timer = 16f;
 
     // Update is called once per frame
     void Update()
