@@ -29,6 +29,7 @@ public class PanelHandler : MonoBehaviour
     private Text RemainingTime;
     private Text RemainingCustomers;
     private Text PlayerName;
+    private Text score;
     private int minute;
     private int seconds;
     private float totalTime;
@@ -105,6 +106,7 @@ public class PanelHandler : MonoBehaviour
             {
                 AlreadyEnded = true;
                 Cursor.lockState = CursorLockMode.None;
+                score.text = "Score: " + (100 * (int)totalTime).ToString();
                 Time.timeScale = 0;
                 WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
                 
@@ -216,15 +218,22 @@ public class PanelHandler : MonoBehaviour
      
         if(WinningScreen == null)
         {
-            WinningScreen = GameObject.Find("WonPanel").gameObject;
+            WinningScreen = GameObject.Find("WonPanel").gameObject;       
             WinningScreenReplayBtn = WinningScreen.transform.Find("Replay").GetComponent<Button>();
             WinningScreenReplayBtn.onClick.AddListener(delegate { replayTheGame(gameOverPanel); });
             WinningScreenBackBtn = WinningScreen.transform.Find("Back").GetComponent<Button>();
             WinningScreenBackBtn.onClick.AddListener(delegate { LoadSceneByName("Scene_Menu"); });
             WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
+            score = WinningScreen.transform.Find("Score").GetComponent<Text>();
         }
         
     }
+
+    /**
+     * 
+     * Initialise elements on the HUD
+     * 
+     */
     private void InitialiseHUDTextAndButtons()
     {
 
@@ -303,6 +312,7 @@ public class PanelHandler : MonoBehaviour
         InventorySystemSpeedUpImage.enabled = false;
         panel.gameObject.SetActive(!panel.gameObject.activeInHierarchy);
         SceneManager.LoadScene("Scene_Chase");
+
 
     }
 
