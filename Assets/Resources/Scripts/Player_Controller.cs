@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player_Controller : MonoBehaviour
 {
+    [SerializeField] AudioClip onJumpAudio;
 
     private float moveSpeed;        //was 10
 
@@ -54,6 +55,7 @@ public class Player_Controller : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))     // If space bar is pressed then jump
             {
                 yPosition = jumpHeight;      // Here we use the variable that keeps track of CURRENT y position which is the jump hegiht
+                AudioManager.instance.Play(onJumpAudio);
             }
 
         }
