@@ -37,6 +37,9 @@ public class PanelHandler : MonoBehaviour
 
     private bool AlreadyEnded;
     // Start is called before the first frame update
+
+    private GameObject gameInformation;              // To display the game information
+
     private void Awake()
     {
         startNewGameFunctionality();
@@ -66,8 +69,11 @@ public class PanelHandler : MonoBehaviour
         {
             Debug.Log("Num elements " + GameController.GameInstance.itemList.Count);
         }
-        
-               
+
+
+
+        gameInformation = GameObject.Find("Canvas_Information");       // gives gameInformation a reference to the canvas i want
+
 
     }
 
@@ -87,7 +93,36 @@ public class PanelHandler : MonoBehaviour
         GameWinnerFunctionality();
         GameOverConditionAndTimeFuctionality();
         OpenCloseHudeAndInventorySystem();
+
+        // Displays the information panel to the player while 'i' is held down
+        while (Input.GetKeyDown("i"))
+        {
+            gameInformation.SetActive(false);
+        }
+
+
+
+
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private void updatePlayerName()
     {
