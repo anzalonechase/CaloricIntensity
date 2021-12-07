@@ -74,11 +74,7 @@ public class PanelHandler : MonoBehaviour
         {
             GameController.GameInstance.itemList.RemoveAt(GameController.GameInstance.itemList.Count - 1);
         }
-        else
-        {
-            Debug.Log("Num elements " + GameController.GameInstance.itemList.Count);
-        }
-
+        
 
         onDrink = GameObject.Find("OnDrink_Audio").GetComponent<AudioSource>();  //referneces audio clip with ondrink effect
 
@@ -130,6 +126,11 @@ public class PanelHandler : MonoBehaviour
         }
     }
 
+    /**
+     * If the player feeded require customers,
+     * the game will end and winning message shows up
+     * and its score will be calculated and shown on the screen
+     */
     private void GameWinnerFunctionality()
     {
         if (GameController.GameInstance.numberOfCustomers <= 0)
@@ -139,7 +140,7 @@ public class PanelHandler : MonoBehaviour
                 AlreadyEnded = true;
                 Cursor.lockState = CursorLockMode.None;
 
-                //updateTopScorere();
+                updateTopScorere();
                 Time.timeScale = 0;
                 WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
                 
@@ -147,7 +148,41 @@ public class PanelHandler : MonoBehaviour
         }
     }
 
-    
+    /**
+     * Update Top score name, and score
+     */
+    private void updateTopScorere()
+    {
+        int playerScored = (100 * (int)totalTime);
+        score.text = "Player Score: " + playerScored.ToString();
+        if (GameController.GameInstance.gameDifficulty == "Easy")
+        {
+            if (playerScored > GameController.GameInstance.HighestScore[0])
+            {
+                GameController.GameInstance.HighestScore[0] = playerScored;
+
+                GameController.GameInstance.topPlayer[0] = GameController.GameInstance.characterName;
+            }
+        }
+        else if (GameController.GameInstance.gameDifficulty == "Medium")
+        {
+            if (playerScored > GameController.GameInstance.HighestScore[1])
+            {
+                GameController.GameInstance.HighestScore[1] = playerScored;
+
+                GameController.GameInstance.topPlayer[1] = GameController.GameInstance.characterName;
+            }
+        }
+        else if (GameController.GameInstance.gameDifficulty == "Hard")
+        {
+            if (playerScored > GameController.GameInstance.HighestScore[2])
+            {
+                GameController.GameInstance.HighestScore[2] = playerScored;
+
+                GameController.GameInstance.topPlayer[2] = GameController.GameInstance.characterName;
+            }
+        }
+    }
     private void GameOverConditionAndTimeFuctionality()
     {
         if (GameController.GameInstance.gameTime >= 0)
@@ -365,9 +400,6 @@ public class PanelHandler : MonoBehaviour
         {
             GameController.GameInstance.playerSpeed = 10f;
             GameController.GameInstance.GainedSpeedUps = 0;
-            GameController.GameInstance.GunHotDogAmount = 12;
-            GameController.GameInstance.GunBurgerAmount = 12;
-
 
             if (GameController.GameInstance.gameDifficulty == "Easy") { GameController.GameInstance.gameTime = 180; GameController.GameInstance.numberOfCustomers = 8; }
             if (GameController.GameInstance.gameDifficulty == "Medium") { GameController.GameInstance.gameTime = 150; GameController.GameInstance.numberOfCustomers = 10; }
@@ -384,8 +416,6 @@ public class PanelHandler : MonoBehaviour
         {
             GameController.GameInstance.GainedSpeedUps = 0;
             GameController.GameInstance.playerSpeed = 10f;
-            GameController.GameInstance.GunHotDogAmount = 12;
-            GameController.GameInstance.GunBurgerAmount = 12;
 
             if (GameController.GameInstance.gameDifficulty == "Easy") { GameController.GameInstance.gameTime = 180; GameController.GameInstance.numberOfCustomers = 8; }
             if (GameController.GameInstance.gameDifficulty == "Medium") { GameController.GameInstance.gameTime = 150; GameController.GameInstance.numberOfCustomers = 10; }
@@ -396,5 +426,8 @@ public class PanelHandler : MonoBehaviour
 
             totalTime = GameController.GameInstance.gameTime;
         }
+
+        GameController.GameInstance.GunHotDogAmount = 12;
+        GameController.GameInstance.GunBurgerAmount = 12;
     }
 }

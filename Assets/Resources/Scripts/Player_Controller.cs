@@ -39,7 +39,6 @@ public class Player_Controller : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Moving speed " +moveSpeed);
         moveSpeed = GameController.GameInstance.playerSpeed;
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
