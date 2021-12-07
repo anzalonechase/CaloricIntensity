@@ -43,6 +43,7 @@ public class Character_Selection : MonoBehaviour
         GameController.GameInstance.GainedSpeedUps = 0;
         GameController.GameInstance.characterName = "";
         characterColor.color = new Color32(0, 0, 0, 255);
+        GameController.GameInstance.numberOfCustomers = 8;
     }
     private void initialiseSliders()
     {
