@@ -191,7 +191,7 @@ public class PanelHandler : MonoBehaviour
             {
                 onDrink.Play();
               
-                StartCoroutine("UseSpeedups");
+                StartCoroutine("speedupEffects");
 
             }
 
