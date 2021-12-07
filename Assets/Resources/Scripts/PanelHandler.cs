@@ -164,9 +164,9 @@ public class PanelHandler : MonoBehaviour
         
         
         occuring = true;
-        GameController.GameInstance.playerSpeed *= 3;
-        yield return new WaitForSeconds(20f);
-        GameController.GameInstance.playerSpeed /= 3;
+        GameController.GameInstance.playerSpeed *= 2;
+        yield return new WaitForSeconds(15f);
+        GameController.GameInstance.playerSpeed /= 2;
         occuring = false;
 
     }
