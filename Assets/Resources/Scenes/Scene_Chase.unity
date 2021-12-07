@@ -37440,7 +37440,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score:'
+  m_Text: 'Score: 20000'
 --- !u!222 &1172158066
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -42889,6 +42889,8 @@ MonoBehaviour:
   wonTheGame: 0
   GunBurgerAmount: 0
   GunHotDogAmount: 0
+  HighestScore: 
+  topPlayer: []
   playerSpeed: 0
 --- !u!4 &1301181593
 Transform:

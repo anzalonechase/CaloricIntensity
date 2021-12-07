@@ -56,14 +56,8 @@ public class Aim_Controller : MonoBehaviour
 
                     playerScript.hotdogAmmo -= 1;  // Decrements hotdog ammo bc you just used a shot
 
-
-                    Debug.Log("Hot dog ammo:     " + playerScript.hotdogAmmo);
                 }
-                else
-                {
-                    Debug.Log("No hotdog ammo left");
-                    // Lets the player know there is not enoguh hotdog ammo 
-                }
+               
 
             }
 
@@ -86,13 +80,8 @@ public class Aim_Controller : MonoBehaviour
 
                     playerScript.burgerAmmo -= 1; // Decrement the burger ammo bc you just used a shot
 
-                    Debug.Log("Burger ammo:     " + playerScript.burgerAmmo);
                 }
-                else
-                {
-                    Debug.Log("No burger ammo left");
-                    // Lest display message saying player has no burger ammo left
-                }
+               
 
 
             }

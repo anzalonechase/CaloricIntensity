@@ -46,6 +46,10 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("Scene_Credits");
     }
 
+    public void LoadLeaderBoard()
+    {
+        SceneManager.LoadScene("Scene_LeaderBoard");
+    }
 
     //When the Exit button is clicked, quit the application.
     public void doExitGame()
