@@ -34,6 +34,7 @@ public class PanelHandler : MonoBehaviour
     private float totalTime;
     private bool occuring;
     [SerializeField] Sprite Soda;
+    private Text score;
 
     private bool AlreadyEnded;
     // Start is called before the first frame update
@@ -106,6 +107,7 @@ public class PanelHandler : MonoBehaviour
                 AlreadyEnded = true;
                 Cursor.lockState = CursorLockMode.None;
                 Time.timeScale = 0;
+                score.text = "Score: "+(100 * (int)totalTime).ToString();
                 WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
                 
             }
@@ -217,6 +219,7 @@ public class PanelHandler : MonoBehaviour
         if(WinningScreen == null)
         {
             WinningScreen = GameObject.Find("WonPanel").gameObject;
+            score = WinningScreen.transform.Find("Score").GetComponent<Text>();
             WinningScreenReplayBtn = WinningScreen.transform.Find("Replay").GetComponent<Button>();
             WinningScreenReplayBtn.onClick.AddListener(delegate { replayTheGame(gameOverPanel); });
             WinningScreenBackBtn = WinningScreen.transform.Find("Back").GetComponent<Button>();
@@ -233,6 +236,7 @@ public class PanelHandler : MonoBehaviour
         Customers = HUDHolder.transform.Find("Customers").gameObject;
         HUDImage = HUDHolder.transform.GetComponent<Image>();
         HUDImage.color = GameController.GameInstance.HUDColor;
+        
         PlayerName = HUDHolder.transform.Find("Name").GetComponent<Text>();
         RemainingTime = Timer.transform.Find("RemainingTime").GetComponent<Text>();
         RemainingCustomers = Customers.transform.Find("RemainingCustomers").GetComponent<Text>();
