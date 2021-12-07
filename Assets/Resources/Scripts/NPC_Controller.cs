@@ -11,6 +11,7 @@ public class NPC_Controller : MonoBehaviour
     public SpriteRenderer burgerSprite; //the sprite of the burger
     public SpriteRenderer hotdogSprite; //the sprite of the hot dog
     public SpriteRenderer speechSprite; //the sprite of the speech bubble
+    private AudioSource onFedAudio; // "YAY" audio clip for customer satisfaction condition
 
 
 
@@ -47,6 +48,7 @@ public class NPC_Controller : MonoBehaviour
         }
 
         order.text = (numBurgers + ":       \n" + numHotdogs + ":       ");       // Puts out the order to NPC text box
+        onFedAudio = GameObject.Find("onFedAudio").GetComponent<AudioSource>(); // "Yay" sound being linked
 
     }
 
@@ -69,6 +71,7 @@ public class NPC_Controller : MonoBehaviour
             {
                 order.text = "    THANKS!";  // extra spaces for buffering
                 customerSatisfied = true;
+                onFedAudio.Play(); // "Yay" sound invoked at condition
                 GameController.GameInstance.numberOfCustomers--;
                 burgerSprite.enabled = false;  //disable the burger and hotdog sprites
                 hotdogSprite.enabled = false;
