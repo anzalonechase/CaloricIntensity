@@ -198,7 +198,7 @@ public class PanelHandler : MonoBehaviour
         }
     }
 
-    private IEnumerator UseSpeedups()
+    private IEnumerator speedupEffects()
     {
         
         
