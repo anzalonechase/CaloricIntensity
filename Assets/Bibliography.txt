@@ -1,3 +1,32 @@
+Bibliography 
+
+
+Creator of Game: Arman Shahriari, Chase Anzalone, Joaquin Fuenzalida Nuñez, Peter Estrada Ledesma
+
+
+NPCs: Model packet "3D Model"
+
+SUPERCYAN
+Unity Assets Store
+Hosted in https://assetstore.unity.com/publishers/22143
+
+
+
+Weapons: 3D Model packet "Blaster Kit"
+Buildings: 3D Model Packet "City Kit (Commerial and Suburban)"
+Roads: 3D Model Packet "City kit (Roads)"
+Food: 3D Model Packet "Food Kit"
+
+All done by:
+Kenney
+Kenney website
+Hosted in https://kenney.nl/assets?q=3d
+
+
+Every other Asset used was created by us.
+
+
+
 Used fonts: 
 
 The Late Font family, created by Łukasz Dziedzic. This font was used on the About page, as it was more professional and legible, which is what I was going for. 
@@ -6,4 +35,3 @@ The SF Pixelate Font, created by Shy Fonts. This font was used widely across my 
 
 
 
-  
