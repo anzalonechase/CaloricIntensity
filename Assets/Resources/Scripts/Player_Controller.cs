@@ -14,8 +14,6 @@ public class Player_Controller : MonoBehaviour
                              // This is Because each "frame" it resets y position in a bad manner. We need to keep track of CURRENT
                              // is through each "frame"
 
-    private bool firstTrigger;
-
     //Ammo
     public float burgerAmmo;
     public float hotdogAmmo;
@@ -43,7 +41,6 @@ public class Player_Controller : MonoBehaviour
         moveSpeed = GameController.GameInstance.playerSpeed;
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
-        firstTrigger = true; 
 
         Vector3 move = transform.right * x + transform.forward * z;   //calculates movement
 
@@ -71,9 +68,9 @@ public class Player_Controller : MonoBehaviour
 
     public void OnControllerColliderHit(ControllerColliderHit collision)     // This is what charatcer controller uses to detect collisions
     {
-        if (firstTrigger){
-            firstTrigger = false;
-            if (gameObject.tag == "Player" && collision.gameObject.tag == "Shop")  // If player is touching shop then reload ammo
+        
+
+        if (gameObject.tag == "Player" && collision.gameObject.tag == "Shop")  // If player is touching shop then reload ammo
         {
             GameController.GameInstance.GunHotDogAmount = 12;
             GameController.GameInstance.GunBurgerAmount = 12;
@@ -100,8 +97,6 @@ public class Player_Controller : MonoBehaviour
             GameController.GameInstance.GainedSpeedUps++;
             Destroy(collision.gameObject);
         }
-        } else {
-            return;
-        }
+
     }
 }
