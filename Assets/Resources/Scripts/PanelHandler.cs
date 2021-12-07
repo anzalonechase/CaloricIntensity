@@ -33,6 +33,7 @@ public class PanelHandler : MonoBehaviour
     private int seconds;
     private float totalTime;
     private bool occuring;
+    private Text score;
     [SerializeField] Sprite Soda;
 
     private bool AlreadyEnded;
@@ -73,11 +74,7 @@ public class PanelHandler : MonoBehaviour
         {
             GameController.GameInstance.itemList.RemoveAt(GameController.GameInstance.itemList.Count - 1);
         }
-        else
-        {
-            Debug.Log("Num elements " + GameController.GameInstance.itemList.Count);
-        }
-
+        
 
         onDrink = GameObject.Find("OnDrink_Audio").GetComponent<AudioSource>();  //referneces audio clip with ondrink effect
 
@@ -92,9 +89,6 @@ public class PanelHandler : MonoBehaviour
 
     
 
-    /**
-     * Shows player name on the screen
-     */
     
 
     // Update is called once per frame
@@ -121,11 +115,9 @@ public class PanelHandler : MonoBehaviour
 
     }
 
-
-
-
-
-
+    /**
+     * Shows player name on the screen
+     */
     private void updatePlayerName()
     {
         if (GameController.GameInstance.characterName != null)
@@ -134,6 +126,11 @@ public class PanelHandler : MonoBehaviour
         }
     }
 
+    /**
+     * If the player feeded require customers,
+     * the game will end and winning message shows up
+     * and its score will be calculated and shown on the screen
+     */
     private void GameWinnerFunctionality()
     {
         if (GameController.GameInstance.numberOfCustomers <= 0)
@@ -142,9 +139,47 @@ public class PanelHandler : MonoBehaviour
             {
                 AlreadyEnded = true;
                 Cursor.lockState = CursorLockMode.None;
+
+                updateTopScorere();
                 Time.timeScale = 0;
                 WinningScreen.gameObject.SetActive(!WinningScreen.gameObject.activeInHierarchy);
                 
+            }
+        }
+    }
+
+    /**
+     * Update Top score name, and score
+     */
+    private void updateTopScorere()
+    {
+        int playerScored = (100 * (int)totalTime);
+        score.text = "Score: " + playerScored.ToString();
+        if (GameController.GameInstance.gameDifficulty == "Easy")
+        {
+            if (playerScored > GameController.GameInstance.HighestScore[0])
+            {
+                GameController.GameInstance.HighestScore[0] = playerScored;
+
+                GameController.GameInstance.topPlayer[0] = GameController.GameInstance.characterName;
+            }
+        }
+        else if (GameController.GameInstance.gameDifficulty == "Medium")
+        {
+            if (playerScored > GameController.GameInstance.HighestScore[1])
+            {
+                GameController.GameInstance.HighestScore[1] = playerScored;
+
+                GameController.GameInstance.topPlayer[1] = GameController.GameInstance.characterName;
+            }
+        }
+        else if (GameController.GameInstance.gameDifficulty == "Hard")
+        {
+            if (playerScored > GameController.GameInstance.HighestScore[2])
+            {
+                GameController.GameInstance.HighestScore[2] = playerScored;
+
+                GameController.GameInstance.topPlayer[2] = GameController.GameInstance.characterName;
             }
         }
     }
@@ -189,6 +224,7 @@ public class PanelHandler : MonoBehaviour
             
             if (GameController.GameInstance.GainedSpeedUps > -1 && occuring == false)
             {
+
                 onDrink.Play();
               
                 StartCoroutine("speedupEffects");
@@ -198,8 +234,11 @@ public class PanelHandler : MonoBehaviour
         }
     }
 
-    private IEnumerator speedupEffects()
-    {
+    /*
+     * Handels the speedup soda effect functionality
+     * Gives 3x speed to player for 20 seconds
+     */
+    private IEnumerator speedupEffects(){
         
         
         occuring = true;
@@ -256,6 +295,7 @@ public class PanelHandler : MonoBehaviour
         if(WinningScreen == null)
         {
             WinningScreen = GameObject.Find("WonPanel").gameObject;
+            score = WinningScreen.transform.Find("Score").GetComponent<Text>();
             WinningScreenReplayBtn = WinningScreen.transform.Find("Replay").GetComponent<Button>();
             WinningScreenReplayBtn.onClick.AddListener(delegate { replayTheGame(gameOverPanel); });
             WinningScreenBackBtn = WinningScreen.transform.Find("Back").GetComponent<Button>();
@@ -304,7 +344,6 @@ public class PanelHandler : MonoBehaviour
                 if (GameController.GameInstance.itemList[i].name == "Speedups")
                 {
                     InventorySystemSpeedUpImage.enabled = true;
-                   // InventorySystemSpeedUpImage.color = Color.white;
                     // set image to speedups
                     InventorySystemSpeedUpImage.sprite = Soda;
                     // update the text
@@ -323,7 +362,6 @@ public class PanelHandler : MonoBehaviour
             if (GameController.GameInstance.itemList.Count > 2)
             {
                 GameController.GameInstance.itemList.RemoveAt(GameController.GameInstance.itemList.Count-1);
-                //InventorySystemSpeedUpImage.sprite = null;
                 InventorySystemSpeedUpImage.enabled = false;
             }
         }
@@ -362,46 +400,34 @@ public class PanelHandler : MonoBehaviour
         {
             GameController.GameInstance.playerSpeed = 10f;
             GameController.GameInstance.GainedSpeedUps = 0;
-            GameController.GameInstance.GunHotDogAmount = 12;
-            GameController.GameInstance.GunBurgerAmount = 12;
-
 
             if (GameController.GameInstance.gameDifficulty == "Easy") { GameController.GameInstance.gameTime = 180; GameController.GameInstance.numberOfCustomers = 8; }
             if (GameController.GameInstance.gameDifficulty == "Medium") { GameController.GameInstance.gameTime = 150; GameController.GameInstance.numberOfCustomers = 10; }
             if (GameController.GameInstance.gameDifficulty == "Hard") { GameController.GameInstance.gameTime = 120; GameController.GameInstance.numberOfCustomers = 12; }
 
-            //GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 180 :
-            //GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 30;
 
 
             AlreadyEnded = false;
 
 
-            //GameController.GameInstance.numberOfCustomers = GameController.GameInstance.gameDifficulty == "Easy" ? 8 :
-            //GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 10;
         }
 
         if (GameController.GameInstance.gameTime <= 0)
         {
             GameController.GameInstance.GainedSpeedUps = 0;
             GameController.GameInstance.playerSpeed = 10f;
-            GameController.GameInstance.GunHotDogAmount = 12;
-            GameController.GameInstance.GunBurgerAmount = 12;
 
             if (GameController.GameInstance.gameDifficulty == "Easy") { GameController.GameInstance.gameTime = 180; GameController.GameInstance.numberOfCustomers = 8; }
             if (GameController.GameInstance.gameDifficulty == "Medium") { GameController.GameInstance.gameTime = 150; GameController.GameInstance.numberOfCustomers = 10; }
             if (GameController.GameInstance.gameDifficulty == "Hard") { GameController.GameInstance.gameTime = 120; GameController.GameInstance.numberOfCustomers = 12; }
 
 
-
-            //GameController.GameInstance.gameTime = GameController.GameInstance.gameDifficulty == "Easy" ? 180 :
-            //GameController.GameInstance.gameDifficulty == "Medium" ? 120 : 30;
-
-
             AlreadyEnded = false;
 
-            //GameController.GameInstance.numberOfCustomers = 1;
             totalTime = GameController.GameInstance.gameTime;
         }
+
+        GameController.GameInstance.GunHotDogAmount = 12;
+        GameController.GameInstance.GunBurgerAmount = 12;
     }
 }
