@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Terrain
+  - Obstacle
+  - Shop
+  - NPC
+  - Boundary
+  - Burger
+  - Undefined
+  - Hotdog
+  - Bullet
+  - Soda
   layers:
   - Default
   - TransparentFX
@@ -11,11 +21,11 @@ TagManager:
   - PostProcessing
   - Water
   - UI
+  - Canvas
+  - Bar layer
   - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Bullet
   - 
   - 
   - 
@@ -38,6 +48,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Canvas
+    uniqueID: 873686619
+    locked: 1
   - name: Default
     uniqueID: 0
     locked: 0

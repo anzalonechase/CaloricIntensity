@@ -1,9 +1,55 @@
+Bibliography 
+
+
+Creator of Game: Arman Shahriari, Chase Anzalone, Joaquin Fuenzalida Nuñez, Peter Estrada Ledesma
+
+
+NPCs: Model packet "3D Model"
+
+SUPERCYAN
+Unity Assets Store
+Hosted in https://assetstore.unity.com/publishers/22143
+
+
+Weapons: 3D Model packet "Blaster Kit"
+Buildings: 3D Model Packet "City Kit (Commerial and Suburban)"
+Roads: 3D Model Packet "City kit (Roads)"
+Food: 3D Model Packet "Food Kit"
+
+All done by:
+Kenney
+Kenney website
+Hosted in https://kenney.nl/assets?q=3d
+
+Graphics Modification: The Edge Detection implementation was provided by Jean Moreno, at the following link.
+https://github.com/jean-moreno/EdgeDetect-PostProcessingUnity
+
+
+Every other Asset used was created by us.
+
+
+
 Used fonts: 
 
-The Late Font family, created by Łukasz Dziedzic. This font was used on the About page, as it was more professional and legible, which is what I was going for. 
+The Late Font family, created by Łukasz Dziedzic. This font was used on the About page, as it was more professional and legible, which is what we was going for. 
 
 The SF Pixelate Font, created by Shy Fonts. This font was used widely across my game, with practically all of the text being shown in this font. 
 
+Consulted YouTube videos: 
+
+Brackeys, for character movement and camera. 
+
+"Toon Outlines in Unity URP, Shader Graph Using Sobel Edge Detection! ✔️ 2020.3 | Game Dev Tutorial" by NedMakesGames. This tutorial, I (Joaquin) tried to follow three times, and each time, I found that it was too convoluted and moved too fast. In the end, I just used the Legacy Post-Processing made available from Jean Moreno. If you would like to be similarly confounded by this video, you can access it at https://www.youtube.com/watch?v=RMt6DcaMxcE. 
 
 
-  
+Consulted Forum Posts: 
+"Can't hide Text Mesh Pro Gizmo in Scene" by Unity User funselektor. I was having difficulty dealing with too many Gizmos covering my editor, and didn't know enough about them to remove them. I consulted this forum post, and quickly solved the issue. You can access the forum post at
+https://forum.unity.com/threads/cant-hide-text-mesh-pro-gizmo-in-scene.627850/
+
+"Lights get darker when loading scene" by Unity User Cervelx. I was having difficulty with switching between scenes - the lighting would change from what I expected it to be, now being much darker. With the help of this forum post, I resolved the issue. You can access the forum post at
+https://answers.unity.com/questions/1264278/unity-5-directional-light-problem-please-help.html
+
+"Create invisible wall" by Unity user mcmc1118. Someone on the team was having difficulty with creating an invisible wall around the map. I did a quick google search and found this forum post, which helped me solve the issue with them. You can access the forum post at https://forum.unity.com/threads/create-invisible-wall.424016/
+
+
+
