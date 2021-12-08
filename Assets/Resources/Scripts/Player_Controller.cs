@@ -78,7 +78,7 @@ public class Player_Controller : MonoBehaviour
             GameController.GameInstance.GunBurgerAmount = 12;
             burgerAmmo = 12;
             hotdogAmmo = 12;
-        }
+        } //checks for soda collison
         else if (gameObject.tag == "Player" && collision.gameObject.tag == "Soda")   // If there is a collision with this tag the burger will destroy itself instantly
         {
             bool exists = false;

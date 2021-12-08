@@ -70,6 +70,9 @@ public class PanelHandler : MonoBehaviour
         gameReset();
     }
 
+     /**
+     * Reseted the game for playing again
+     */
     private void gameReset()
     {
         Time.timeScale = 1;
@@ -188,6 +191,13 @@ public class PanelHandler : MonoBehaviour
             }
         }
     }
+
+    /**
+     *  Checking to see if game over
+     *  If it is it shows game over screen
+     *  stops the time,
+     *  and let player decide to play again or not
+     */
     private void GameOverConditionAndTimeFuctionality()
     {
         if (GameController.GameInstance.gameTime >= 0)
@@ -280,6 +290,9 @@ public class PanelHandler : MonoBehaviour
         RemainingCustomers.text = "Remaining Customers: " + (GameController.GameInstance.numberOfCustomers).ToString();
     }
 
+     /**
+     *  Initialising elements on game Over screen/Panel
+     */
     private void InitialiseGameOverScreenAndButtons()
     {
         if (gameOverPanel == null)
@@ -294,6 +307,9 @@ public class PanelHandler : MonoBehaviour
         
     }
 
+    /**
+     *  Initialising elements on Winning screen/Panel
+     */
     private void InitialiseWinningScreenAndButtons()
     {
      
@@ -309,6 +325,9 @@ public class PanelHandler : MonoBehaviour
         }
         
     }
+    /**
+     *  Initialising elements on HUD Panel
+     */
     private void InitialiseHUDTextAndButtons()
     {
 
@@ -325,6 +344,9 @@ public class PanelHandler : MonoBehaviour
      
     }
 
+    /**
+     *  Initialising elements on enventory system screen/Panel
+     */
     private void InitialiseInventorySystemScreenAndButtons()
     {
         InventorySystem = GameObject.Find("GameInventoryPanel").gameObject;
@@ -340,6 +362,9 @@ public class PanelHandler : MonoBehaviour
         InventorySystemHotDogAmountValue = InventorySystemHotDogAmountImage.transform.Find((2 + "T").ToString()).GetComponent<Text>();
     }
  
+    /**
+     * It adds speedups to the inventory system
+     */
     private void UpdateInventory()
     {
         if (GameController.GameInstance.GainedSpeedUps > 0 && GameController.GameInstance.GainedSpeedUps < 5)
@@ -376,6 +401,9 @@ public class PanelHandler : MonoBehaviour
         }
         
     }
+    /**
+     * Doing appropriate reseting for replaying the game
+     */
     private void replayTheGame(GameObject panel)
     {
         GameController.GameInstance.GainedSpeedUps = 0;
@@ -388,6 +416,9 @@ public class PanelHandler : MonoBehaviour
 
     }
 
+      /*
+     * It loads the menu scene
+     */
     public void LoadSceneByName(string sceneName)
     {
         GameController.GameInstance.GainedSpeedUps=0;
@@ -398,6 +429,9 @@ public class PanelHandler : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+    /*
+    * It reset the game for a new game comming from character selection screen
+    */
     private void startNewGameFunctionality()
     {
         
