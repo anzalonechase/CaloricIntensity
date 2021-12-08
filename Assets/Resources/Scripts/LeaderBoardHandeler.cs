@@ -17,6 +17,20 @@ public class LeaderBoardHandeler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        initialiseElements();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        updateScores();
+    }
+
+    /**
+     * It initialises the text elements on the leader board screen
+     * 
+     */
+    private void initialiseElements() {
         topPlayerEasy = gameObject.transform.Find("EasyTopPlayer").GetComponent<Text>();
         topPlayerMedium = gameObject.transform.Find("MediumTopPlayer").GetComponent<Text>();
         topPlayerHard = gameObject.transform.Find("HardTopPlayer").GetComponent<Text>();
@@ -28,9 +42,10 @@ public class LeaderBoardHandeler : MonoBehaviour
         back.onClick.AddListener(delegate { SceneManager.LoadScene("Scene_Menu"); });
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+     /**
+     * It updates scene with player high scores
+     */
+    private void updateScores() {
         topPlayerEasyScore.text = GameController.GameInstance.HighestScore[0].ToString();
         if (GameController.GameInstance.HighestScore[0] > 0)
         {
