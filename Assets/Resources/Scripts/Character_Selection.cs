@@ -32,6 +32,10 @@ public class Character_Selection : MonoBehaviour
         initialiseSliders();
         ReseGameContoller();
     }
+
+    /**
+     * Reseting game data
+     */
     private void ReseGameContoller()
     {
         GameController.GameInstance.gameDifficulty = "Easy";
@@ -46,6 +50,10 @@ public class Character_Selection : MonoBehaviour
         characterColor.color = new Color32(0, 0, 0, 255);
         GameController.GameInstance.numberOfCustomers = 8;
     }
+
+    /**
+     *  Initialising the sliders
+     */
     private void initialiseSliders()
     {
         colors = GameObject.Find("CharacterColor").gameObject;
@@ -62,24 +70,33 @@ public class Character_Selection : MonoBehaviour
 
     }
 
+    /**
+     * Checks for change of value in the red slider
+     */
     public void onChangeRedSliderValue()
     {
         GameController.GameInstance.redColor = (byte)redSlider.value;
         changeImageColor();
     }
-
+    /**
+     * Checks for change of value in the green slider
+     */
     public void onChangeGreenSliderValue()
     {
         GameController.GameInstance.greenColor = (byte)greenSlider.value;
         changeImageColor();
     }
-
+    /**
+     * Checks for change of value in the blue slider
+     */
     public void onChangeBlueSliderValue()
     {
         GameController.GameInstance.blueColor = (byte)blueSlider.value;
         changeImageColor();
     }
-
+    /**
+     * Updates image color and game data color
+     */
     private void changeImageColor()
     {
         GameController.GameInstance.HUDColor = new Color32(GameController.GameInstance.redColor,
@@ -88,7 +105,9 @@ public class Character_Selection : MonoBehaviour
         GameController.GameInstance.greenColor, GameController.GameInstance.blueColor, 255);
     }
 
-
+    /**
+     * Initialises game difficulty drop down menu
+     */
     private void initilisegameDifficultyDropDownMenu()
     {
         gameDifficultyDropDownMenu = GameObject.Find("GameDifficultyDropdown").GetComponent<Dropdown>();
@@ -109,6 +128,11 @@ public class Character_Selection : MonoBehaviour
 
     }
 
+    /**
+     * Checks for selected game difficulty 
+     * and assign right customer numbers and times for it
+     * 
+     */
     private void SelectedItem()
     {
         int index = gameDifficultyDropDownMenu.value;
@@ -145,6 +169,10 @@ public class Character_Selection : MonoBehaviour
     {
         
     }
+
+    /**
+     * Initialising input fields
+     */
     private void initiliseCharacterNameInputField()
     {
         characterName = GameObject.Find("CharacterName").GetComponent<InputField>();
@@ -152,12 +180,17 @@ public class Character_Selection : MonoBehaviour
 
 
     }
-
+    /**
+     * Setting game data character name
+     */
     private void setName()
     {
             GameController.GameInstance.characterName = characterName.text;
     }
 
+    /**
+     * Initialises buttons on the screen
+     */
     private void initiliseButtons()
     {
         backBtn = GameObject.Find("BackBtn").GetComponent<Button>();
@@ -186,14 +219,16 @@ public class Character_Selection : MonoBehaviour
     }
 
 
-   
+   /**
+    * It loads different scenes
+    */
 private void LoadSceneByNumber(int sceneNumber)
     {
         SceneManager.LoadScene(sceneNumber);
     }
 
     /* 
-    * When user click the exit button. it exit from editor, and play mode
+    * Handles exit button functionality
     */
     private void exitFromtheEditor()
     {
